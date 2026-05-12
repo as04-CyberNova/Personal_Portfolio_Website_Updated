@@ -1,60 +1,67 @@
-// Global Interactions
+// 2026 Portfolio Interactivity Engine - Simplified Rollback
 document.addEventListener('DOMContentLoaded', () => {
-    // Scroll effect for header
+    /* --- 1. Section Reveal (Standard Scroll) --- */
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                // Optional: Stop observing after reveal
+                // revealObserver.unobserve(entry.target);
+            }
+        });
+    }, { 
+        threshold: 0.15,
+        rootMargin: '0px 0px -50px 0px'
+    });
+
+    document.querySelectorAll('.reveal-on-scroll, section, .bento-item').forEach(el => {
+        el.classList.add('reveal-on-scroll');
+        revealObserver.observe(el);
+    });
+
+    /* --- 2. Navbar Scroll States --- */
     const header = document.getElementById('header');
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
+        if (window.scrollY > 100) {
             header.classList.add('scrolled');
         } else {
             header.classList.remove('scrolled');
         }
     });
 
-    // Mobile Menu Toggle
+    /* --- 3. Mobile Menu Logic --- */
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const navContainer = document.getElementById('navContainer');
-    const navLinks = document.querySelectorAll('.nav-links a');
     
     if (mobileMenuBtn && navContainer) {
         mobileMenuBtn.addEventListener('click', () => {
             navContainer.classList.toggle('active');
-            const icon = mobileMenuBtn.querySelector('i');
-            if (navContainer.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
+            mobileMenuBtn.querySelector('i').classList.toggle('fa-bars');
+            mobileMenuBtn.querySelector('i').classList.toggle('fa-xmark');
         });
-        
-        // Close menu when a link is clicked
-        navLinks.forEach(link => {
+
+        // Close menu on link click
+        navContainer.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 navContainer.classList.remove('active');
-                const icon = mobileMenuBtn.querySelector('i');
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
+                mobileMenuBtn.querySelector('i').className = 'fa-solid fa-bars';
             });
         });
     }
 
-    // Set Progress Bar Widths Statically
-    document.querySelectorAll('.progress-bar').forEach(bar => {
-        bar.style.width = bar.getAttribute('data-width');
+    /* --- 4. Smooth Scrolling for Anchor Links --- */
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        });
     });
 });
-
-// Contact Form Handler
-function handleFormSubmit(e) {
-    e.preventDefault();
-    const btn = document.getElementById('submit-btn');
-    const originalText = btn.textContent;
-    btn.textContent = 'Message Sent ✓';
-    btn.classList.add('success');
-    setTimeout(() => {
-        btn.textContent = originalText;
-        btn.classList.remove('success');
-        e.target.reset();
-    }, 3000);
-}

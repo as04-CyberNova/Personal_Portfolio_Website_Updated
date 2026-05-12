@@ -15,6 +15,17 @@
 </head>
 
 <body>
+
+
+    <div class="ambient-canvas">
+
+        <div class="gradient-sphere sphere-1"></div>
+        <div class="gradient-sphere sphere-2"></div>
+    </div>
+    <div class="noise-overlay"></div>
+
+
+
     <header id="header">
         <nav class="navbar">
             <a href="#" class="logo">ABHYUDAYA <span>SINHA</span></a>
@@ -48,24 +59,34 @@
         <!-- ... existing sections ... -->
         <section class="hero" id="home">
             <div class="hero-content">
-                <p>DATA SCIENCE STUDENT & ANALYST</p>
-                <h1>Turning Complex Data Into <span class="accent-text">Visual Insight</span></h1>
+                <p class="hero-label">DATA SCIENCE STUDENT & ANALYST</p>
+                <h1>Turning Complex<br>Data Into<br><span class="gradient-text">Visual<br>Insight</span></h1>
                 <p>Exploring the intersection of Machine Learning, Data Analytics, and modern Web Experiences.</p>
                 <div class="hero-btns">
-                    <a href="#projects" class="btn-primary">View My Work <i
+                    <a href="#projects" class="btn-primary">VIEW MY WORK <i
                             class="fa-solid fa-arrow-right-long"></i></a>
-                    <a href="#skills" class="btn-secondary">Technical Stack <i class="fa-solid fa-layer-group"></i></a>
+                    <a href="#skills" class="btn-secondary">TECHNICAL STACK <i class="fa-solid fa-layer-group"></i></a>
                 </div>
             </div>
         </section>
 
-        <section id="about">
+        <section id="about" class="reveal-on-scroll">
             <div class="section-head">
                 <p>Background</p>
                 <h2>The Analyst Journey</h2>
             </div>
             <div class="bento-grid">
-                <div class="bento-item" style="grid-column: span 8; grid-row: span 2;">
+                <div class="bento-item persona-item reveal-on-scroll" style="grid-column: span 4; grid-row: span 2;">
+                    <div class="headshot-wrapper">
+                        <div class="headshot-placeholder">
+                            <i class="fa-solid fa-user-ninja"></i>
+                        </div>
+                    </div>
+                    <h3>Abhyudaya Sinha</h3>
+                    <p class="timeline-subtitle">Data Scientist & Visionary</p>
+                    <p>Merging analytical precision with aesthetic vision to build the future of data experiences.</p>
+                </div>
+                <div class="bento-item reveal-on-scroll" style="grid-column: span 8; grid-row: span 2;">
                     <i class="fa-solid fa-graduation-cap bento-icon"></i>
                     <h3>Academic Focus</h3>
                     <p>I am a Data Science student specializing in uncovering hidden patterns within large datasets. My
@@ -92,13 +113,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="bento-item" style="grid-column: span 4;">
+                <div class="bento-item reveal-on-scroll" style="grid-column: span 4;">
                     <i class="fa-solid fa-wand-magic-sparkles bento-icon"></i>
                     <h3>Creative Hobby</h3>
                     <p>I view web development as my creative outlet—crafting high-end digital experiences to sharpen my
                         technical versatile skill set.</p>
                 </div>
-                <div class="bento-item" style="grid-column: span 4;">
+                <div class="bento-item reveal-on-scroll" style="grid-column: span 4;">
                     <i class="fa-solid fa-users-viewfinder bento-icon"></i>
                     <h3>Collaborative</h3>
                     <p>I thrive in environments where data meets design, collaborating on projects that demand both
@@ -107,13 +128,13 @@
             </div>
         </section>
 
-        <section id="skills">
+        <section id="skills" class="reveal-on-scroll">
             <div class="section-head">
                 <p>Capabilities</p>
                 <h2>Technical Skills</h2>
             </div>
             <div class="bento-grid">
-                <div class="bento-item" style="grid-column: span 12;">
+                <div class="bento-item reveal-on-scroll" style="grid-column: span 12;">
                     <h3>Data Visualization & Analytics</h3>
                     <div class="skills-grid">
                         <div class="skill-item">
@@ -145,7 +166,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="bento-item" style="grid-column: span 12;">
+                <div class="bento-item reveal-on-scroll" style="grid-column: span 12;">
                     <h3>Languages & Core Tools</h3>
                     <div class="skills-grid">
                         <div class="skill-item">
