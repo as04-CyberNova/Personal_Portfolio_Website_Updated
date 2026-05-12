@@ -1,33 +1,45 @@
 :root {
-    /* High-Fidelity 2026 Palette */
+    /* Theme Variables - Dark (Default) */
     --bg-base: #020202;
     --bg-darker: #010101;
     --bg-surface: #0a0a0a;
-    --bg-glass: rgba(10, 10, 10, 0.4);
+    --bg-glass: rgba(10, 10, 10, 0.6);
+    --navbar-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
     --text-head: #ffffff;
     --text-body: #a1a1aa;
-
-    /* Vibrant Neons (Dynamic) */
     --accent: #0044ff;
     --accent-rgb: 0, 68, 255;
     --accent-secondary: #7000ff;
     --accent-secondary-rgb: 112, 0, 255;
     --accent-gradient: linear-gradient(135deg, var(--accent), var(--accent-secondary));
-    
     --glass-border: rgba(255, 255, 255, 0.08);
     --glass-highlight: rgba(255, 255, 255, 0.03);
-    --transition-smooth: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-
-    /* Typography Tokens */
+    
+    /* Shared Tokens */
+    --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     --font-main: 'Inter', sans-serif;
     --font-heading: 'Outfit', sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
-
-    /* Ultra-HD Scaling Factors */
     --container-max-width: 1300px;
     --header-max-width: 1100px;
-    --section-padding: 14rem;
+    --section-padding: 8rem;
     --border-thin: 1px;
+}
+
+[data-theme="light"] {
+    --bg-base: #f8fafc;
+    --bg-darker: #f1f5f9;
+    --bg-surface: #ffffff;
+    --bg-glass: rgba(255, 255, 255, 0.8);
+    --navbar-glass: linear-gradient(135deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.01));
+    --text-head: #0f172a;
+    --text-body: #475569;
+    --accent: #2563eb;
+    --accent-rgb: 37, 99, 235;
+    --accent-secondary: #7c3aed;
+    --accent-secondary-rgb: 124, 58, 237;
+    --glass-border: rgba(0, 0, 0, 0.06);
+    --glass-highlight: rgba(255, 255, 255, 0.8);
 }
 
 * {
@@ -45,11 +57,11 @@ html {
 
 body {
     background-color: transparent;
-    /* Allow canvas to show through */
     color: var(--text-body);
     font-family: 'Inter', -apple-system, sans-serif;
     line-height: 1.6;
     overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 h1,
@@ -90,7 +102,11 @@ h3 {
     filter: blur(100px);
     opacity: 0.15;
     pointer-events: none;
-    transition: transform 0.5s ease-out;
+    transition: transform 0.5s ease-out, opacity 0.3s ease;
+}
+
+[data-theme="light"] .gradient-sphere {
+    opacity: 0.08;
 }
 
 .sphere-1 {
@@ -240,7 +256,7 @@ header.scrolled {
 .navbar {
     width: 95%;
     max-width: var(--header-max-width);
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
+    background: var(--navbar-glass);
     backdrop-filter: blur(40px) saturate(180%);
     -webkit-backdrop-filter: blur(40px) saturate(180%);
     border: var(--border-thin) solid var(--glass-border);
@@ -261,7 +277,7 @@ header.scrolled {
 header.scrolled .navbar {
     max-width: 950px;
     padding: 0.6rem 2rem;
-    background: rgba(10, 10, 10, 0.6);
+    background: var(--bg-glass);
 }
 
 .logo {
@@ -320,8 +336,8 @@ header.scrolled .navbar {
 }
 
 .control-btn {
-    width: 44px;
-    height: 44px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     border: 1px solid var(--glass-border);
     background: rgba(255, 255, 255, 0.05);
@@ -332,6 +348,7 @@ header.scrolled .navbar {
     cursor: pointer;
     transition: var(--transition-smooth);
     backdrop-filter: blur(10px);
+    font-size: 0.9rem;
 }
 
 .control-btn:hover {
@@ -410,30 +427,30 @@ header.scrolled .navbar {
 
 .hero-label {
     font-family: var(--font-mono);
-    font-size: 0.75rem;
+    font-size: 0.85rem;
     font-weight: 600;
-    letter-spacing: 0.3em;
+    letter-spacing: 0.4em;
     color: var(--text-body);
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
     text-transform: uppercase;
 }
 
 .hero h1 {
-    font-size: clamp(3.5rem, 14vw, 9rem);
-    line-height: 0.85;
-    margin-bottom: 3rem;
+    font-size: clamp(3.5rem, 10vw, 10rem);
+    line-height: 0.9;
+    margin-bottom: 2.5rem;
     color: var(--text-head);
     font-weight: 900;
-    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.4));
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
 }
 
 .hero p {
-    font-size: 1.5rem;
-    max-width: 750px;
-    margin: 0 auto 4rem;
+    font-size: 1.25rem;
+    max-width: 700px;
+    margin: 0 auto 3rem;
     color: var(--text-body);
     font-weight: 500;
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
 .hero-btns {
@@ -899,8 +916,8 @@ footer {
 
 .mobile-menu-btn {
     display: none;
-    width: 44px;
-    height: 44px;
+    width: 40px;
+    height: 40px;
     border-radius: 8px;
     border: 1px solid var(--glass-border);
     background: rgba(255, 255, 255, 0.05);
@@ -918,19 +935,24 @@ footer {
 }
 
 @media (max-width: 1024px) {
+    :root {
+        --section-padding: 6rem;
+    }
+
     .nav-container {
         display: none;
         position: absolute;
         top: 100%;
         left: 0;
         width: 100%;
-        background: rgba(10, 10, 10, 0.95);
+        background: var(--bg-surface);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
-        padding: 1rem;
-        border-radius: 8px;
+        padding: 1.5rem;
+        border-radius: 12px;
         border: 1px solid var(--glass-border);
-        margin-top: 10px;
+        margin-top: 15px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
     }
 
     .nav-container.active {
@@ -939,12 +961,14 @@ footer {
 
     .nav-links {
         flex-direction: column;
+        gap: 0.5rem;
     }
 
     .nav-links a {
         display: block;
         padding: 1rem;
         text-align: center;
+        font-size: 0.8rem;
     }
 
     .mobile-menu-btn {
@@ -952,70 +976,81 @@ footer {
     }
 
     .hero h1 {
-        font-size: clamp(3rem, 10vw, 6rem);
-    }
-
-    .project-card {
-        grid-column: span 12;
+        font-size: clamp(3rem, 8vw, 6rem);
     }
 
     .bento-grid {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
 
     .bento-item {
         grid-column: 1 / -1 !important;
         grid-row: auto !important;
+        padding: 2rem;
     }
 
     .section-head h2 {
-        font-size: 3.5rem;
-    }
-
-    .bento-icon {
-        font-size: 2rem;
-        top: 1.5rem;
-        right: 1.5rem;
-    }
-
-    .vibe-name {
-        font-size: 0.9rem;
+        font-size: 3rem;
     }
 }
 
 @media (max-width: 768px) {
+    :root {
+        --section-padding: 4rem;
+    }
+
     section {
-        padding: 6rem 1rem;
+        padding: var(--section-padding) 1.5rem;
     }
 
     .section-head {
-        margin-bottom: 3rem;
+        margin-bottom: 2.5rem;
     }
 
     .hero {
-        padding: 8rem 1rem 0;
+        padding-top: 6rem;
     }
 
     .hero h1 {
-        font-size: clamp(2.5rem, 8vw, 4rem);
+        font-size: clamp(2.5rem, 10vw, 4rem);
+        margin-bottom: 1.5rem;
     }
 
     .hero p {
-        font-size: 1.1rem;
-        margin-bottom: 2rem;
+        font-size: 1rem;
+        margin-bottom: 2.5rem;
+        padding: 0 1rem;
     }
 
     .hero-btns {
         flex-direction: column;
-        gap: 1rem;
+        gap: 0.8rem;
+        padding: 0 1rem;
     }
 
-    .hero-btns a {
+    .btn-primary, .btn-secondary {
+        padding: 1rem 2rem;
+        width: 100%;
         text-align: center;
     }
 
     .navbar {
-        padding: 0.75rem 1rem;
+        padding: 0.6rem 1rem;
+    }
+
+    .logo {
+        font-size: 1.1rem;
+    }
+
+    .controls {
+        gap: 0.5rem;
+    }
+
+    .control-btn, .mobile-menu-btn {
+        width: 34px;
+        height: 34px;
+        font-size: 0.8rem;
     }
 
     .controls .connect-btn {
@@ -1026,13 +1061,17 @@ footer {
         padding: 1.5rem;
     }
 
+    .bento-item h3 {
+        font-size: 1.5rem;
+    }
+
     .section-head h2 {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
     }
 
     .skills-grid {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
+        gap: 1.2rem;
     }
 
     .timeline-dot {
@@ -1060,7 +1099,7 @@ footer {
 /* -------------------------------------------------------------------------- */
 
 /* QHD & 4K Optimization */
-@media (min-width: 2500px) {
+@media (min-width: 3000px) {
     :root {
         --container-max-width: 1800px;
         --header-max-width: 1500px;
@@ -1096,7 +1135,7 @@ footer {
 }
 
 /* 8K Ultra-HD Cinema Optimization */
-@media (min-width: 5000px) {
+@media (min-width: 6000px) {
     :root {
         --container-max-width: 3200px;
         --header-max-width: 2500px;
