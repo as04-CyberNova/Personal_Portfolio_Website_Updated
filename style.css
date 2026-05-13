@@ -15,14 +15,21 @@
     --glass-border: rgba(255, 255, 255, 0.08);
     --glass-highlight: rgba(255, 255, 255, 0.03);
     
+    /* Cinematic 2026 Tokens */
+    --glow-soft: rgba(var(--accent-rgb), 0.15);
+    --glow-strong: rgba(var(--accent-rgb), 0.3);
+    --inner-glow: inset 0 0 20px rgba(255, 255, 255, 0.02);
+    --card-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    
     /* Shared Tokens */
-    --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-smooth: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-fast: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     --font-main: 'Inter', sans-serif;
     --font-heading: 'Outfit', sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
     --container-max-width: 1300px;
     --header-max-width: 1100px;
-    --section-padding: 8rem;
+    --section-padding: 10rem;
     --border-thin: 1px;
 }
 
@@ -94,31 +101,49 @@ h3 {
     overflow: hidden;
 }
 
+#neuralCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.15;
+    pointer-events: none;
+}
+
 .gradient-sphere {
     position: absolute;
     width: 60vw;
     height: 60vw;
     border-radius: 50%;
-    filter: blur(100px);
-    opacity: 0.15;
+    filter: blur(120px);
+    opacity: 0.2;
     pointer-events: none;
-    transition: transform 0.5s ease-out, opacity 0.3s ease;
+    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+    will-change: transform, opacity;
 }
 
 [data-theme="light"] .gradient-sphere {
-    opacity: 0.08;
+    opacity: 0.1;
 }
 
 .sphere-1 {
-    top: -10%;
+    top: -15%;
     right: -10%;
     background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+    animation: float 20s infinite alternate;
 }
 
 .sphere-2 {
-    bottom: -10%;
+    bottom: -15%;
     left: -10%;
     background: radial-gradient(circle, var(--accent-secondary) 0%, transparent 70%);
+    animation: float 25s infinite alternate-reverse;
+}
+
+@keyframes float {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(5%, 5%) scale(1.1); }
 }
 
 .noise-overlay {
@@ -128,10 +153,44 @@ h3 {
     width: 100%;
     height: 100%;
     z-index: -1;
-    opacity: 0.01; /* Reduced Noise */
+    opacity: 0.03;
     pointer-events: none;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    will-change: transform;
+    animation: noise 0.2s infinite;
+}
+
+@keyframes noise {
+    0% { transform: translate(0,0) }
+    10% { transform: translate(-1%,-1%) }
+    20% { transform: translate(-2%,1%) }
+    30% { transform: translate(1%,-2%) }
+    40% { transform: translate(-1%,2%) }
+    50% { transform: translate(-2%,-1%) }
+    60% { transform: translate(2%,1%) }
+    70% { transform: translate(1%,2%) }
+    80% { transform: translate(-1%,-2%) }
+    90% { transform: translate(2%,-1%) }
+    100% { transform: translate(0,0) }
+}
+
+/* Cinematic Spotlight Cursor System */
+.cursor-glow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(var(--accent-rgb), 0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: -1;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.5s ease;
+    opacity: 0;
+}
+
+body:hover .cursor-glow {
+    opacity: 1;
 }
 
 
@@ -597,31 +656,28 @@ section {
 
 .bento-item {
     background: rgba(255, 255, 255, 0.02);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 20px;
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
     padding: 3rem;
     transition: var(--transition-smooth);
     position: relative;
     overflow: hidden;
     box-shadow: 
-        0 10px 30px rgba(0, 0, 0, 0.2),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+        var(--card-shadow),
+        var(--inner-glow);
     transform-style: preserve-3d;
+    will-change: transform, opacity;
 }
 
 .bento-item:hover {
-    border-color: rgba(var(--accent-rgb), 0.3);
-    transform: translateY(-8px) scale(1.01);
+    border-color: rgba(var(--accent-rgb), 0.4);
+    transform: translateY(-10px) scale(1.02);
     background: rgba(255, 255, 255, 0.04);
     box-shadow: 
-        0 30px 60px rgba(0, 0, 0, 0.5), 
-        0 0 30px rgba(var(--accent-rgb), 0.1);
-}
-
-.bento-item {
-    will-change: transform, opacity;
+        0 40px 80px rgba(0, 0, 0, 0.6), 
+        0 0 40px rgba(var(--accent-rgb), 0.15);
 }
 
 .bento-item h3 {
@@ -664,20 +720,34 @@ section {
 }
 
 .tag {
-    display: inline-block;
-    padding: 8px 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 6px 14px;
     background: rgba(var(--accent-rgb), 0.1);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(var(--accent-rgb), 0.2);
     color: var(--accent);
-    border-radius: 8px;
+    border-radius: 6px;
     font-family: var(--font-mono);
     font-size: 0.65rem;
     font-weight: 700;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    transition: var(--transition-smooth);
+    transition: var(--transition-fast);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.tag i {
+    font-size: 0.75rem;
+    opacity: 0.8;
+}
+
+.bento-item:hover .tag {
+    background: rgba(var(--accent-rgb), 0.2);
+    border-color: var(--accent);
+    box-shadow: 0 0 15px rgba(var(--accent-rgb), 0.3);
 }
 
 /* Skills */
@@ -1200,37 +1270,46 @@ footer {
 
 /* Project Card Specifics */
 .project-card {
-    padding: 2rem !important;
+    padding: 1.5rem !important;
+    display: flex;
+    flex-direction: column;
 }
 
 .project-image-placeholder {
-    width: calc(100% + 4rem);
-    height: 200px;
-    margin: -2rem -2rem 2rem -2rem;
-    background: rgba(255, 255, 255, 0.01);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    width: calc(100% + 3rem);
+    height: 220px;
+    margin: -1.5rem -1.5rem 1.5rem -1.5rem;
+    background: var(--bg-darker);
+    border-bottom: 1px solid var(--glass-border);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--text-body);
     overflow: hidden;
+    position: relative;
 }
 
 .project-image-placeholder img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bento-item:hover .project-image-placeholder img {
+    transform: scale(1.1);
 }
 
 .project-bullets {
     margin-top: 1rem;
-    padding-left: 1.5rem;
+    padding-left: 1.25rem;
     color: var(--text-body);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+    flex-grow: 1;
 }
 
 .project-bullets li {
     margin-bottom: 0.5rem;
+    opacity: 0.8;
 }
 
 /* --- 2026 Interaction & Animation --- */
