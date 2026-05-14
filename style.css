@@ -79,7 +79,7 @@ h3 {
     font-weight: 800;
     letter-spacing: -0.05em;
     /* Tighter for premium look */
-    line-height: 0.9;
+    line-height: 1.1;
 }
 
 .accent-text {
@@ -497,12 +497,12 @@ header.scrolled .navbar {
 
 .hero h1 {
     font-size: clamp(2.5rem, 7vw, 7rem);
-    line-height: 1.1;
+    line-height: 1.2;
     margin-bottom: 2.5rem;
     color: var(--text-head);
     font-weight: 900;
     filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
-    padding-bottom: 0.1em;
+    padding-bottom: 0.2em;
 }
 
 .hero p {
