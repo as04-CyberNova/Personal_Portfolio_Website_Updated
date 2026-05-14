@@ -68,7 +68,34 @@ body {
     font-family: 'Inter', -apple-system, sans-serif;
     line-height: 1.6;
     overflow-x: hidden;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: 
+        background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+        color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Super Smooth Theme Transition Global */
+[data-theme] {
+    transition: 
+        background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+        color 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+        border-color 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+        backdrop-filter 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+        -webkit-backdrop-filter 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-theme] *, 
+[data-theme] *::before, 
+[data-theme] *::after {
+    transition: 
+        background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+        color 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+        border-color 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+        backdrop-filter 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+        -webkit-backdrop-filter 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+        filter 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+        opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 h1,

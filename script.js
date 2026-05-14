@@ -153,9 +153,37 @@ document.addEventListener('DOMContentLoaded', () => {
         const currentTheme = htmlElement.getAttribute('data-theme');
         const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
         
-        htmlElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-        updateThemeIcon(newTheme);
+        // Cinematic Transition Sequence
+        gsap.to('.gradient-sphere', {
+            scale: 1.5,
+            opacity: 0.4,
+            duration: 0.4,
+            stagger: 0.1,
+            ease: 'power2.in',
+            onComplete: () => {
+                htmlElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                updateThemeIcon(newTheme);
+                
+                gsap.to('.gradient-sphere', {
+                    scale: 1,
+                    opacity: newTheme === 'light' ? 0.1 : 0.2,
+                    duration: 0.8,
+                    ease: 'power2.out'
+                });
+            }
+        });
+
+        // Rotate Icon
+        gsap.to(themeIcon, {
+            rotation: 360,
+            opacity: 0,
+            duration: 0.3,
+            onComplete: () => {
+                gsap.set(themeIcon, { rotation: 0 });
+                gsap.to(themeIcon, { opacity: 1, duration: 0.3 });
+            }
+        });
     });
 
     function updateThemeIcon(theme) {
