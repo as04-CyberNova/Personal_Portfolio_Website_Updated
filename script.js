@@ -3,14 +3,14 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // 1. Initialize Lenis Smooth Scroll
     const lenis = new Lenis({
-        lerp: 0.08, // Smoother linear interpolation
-        duration: 1.5,
+        lerp: 0.05, // Ultra-fluid "water-like" inertia
+        duration: 2, // Longer transition for cinematic feel
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
         orientation: 'vertical',
         gestureOrientation: 'vertical',
         smoothWheel: true,
-        wheelMultiplier: 1,
-        smoothTouch: true, // Enable smooth touch for trackpads/mobile
+        wheelMultiplier: 1.1, // Slight boost for easier scrolling
+        smoothTouch: true,
         touchMultiplier: 1.5,
         infinite: false,
     });

@@ -304,21 +304,21 @@ header.scrolled {
 .navbar {
     width: 95%;
     max-width: var(--header-max-width);
-    background: var(--navbar-glass);
+    background: var(--bg-glass);
     backdrop-filter: blur(40px) saturate(180%);
     -webkit-backdrop-filter: blur(40px) saturate(180%);
-    border: var(--border-thin) solid rgba(255, 255, 255, 0.1);
+    border: var(--border-thin) solid var(--glass-border);
     padding: 1rem 2.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-radius: 100px; /* Pill shape for premium feel */
+    border-radius: 100px;
     position: relative;
     pointer-events: all;
     transition: var(--transition-smooth);
     box-shadow:
-        0 20px 40px -10px rgba(15, 23, 42, 0.3),
-        0 0 1px 0 rgba(255, 255, 255, 0.1) inset;
+        0 10px 30px rgba(15, 23, 42, 0.05),
+        0 0 1px 0 rgba(255, 255, 255, 0.8) inset;
 }
 
 header.scrolled .navbar {
@@ -330,7 +330,7 @@ header.scrolled .navbar {
 .logo {
     font-size: 1.3rem;
     font-weight: 900;
-    color: #ffffff; /* White logo on dark navbar */
+    color: var(--text-head);
     text-decoration: none;
     letter-spacing: -1px;
     text-transform: uppercase;
@@ -360,7 +360,7 @@ header.scrolled .navbar {
 
 .nav-links a {
     text-decoration: none;
-    color: rgba(255, 255, 255, 0.7); /* Muted white for links */
+    color: var(--text-body);
     font-weight: 600;
     font-size: 0.65rem;
     padding: 0.5rem 1.25rem;
@@ -372,8 +372,8 @@ header.scrolled .navbar {
 }
 
 .nav-links a:hover {
-    color: #ffffff;
-    background: rgba(255, 255, 255, 0.1);
+    color: var(--accent);
+    background: rgba(var(--accent-rgb), 0.05);
 }
 
 .controls {
