@@ -151,7 +151,8 @@ document.addEventListener('DOMContentLoaded', () => {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
         particles = [];
-        const particleCount = Math.floor((canvas.width * canvas.height) / 15000);
+        const isMobile = window.innerWidth < 768;
+        const particleCount = Math.floor((canvas.width * canvas.height) / (isMobile ? 30000 : 15000));
         
         for (let i = 0; i < particleCount; i++) {
             particles.push({
