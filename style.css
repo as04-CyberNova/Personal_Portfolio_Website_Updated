@@ -303,9 +303,9 @@ header.scrolled {
 .navbar {
     width: 95%;
     max-width: var(--header-max-width);
-    background: #ffffff; /* Forced White */
-    backdrop-filter: blur(40px) saturate(180%);
-    -webkit-backdrop-filter: blur(40px) saturate(180%);
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(30px) saturate(180%);
+    -webkit-backdrop-filter: blur(30px) saturate(180%);
     border: var(--border-thin) solid var(--glass-border);
     padding: 1rem 2.5rem;
     display: flex;
@@ -316,14 +316,14 @@ header.scrolled {
     pointer-events: all;
     transition: var(--transition-smooth);
     box-shadow:
-        0 10px 30px rgba(15, 23, 42, 0.05),
-        0 0 1px 0 rgba(255, 255, 255, 0.8) inset;
+        0 10px 40px rgba(15, 23, 42, 0.05),
+        0 0 0 1px rgba(255, 255, 255, 0.5) inset;
 }
 
 header.scrolled .navbar {
     max-width: 1100px;
     padding: 0.6rem 2rem;
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.75);
 }
 
 .logo {
