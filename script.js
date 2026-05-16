@@ -129,13 +129,26 @@ document.addEventListener('DOMContentLoaded', () => {
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
+            
+            const name = contactForm.querySelector('input[placeholder="Full Name"]').value;
+            const email = contactForm.querySelector('input[placeholder="Email Address"]').value;
+            const message = contactForm.querySelector('textarea').value;
+            
+            const mailtoLink = `mailto:abhyudayasinha04@gmail.com?subject=Project Inquiry from ${name}&body=Name: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0AMessage:%0D%0A${message}`;
+            
             formStatus.style.display = 'flex';
-            formStatus.innerHTML = '<i class="fa-solid fa-circle-check"></i> Form submission is currently disabled for security.';
+            formStatus.innerHTML = '<i class="fa-solid fa-envelope-circle-check"></i> Opening your email client...';
             formStatus.className = 'form-status success';
-            contactForm.reset();
+            
+            // Open the mailto link
+            window.location.href = mailtoLink;
             
             // Show status with animation
             gsap.fromTo(formStatus, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.5 });
+            
+            setTimeout(() => {
+                contactForm.reset();
+            }, 1000);
         });
     }
 
