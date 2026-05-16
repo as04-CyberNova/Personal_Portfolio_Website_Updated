@@ -127,49 +127,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const submitBtn = document.getElementById('submit-btn');
 
     if (contactForm) {
-        contactForm.addEventListener('submit', async (e) => {
+        contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
+            formStatus.style.display = 'flex';
+            formStatus.innerHTML = '<i class="fa-solid fa-circle-check"></i> Form submission is currently disabled for security.';
+            formStatus.className = 'form-status success';
+            contactForm.reset();
             
-            // Animation for sending state
-            submitBtn.disabled = true;
-            submitBtn.innerText = 'Sending...';
-            gsap.to(submitBtn, { opacity: 0.7, scale: 0.95, duration: 0.3 });
-
-            const formData = new FormData(contactForm);
-            const object = Object.fromEntries(formData);
-            const json = JSON.stringify(object);
-
-            try {
-                const response = await fetch('https://api.web3forms.com/submit', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: json
-                });
-
-                const result = await response.json();
-                
-                if (response.status === 200) {
-                    formStatus.innerHTML = '<i class="fa-solid fa-circle-check"></i> Message sent successfully!';
-                    formStatus.className = 'form-status success';
-                    contactForm.reset();
-                } else {
-                    formStatus.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> Something went wrong.';
-                    formStatus.className = 'form-status error';
-                }
-            } catch (error) {
-                formStatus.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> Error connecting to server.';
-                formStatus.className = 'form-status error';
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.innerText = 'Send Message';
-                gsap.to(submitBtn, { opacity: 1, scale: 1, duration: 0.3 });
-                
-                // Show status with animation
-                gsap.fromTo(formStatus, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.5 });
-            }
+            // Show status with animation
+            gsap.fromTo(formStatus, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.5 });
         });
     }
 
