@@ -1,14 +1,13 @@
 :root {
-    /* Theme Variables - Light Base with Dark Accents */
+    /* Theme Variables - Pure Light Theme */
     --bg-base: #f8fafc;
     --bg-darker: #f1f5f9;
     --bg-surface: #ffffff;
-    --bg-glass: rgba(255, 255, 255, 0.85);
-    --navbar-bg: #0f172a; /* Dark Accent: Deep Navy/Slate */
-    --navbar-glass: rgba(15, 23, 42, 0.95);
+    --bg-glass: rgba(255, 255, 255, 0.95);
     --text-head: #0f172a;
     --text-body: #334155;
     --accent: #0044ff;
+
     --accent-rgb: 0, 68, 255;
     --accent-secondary: #7000ff;
     --accent-secondary-rgb: 112, 0, 255;
@@ -304,7 +303,7 @@ header.scrolled {
 .navbar {
     width: 95%;
     max-width: var(--header-max-width);
-    background: var(--bg-glass);
+    background: #ffffff; /* Forced White */
     backdrop-filter: blur(40px) saturate(180%);
     -webkit-backdrop-filter: blur(40px) saturate(180%);
     border: var(--border-thin) solid var(--glass-border);
@@ -324,7 +323,7 @@ header.scrolled {
 header.scrolled .navbar {
     max-width: 1100px;
     padding: 0.6rem 2rem;
-    background: var(--bg-glass);
+    background: #ffffff;
 }
 
 .logo {
