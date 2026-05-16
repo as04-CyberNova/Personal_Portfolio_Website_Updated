@@ -54,7 +54,6 @@ body {
     overflow-x: hidden;
 }
 
-
 h1,
 h2,
 h3 {
@@ -1001,23 +1000,30 @@ footer p {
     }
 
     .nav-container {
-        display: none;
         position: absolute;
         top: 100%;
         left: 0;
         width: 100%;
         background: var(--bg-surface);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        padding: 1.5rem;
-        border-radius: 12px;
+        backdrop-filter: blur(40px);
+        -webkit-backdrop-filter: blur(40px);
+        padding: 2rem;
+        border-radius: 0 0 24px 24px;
         border: 1px solid var(--glass-border);
-        margin-top: 15px;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        border-top: none;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        pointer-events: none;
     }
 
     .nav-container.active {
-        display: block;
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        pointer-events: all;
     }
 
     .nav-links {
@@ -1070,18 +1076,22 @@ footer p {
     }
 
     .hero {
-        padding-top: 6rem;
+        padding-top: 8rem;
+        padding-bottom: 4rem;
+        text-align: center;
     }
 
     .hero h1 {
-        font-size: clamp(1.8rem, 8vw, 3.5rem);
+        font-size: clamp(2.5rem, 10vw, 4rem);
+        line-height: 1.1;
         margin-bottom: 1.5rem;
     }
 
     .hero p {
-        font-size: 1rem;
+        font-size: 1.1rem;
         margin-bottom: 2.5rem;
-        padding: 0 1rem;
+        padding: 0;
+        line-height: 1.5;
     }
 
     .hero-btns {
@@ -1127,7 +1137,18 @@ footer p {
     }
 
     .section-head h2 {
-        font-size: 2.2rem;
+        font-size: clamp(2.2rem, 10vw, 3rem);
+        line-height: 1.1;
+    }
+
+    .project-card {
+        padding: 1.25rem !important;
+    }
+
+    .project-image-placeholder {
+        width: calc(100% + 2.5rem);
+        margin: -1.25rem -1.25rem 1.25rem -1.25rem;
+        height: 200px;
     }
 
     .skills-grid {
