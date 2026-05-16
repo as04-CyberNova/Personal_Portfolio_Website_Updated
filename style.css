@@ -937,7 +937,7 @@ footer p {
     background: rgba(255, 255, 255, 0.02);
     border: 1px solid var(--glass-border);
     border-radius: 8px;
-    color: white;
+    color: var(--text-head);
     font-family: inherit;
     font-size: 1rem;
     transition: var(--transition-smooth);
