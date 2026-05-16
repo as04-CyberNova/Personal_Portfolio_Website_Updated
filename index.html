@@ -324,17 +324,7 @@
                 </div>
 
                 <!-- Tableau Dashboards -->
-                <div class="project-card bento-item">
-                    <div class="project-image-placeholder">
-                        <img src="images/Covid19_Analysis_Dashboard.png" alt="COVID-19 Analysis Dashboard" loading="lazy">
-                    </div>
-                    <span class="tag"><i class="fa-solid fa-table-columns"></i> Tableau</span>
-                    <h3>COVID-19 Analysis Dashboard</h3>
-                    <ul class="project-bullets">
-                        <li>Interactive spatial mapping of global health trends and recovery.</li>
-                        <li>Delivered actionable insights for strategic decision making.</li>
-                    </ul>
-                </div>
+
                 <div class="project-card bento-item">
                     <div class="project-image-placeholder">
                         <img src="images/Screenshot 2026-04-14 132701.png" alt="Global Cookie Sales Performance" loading="lazy">
@@ -568,20 +558,22 @@
                 <h2>Start a Project</h2>
                 <p style="margin-bottom: 2rem;">Interested in a data-driven collaboration? Let's connect and build
                     something remarkable.</p>
-                <form id="contactForm" onsubmit="handleFormSubmit(event)" class="contact-form">
+                <form id="contactForm" action="https://api.web3forms.com/submit" method="POST" class="contact-form">
+                    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
                     <div class="input-group">
                         <i class="fa-solid fa-user input-icon"></i>
-                        <input type="text" placeholder="Full Name" required>
+                        <input type="text" name="name" placeholder="Full Name" required>
                     </div>
                     <div class="input-group">
                         <i class="fa-solid fa-envelope input-icon"></i>
-                        <input type="email" placeholder="Email Address" required>
+                        <input type="email" name="email" placeholder="Email Address" required>
                     </div>
                     <div class="input-group">
                         <i class="fa-solid fa-pen-nib input-icon"></i>
-                        <textarea placeholder="Your Message" required></textarea>
+                        <textarea name="message" placeholder="Your Message" required></textarea>
                     </div>
                     <button type="submit" class="btn-primary" id="submit-btn">Send Message</button>
+                    <div id="formStatus" class="form-status"></div>
                 </form>
             </div>
         </section>
