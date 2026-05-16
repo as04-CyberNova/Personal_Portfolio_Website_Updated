@@ -1,29 +1,30 @@
 :root {
-    /* Theme Variables - Dark (Default) */
-    --bg-base: #020202;
-    --bg-darker: #010101;
-    --bg-surface: #0a0a0a;
-    --bg-glass: rgba(10, 10, 10, 0.6);
-    --navbar-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
-    --text-head: #ffffff;
-    --text-body: #a1a1aa;
+    /* Theme Variables - Light Base with Dark Accents */
+    --bg-base: #f8fafc;
+    --bg-darker: #f1f5f9;
+    --bg-surface: #ffffff;
+    --bg-glass: rgba(255, 255, 255, 0.85);
+    --navbar-bg: #0f172a; /* Dark Accent: Deep Navy/Slate */
+    --navbar-glass: rgba(15, 23, 42, 0.95);
+    --text-head: #0f172a;
+    --text-body: #334155;
     --accent: #0044ff;
     --accent-rgb: 0, 68, 255;
     --accent-secondary: #7000ff;
     --accent-secondary-rgb: 112, 0, 255;
     --accent-gradient: linear-gradient(135deg, var(--accent), var(--accent-secondary));
-    --glass-border: rgba(255, 255, 255, 0.08);
-    --glass-highlight: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(15, 23, 42, 0.08);
+    --glass-highlight: rgba(255, 255, 255, 0.9);
     
     /* Cinematic 2026 Tokens */
-    --glow-soft: rgba(var(--accent-rgb), 0.15);
-    --glow-strong: rgba(var(--accent-rgb), 0.3);
-    --inner-glow: inset 0 0 20px rgba(255, 255, 255, 0.02);
-    --card-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    --glow-soft: rgba(var(--accent-rgb), 0.1);
+    --glow-strong: rgba(var(--accent-rgb), 0.2);
+    --inner-glow: inset 0 0 20px rgba(255, 255, 255, 0.5);
+    --card-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
     
     /* Shared Tokens */
-    --transition-smooth: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    --transition-fast: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-smooth: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-fast: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     --font-main: 'Inter', sans-serif;
     --font-heading: 'Outfit', sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
@@ -31,22 +32,6 @@
     --header-max-width: 1250px;
     --section-padding: 10rem;
     --border-thin: 1px;
-}
-
-[data-theme="light"] {
-    --bg-base: #f8fafc;
-    --bg-darker: #f1f5f9;
-    --bg-surface: #ffffff;
-    --bg-glass: rgba(255, 255, 255, 0.8);
-    --navbar-glass: linear-gradient(135deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.01));
-    --text-head: #0f172a;
-    --text-body: #475569;
-    --accent: #2563eb;
-    --accent-rgb: 37, 99, 235;
-    --accent-secondary: #7c3aed;
-    --accent-secondary-rgb: 124, 58, 237;
-    --glass-border: rgba(0, 0, 0, 0.06);
-    --glass-highlight: rgba(255, 255, 255, 0.8);
 }
 
 * {
@@ -68,34 +53,12 @@ body {
     font-family: 'Inter', -apple-system, sans-serif;
     line-height: 1.6;
     overflow-x: hidden;
-    transition: 
-        background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
-        color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* Super Smooth Theme Transition Global */
-[data-theme] {
-    transition: 
-        background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
-        color 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-        border-color 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-        box-shadow 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-        backdrop-filter 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-        -webkit-backdrop-filter 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-[data-theme] *, 
-[data-theme] *::before, 
-[data-theme] *::after {
-    transition: 
-        background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
-        color 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-        border-color 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-        box-shadow 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-        backdrop-filter 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-        -webkit-backdrop-filter 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-        filter 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-        opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+body {
+    background-color: var(--bg-base);
+    color: var(--text-body);
+    font-family: 'Inter', -apple-system, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
 }
 
 h1,
@@ -150,9 +113,7 @@ h3 {
     will-change: transform, opacity;
 }
 
-[data-theme="light"] .gradient-sphere {
-    opacity: 0.1;
-}
+
 
 .sphere-1 {
     top: -15%;
@@ -346,19 +307,18 @@ header.scrolled {
     background: var(--navbar-glass);
     backdrop-filter: blur(40px) saturate(180%);
     -webkit-backdrop-filter: blur(40px) saturate(180%);
-    border: var(--border-thin) solid var(--glass-border);
+    border: var(--border-thin) solid rgba(255, 255, 255, 0.1);
     padding: 1rem 2.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-radius: 12px;
+    border-radius: 100px; /* Pill shape for premium feel */
     position: relative;
     pointer-events: all;
     transition: var(--transition-smooth);
     box-shadow:
-        0 4px 24px -1px rgba(0, 0, 0, 0.2),
-        0 0 1px 0 rgba(255, 255, 255, 0.1) inset,
-        0 10px 40px -10px rgba(0, 0, 0, 0.5);
+        0 20px 40px -10px rgba(15, 23, 42, 0.3),
+        0 0 1px 0 rgba(255, 255, 255, 0.1) inset;
 }
 
 header.scrolled .navbar {
@@ -370,9 +330,9 @@ header.scrolled .navbar {
 .logo {
     font-size: 1.3rem;
     font-weight: 900;
-    color: var(--text-head);
+    color: #ffffff; /* White logo on dark navbar */
     text-decoration: none;
-    letter-spacing: -2px;
+    letter-spacing: -1px;
     text-transform: uppercase;
     white-space: nowrap;
 }
@@ -400,11 +360,11 @@ header.scrolled .navbar {
 
 .nav-links a {
     text-decoration: none;
-    color: var(--text-body);
+    color: rgba(255, 255, 255, 0.7); /* Muted white for links */
     font-weight: 600;
     font-size: 0.65rem;
     padding: 0.5rem 1.25rem;
-    border-radius: 8px;
+    border-radius: 100px;
     transition: var(--transition-smooth);
     text-transform: uppercase;
     letter-spacing: 0.15em;
@@ -412,9 +372,8 @@ header.scrolled .navbar {
 }
 
 .nav-links a:hover {
-    color: var(--text-head);
-    background: rgba(255, 255, 255, 0.08);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .controls {
@@ -898,9 +857,13 @@ footer {
     font-size: 0.7rem;
     text-transform: uppercase;
     letter-spacing: 0.2em;
-    color: #444;
+    color: #94a3b8;
     font-family: var(--font-mono);
-    background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.01));
+    background: #0f172a; /* Dark Accent: Dark Footer */
+}
+
+footer p {
+    color: #f8fafc;
 }
 
 /* Icons & Form Enhancements */

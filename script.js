@@ -3,14 +3,15 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // 1. Initialize Lenis Smooth Scroll
     const lenis = new Lenis({
-        duration: 1.2,
+        lerp: 0.08, // Smoother linear interpolation
+        duration: 1.5,
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
         orientation: 'vertical',
         gestureOrientation: 'vertical',
         smoothWheel: true,
         wheelMultiplier: 1,
-        smoothTouch: false,
-        touchMultiplier: 2,
+        smoothTouch: true, // Enable smooth touch for trackpads/mobile
+        touchMultiplier: 1.5,
         infinite: false,
     });
 
@@ -140,61 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 9. Theme Toggle
-    const themeToggle = document.getElementById('themeToggle');
-    const htmlElement = document.documentElement;
-    const themeIcon = themeToggle.querySelector('i');
 
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    htmlElement.setAttribute('data-theme', savedTheme);
-    updateThemeIcon(savedTheme);
-
-    themeToggle.addEventListener('click', () => {
-        const currentTheme = htmlElement.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        
-        // Cinematic Transition Sequence
-        gsap.to('.gradient-sphere', {
-            scale: 1.5,
-            opacity: 0.4,
-            duration: 0.4,
-            stagger: 0.1,
-            ease: 'power2.in',
-            onComplete: () => {
-                htmlElement.setAttribute('data-theme', newTheme);
-                localStorage.setItem('theme', newTheme);
-                updateThemeIcon(newTheme);
-                
-                gsap.to('.gradient-sphere', {
-                    scale: 1,
-                    opacity: newTheme === 'light' ? 0.1 : 0.2,
-                    duration: 0.8,
-                    ease: 'power2.out'
-                });
-            }
-        });
-
-        // Rotate Icon
-        gsap.to(themeIcon, {
-            rotation: 360,
-            opacity: 0,
-            duration: 0.3,
-            onComplete: () => {
-                gsap.set(themeIcon, { rotation: 0 });
-                gsap.to(themeIcon, { opacity: 1, duration: 0.3 });
-            }
-        });
-    });
-
-    function updateThemeIcon(theme) {
-        if (theme === 'light') {
-            themeIcon.classList.remove('fa-moon');
-            themeIcon.classList.add('fa-sun');
-        } else {
-            themeIcon.classList.remove('fa-sun');
-            themeIcon.classList.add('fa-moon');
-        }
-    }
 
     // 10. Neural Mesh Background Animation
     const canvas = document.getElementById('neuralCanvas');
