@@ -47,18 +47,13 @@ html {
 }
 
 body {
-    background-color: transparent;
-    color: var(--text-body);
-    font-family: 'Inter', -apple-system, sans-serif;
-    line-height: 1.6;
-    overflow-x: hidden;
-body {
     background-color: var(--bg-base);
     color: var(--text-body);
     font-family: 'Inter', -apple-system, sans-serif;
     line-height: 1.6;
     overflow-x: hidden;
 }
+
 
 h1,
 h2,
