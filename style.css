@@ -459,7 +459,7 @@ header.scrolled .navbar {
 }
 
 .gradient-text {
-    background: var(--accent-gradient);
+    background: linear-gradient(135deg, #7000ff, #00d2ff, #0a0a0a);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
