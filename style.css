@@ -620,7 +620,7 @@ section {
 }
 
 .timeline-subtitle {
-    font-size: 0.85rem;
+    font-size: 1.1rem;
     color: var(--accent);
     margin-bottom: 1rem;
     font-family: var(--font-mono);
@@ -663,8 +663,13 @@ section {
 }
 
 .bento-item h3 {
-    font-size: 2.25rem;
+    font-size: 2.75rem;
     margin-bottom: 1.5rem;
+}
+
+.bento-item p {
+    font-size: 1.15rem;
+    line-height: 1.7;
 }
 
 /* Persona Styling */
@@ -743,7 +748,7 @@ section {
     border: 1px solid var(--glass-border);
     border-radius: 12px;
     font-weight: 600;
-    font-size: 0.85rem;
+    font-size: 1.1rem;
     font-family: var(--font-mono);
     transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
     user-select: none;
@@ -783,7 +788,7 @@ section {
 
 .skill-percentage {
     font-family: var(--font-mono);
-    font-size: 0.75rem;
+    font-size: 1rem;
     font-weight: 800;
     color: var(--accent);
     text-transform: uppercase;
