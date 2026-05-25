@@ -1,16 +1,16 @@
-// Cinematic Portfolio Engine 2026
+// Cinematic High-Performance Kawaii-Luxe Portfolio Engine 2026
 document.addEventListener('DOMContentLoaded', () => {
     
     // 1. Initialize Lenis Smooth Scroll
     const lenis = new Lenis({
-        lerp: 0.1, // Snappier but still cinematic
+        lerp: 0.1, 
         duration: 1.2,
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
         orientation: 'vertical',
         gestureOrientation: 'vertical',
         smoothWheel: true,
-        wheelMultiplier: 1.1,
-        smoothTouch: false, // Let native touch handle mobile for better performance
+        wheelMultiplier: 1.15,
+        smoothTouch: false, 
         infinite: false,
     });
 
@@ -20,61 +20,59 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     requestAnimationFrame(raf);
 
-    // 2. GSAP ScrollTrigger Integration
+    // 3. GSAP ScrollTrigger Registration
     gsap.registerPlugin(ScrollTrigger);
-
-    // Synchronize Lenis with ScrollTrigger
     lenis.on('scroll', ScrollTrigger.update);
 
-    // 3. Cinematic Section Reveals
-    const revealElements = document.querySelectorAll('.reveal-on-scroll, section, .bento-item');
+    // 4. Cinematic Section Scroll Reveals
+    const revealElements = document.querySelectorAll('.reveal-on-scroll, section, .bento-item, .project-card, .repo-card-lite');
     revealElements.forEach((el) => {
         gsap.fromTo(el, 
             { 
                 opacity: 0, 
-                y: 50,
-                filter: 'blur(10px)'
+                y: 40,
+                filter: 'blur(5px)'
             }, 
             {
                 opacity: 1,
                 y: 0,
                 filter: 'blur(0px)',
-                duration: 1.2,
-                ease: 'expo.out',
+                duration: 1,
+                ease: 'power2.out',
                 scrollTrigger: {
                     trigger: el,
-                    start: 'top 85%',
-                    end: 'bottom 20%',
+                    start: 'top 88%',
+                    end: 'bottom 15%',
                     toggleActions: 'play none none reverse'
                 }
             }
         );
     });
 
-    // 4. Cursor Spotlight Tracking
+    // 5. Cursor Spotlight Glow Tracking
     const cursorGlow = document.getElementById('cursorGlow');
     window.addEventListener('mousemove', (e) => {
         const { clientX, clientY } = e;
         gsap.to(cursorGlow, {
             left: clientX,
             top: clientY,
-            duration: 0.5,
+            duration: 0.6,
             ease: 'power2.out'
         });
     });
 
-    // 5. Magnetic Buttons
-    const magneticBtns = document.querySelectorAll('.btn-primary, .btn-secondary, .control-btn, .connect-btn');
+    // 6. Magnetic Buttons & Badges
+    const magneticBtns = document.querySelectorAll('.btn-primary, .btn-secondary, .control-btn, .theme-opt, .preset-btn, .hud-copy-btn');
     magneticBtns.forEach(btn => {
         btn.addEventListener('mousemove', (e) => {
             const position = btn.getBoundingClientRect();
-            const x = e.pageX - position.left - position.width / 2;
-            const y = e.pageY - position.top - position.height / 2;
+            const x = e.clientX - position.left - position.width / 2;
+            const y = e.clientY - position.top - position.height / 2;
 
             gsap.to(btn, {
-                x: x * 0.3,
-                y: y * 0.3,
-                duration: 0.5,
+                x: x * 0.25,
+                y: y * 0.25,
+                duration: 0.4,
                 ease: 'power2.out'
             });
         });
@@ -83,155 +81,370 @@ document.addEventListener('DOMContentLoaded', () => {
             gsap.to(btn, {
                 x: 0,
                 y: 0,
-                duration: 0.5,
-                ease: 'elastic.out(1, 0.3)'
+                duration: 0.6,
+                ease: 'elastic.out(1.1, 0.4)'
             });
         });
     });
 
-    // 6. Kinetic Hero Text (Simple Split Implementation)
-    const heroTitle = document.querySelector('.hero h1');
-    if (heroTitle) {
-        const text = heroTitle.innerText;
-        heroTitle.innerHTML = text.split(' ').map(word => 
-            `<span style="display:inline-block; overflow:hidden;">
-                <span class="word" style="display:inline-block;">${word}&nbsp;</span>
-            </span>`
-        ).join('');
-
-        gsap.from('.word', {
-            y: 100,
-            stagger: 0.05,
-            duration: 1.5,
-            ease: 'expo.out',
-            delay: 0.5
-        });
-    }
-
-    // 7. Navbar Scroll States
-    const header = document.getElementById('header');
-    ScrollTrigger.create({
-        start: 'top -100',
-        onUpdate: (self) => {
-            if (self.direction === 1) {
-                header.classList.add('scrolled');
-            } else if (self.scroll() < 100) {
-                header.classList.remove('scrolled');
-            }
+    // 7. Cockpit Theme Configurator Switcher
+    const themeOpts = document.querySelectorAll('.theme-opt');
+    
+    // Check local storage for theme
+    const savedTheme = localStorage.getItem('abhyudaya-portfolio-theme') || 'acid';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    themeOpts.forEach(btn => {
+        if (btn.getAttribute('data-theme') === savedTheme) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
         }
     });
 
-    // 8. Contact Form Handling
+    themeOpts.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const selectedTheme = btn.getAttribute('data-theme');
+            
+            // Apply theme on html element
+            document.documentElement.setAttribute('data-theme', selectedTheme);
+            localStorage.setItem('abhyudaya-portfolio-theme', selectedTheme);
+            
+            // Toggle active styling
+            themeOpts.forEach(opt => opt.classList.remove('active'));
+            btn.classList.add('active');
+
+            // Visual feedback transition indicator on canvas mesh
+            gsap.fromTo('#neuralCanvas', { opacity: 0.05 }, { opacity: 0.25, duration: 0.8 });
+        });
+    });
+
+    // 8. Dashboard SVG Speedometers Scroll Animation
+    const speedoFills = document.querySelectorAll('.dial-fill');
+    
+    speedoFills.forEach(fill => {
+        const targetPercent = parseInt(fill.getAttribute('data-pct'));
+        const circumference = 251.2; // 2 * Math.PI * 40
+        
+        // Start completely empty (dashoffset = circumference)
+        fill.style.strokeDashoffset = circumference;
+        
+        ScrollTrigger.create({
+            trigger: fill,
+            start: 'top 85%',
+            onEnter: () => {
+                const targetOffset = circumference - (targetPercent / 100) * circumference;
+                gsap.to(fill, {
+                    strokeDashoffset: targetOffset,
+                    duration: 1.8,
+                    ease: 'power3.out'
+                });
+            }
+        });
+    });
+
+    // 9. Interactive Fleet Filters (Projects Show/Hide)
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remove active from other btns
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const filterValue = btn.getAttribute('data-filter');
+
+            projectCards.forEach(card => {
+                if (filterValue === 'all') {
+                    gsap.to(card, { opacity: 1, scale: 1, y: 0, duration: 0.5, display: 'flex', ease: 'power2.out' });
+                } else if (filterValue === 'pbi' && card.classList.contains('filter-pbi')) {
+                    gsap.to(card, { opacity: 1, scale: 1, y: 0, duration: 0.5, display: 'flex', ease: 'power2.out' });
+                } else if (filterValue === 'tab' && card.classList.contains('filter-tab')) {
+                    gsap.to(card, { opacity: 1, scale: 1, y: 0, duration: 0.5, display: 'flex', ease: 'power2.out' });
+                } else {
+                    gsap.to(card, { opacity: 0, scale: 0.9, y: 15, duration: 0.4, display: 'none', ease: 'power2.out' });
+                }
+            });
+            // Let ScrollTrigger refresh layouts
+            setTimeout(() => ScrollTrigger.refresh(), 500);
+        });
+    });
+
+    // 10. Recruiter Clipboard Copiers
+    const clipboardBtns = document.querySelectorAll('.hud-copy-btn');
+    
+    clipboardBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const textToCopy = btn.getAttribute('data-copy');
+            const originalHTML = btn.innerHTML;
+            
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                btn.classList.add('copied');
+                btn.innerHTML = '<i class="fa-solid fa-square-check"></i> COPIED! 🏎️💨';
+                
+                // Show floating text indicator using GSAP
+                const rect = btn.getBoundingClientRect();
+                const floatingTip = document.createElement('div');
+                floatingTip.className = 'copied-floating-badge';
+                floatingTip.innerText = 'Telemetry Copied!';
+                floatingTip.style.position = 'fixed';
+                floatingTip.style.left = `${rect.left + rect.width/2}px`;
+                floatingTip.style.top = `${rect.top - 15}px`;
+                floatingTip.style.transform = 'translate(-50%, -50%)';
+                floatingTip.style.background = 'var(--accent)';
+                floatingTip.style.color = '#000';
+                floatingTip.style.padding = '0.3rem 0.7rem';
+                floatingTip.style.borderRadius = '6px';
+                floatingTip.style.fontFamily = 'var(--font-mono)';
+                floatingTip.style.fontSize = '0.6rem';
+                floatingTip.style.fontWeight = '700';
+                floatingTip.style.zIndex = '99999';
+                document.body.appendChild(floatingTip);
+                
+                gsap.to(floatingTip, {
+                    y: -25,
+                    opacity: 0,
+                    duration: 0.9,
+                    onComplete: () => floatingTip.remove()
+                });
+                
+                setTimeout(() => {
+                    btn.classList.remove('copied');
+                    btn.innerHTML = originalHTML;
+                }, 2000);
+            }).catch(err => {
+                console.error('Could not copy details: ', err);
+            });
+        });
+    });
+
+    // 11. CSS Cat Floating Helper: Sparky 🌸 Chatbot Interactions
+    const sparkyAvatar = document.getElementById('sparkyAvatar');
+    const sparkyChatBubble = document.getElementById('sparkyChatBubble');
+    const closeSparkyChat = document.getElementById('closeSparkyChat');
+    const presetBtns = document.querySelectorAll('.chat-preset-options .preset-btn');
+    const sparkyMsg = document.querySelector('.sparky-msg');
+
+    if (sparkyAvatar && sparkyChatBubble) {
+        sparkyAvatar.addEventListener('click', () => {
+            sparkyChatBubble.classList.toggle('active');
+            
+            // Fade-in chatbot notifications
+            if (sparkyChatBubble.classList.contains('active')) {
+                const dot = sparkyAvatar.querySelector('.sparky-notification-dot');
+                if (dot) dot.remove(); // Remove blinking ping once recruiter engages
+                gsap.fromTo(sparkyChatBubble, { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)' });
+            }
+        });
+    }
+
+    if (closeSparkyChat) {
+        closeSparkyChat.addEventListener('click', (e) => {
+            e.stopPropagation();
+            sparkyChatBubble.classList.remove('active');
+        });
+    }
+
+    // Sparky pre-loaded chat responses
+    const sparkyResponses = {
+        active: "Yes! 🚀 I am actively seeking a Data Scientist / Data Analyst internship starting Summer/Fall 2026! I have high-performance engines ready to load, filter, and model data. Mew! 📊🏎️",
+        strengths: "My main engine runs on Python (Pandas/Scikit-Learn) and relational SQL pipelines! 💾 Also configured to transmit stunning Power BI and Tableau telemetry overlays! 📊✨",
+        fun: "Fun fact! 🌸 I view CSS and frontend visual tuning as the customized aero-body kit for my backend analytical equations! Everything should look as fast and polished as a supercar! 🏎️💨"
+    };
+
+    presetBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const answerKey = btn.getAttribute('data-answer');
+            const responseText = sparkyResponses[answerKey];
+            
+            if (sparkyMsg && responseText) {
+                // Animate answer transition
+                gsap.to(sparkyMsg, {
+                    opacity: 0,
+                    y: -5,
+                    duration: 0.25,
+                    onComplete: () => {
+                        sparkyMsg.innerText = responseText;
+                        gsap.to(sparkyMsg, { opacity: 1, y: 0, duration: 0.35 });
+                    }
+                });
+            }
+        });
+    });
+
+    // 12. Tesla/Porsche-Style Booking Form Option Clicks
+    const packBtns = document.querySelectorAll('.package-selector-grid .pack-opt-btn');
+    const collaborationPackInput = document.getElementById('collaborationPackInput');
+
+    packBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            packBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            const selectedPackage = btn.getAttribute('data-pack');
+            if (collaborationPackInput) {
+                collaborationPackInput.value = selectedPackage;
+            }
+            
+            // Add a little spring bounce trigger
+            gsap.fromTo(btn, { scale: 0.96 }, { scale: 1, duration: 0.4, ease: 'back.out(2)' });
+        });
+    });
+
+    // 13. Vehicle Booking Form Telemetry Mailto Submit
     const contactForm = document.getElementById('contactForm');
     const formStatus = document.getElementById('formStatus');
-    const submitBtn = document.getElementById('submit-btn');
 
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
             
-            const name = contactForm.querySelector('input[placeholder="Full Name"]').value;
-            const email = contactForm.querySelector('input[placeholder="Email Address"]').value;
-            const message = contactForm.querySelector('textarea').value;
+            const selectedPack = collaborationPackInput ? collaborationPackInput.value : "General Inquiry";
+            const pilotName = document.getElementById('pilotName').value;
+            const pilotEmail = document.getElementById('pilotEmail').value;
+            const pilotMessage = document.getElementById('pilotMessage').value;
             
-            const mailtoLink = `mailto:abhyudayasinha04@gmail.com?subject=Project Inquiry from ${name}&body=Name: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0AMessage:%0D%0A${message}`;
+            const mailtoLink = `mailto:abhyudayasinha04@gmail.com?subject=Mission Booking: ${selectedPack} from ${pilotName}&body=Pilot Name: ${pilotName}%0D%0APilot Email: ${pilotEmail}%0D%0A%0D%0ACollaboration Pack Selected: ${selectedPack}%0D%0A%0D%0AMission Flight Parameters:%0D%0A${pilotMessage}`;
             
-            formStatus.style.display = 'flex';
-            formStatus.innerHTML = '<i class="fa-solid fa-envelope-circle-check"></i> Opening your email client...';
-            formStatus.className = 'form-status success';
-            
-            // Open the mailto link
-            window.location.href = mailtoLink;
-            
-            // Show status with animation
-            gsap.fromTo(formStatus, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.5 });
-            
-            setTimeout(() => {
-                contactForm.reset();
-            }, 1000);
+            if (formStatus) {
+                formStatus.style.display = 'flex';
+                formStatus.innerHTML = '<i class="fa-solid fa-satellite-dish animate-pulse"></i> TRANSMITTING FLIGHT DATA // OPENING CLIENT...';
+                formStatus.className = 'form-status success';
+                
+                // Triggers direct location mapping
+                window.location.href = mailtoLink;
+                
+                gsap.fromTo(formStatus, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.5 });
+                
+                setTimeout(() => {
+                    contactForm.reset();
+                    // Re-set active class on the first option
+                    packBtns.forEach((b, i) => {
+                        if (i === 0) {
+                            b.classList.add('active');
+                            if (collaborationPackInput) collaborationPackInput.value = b.getAttribute('data-pack');
+                        } else {
+                            b.classList.remove('active');
+                        }
+                    });
+                }, 1000);
+            }
         });
     }
 
-    // 9. Mobile Menu Logic
+    // 14. Mobile Menu Navigation Logic
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const navContainer = document.getElementById('navContainer');
     
     if (mobileMenuBtn && navContainer) {
-        mobileMenuBtn.addEventListener('click', () => {
+        mobileMenuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
             navContainer.classList.toggle('active');
             mobileMenuBtn.querySelector('i').classList.toggle('fa-bars');
             mobileMenuBtn.querySelector('i').classList.toggle('fa-xmark');
         });
 
+        // Close on clicking links
         navContainer.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 navContainer.classList.remove('active');
                 mobileMenuBtn.querySelector('i').className = 'fa-solid fa-bars';
             });
         });
+
+        // Close on clicking outside navbar
+        document.addEventListener('click', (e) => {
+            if (!navContainer.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                navContainer.classList.remove('active');
+                mobileMenuBtn.querySelector('i').className = 'fa-solid fa-bars';
+            }
+        });
     }
 
-    // 10. Neural Mesh Background Animation
-    const canvas = document.getElementById('neuralCanvas');
-    const ctx = canvas.getContext('2d');
-    let particles = [];
-    
-    function initNeuralMesh() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        particles = [];
-        const isMobile = window.innerWidth < 768;
-        const particleCount = Math.floor((canvas.width * canvas.height) / (isMobile ? 30000 : 15000));
-        
-        for (let i = 0; i < particleCount; i++) {
-            particles.push({
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                vx: (Math.random() - 0.5) * 0.5,
-                vy: (Math.random() - 0.5) * 0.5,
-                size: Math.random() * 2
-            });
-        }
-    }
-
-    function animateNeuralMesh() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--accent');
-        ctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue('--accent');
-        
-        particles.forEach((p, i) => {
-            p.x += p.vx;
-            p.y += p.vy;
-            
-            if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-            if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-            
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-            ctx.fill();
-            
-            for (let j = i + 1; j < particles.length; j++) {
-                const p2 = particles[j];
-                const dx = p.x - p2.x;
-                const dy = p.y - p2.y;
-                const dist = Math.sqrt(dx * dx + dy * dy);
-                
-                if (dist < 150) {
-                    ctx.beginPath();
-                    ctx.lineWidth = 1 - dist / 150;
-                    ctx.globalAlpha = 1 - dist / 150;
-                    ctx.moveTo(p.x, p.y);
-                    ctx.lineTo(p2.x, p2.y);
-                    ctx.stroke();
-                    ctx.globalAlpha = 1;
+    // 15. Header Scroll dynamic state scrolled shrinker
+    const header = document.getElementById('header');
+    if (header) {
+        ScrollTrigger.create({
+            start: 'top -80',
+            onUpdate: (self) => {
+                if (self.direction === 1) {
+                    header.classList.add('scrolled');
+                } else if (self.scroll() < 60) {
+                    header.classList.remove('scrolled');
                 }
             }
         });
-        
-        requestAnimationFrame(animateNeuralMesh);
     }
 
-    window.addEventListener('resize', initNeuralMesh);
-    initNeuralMesh();
-    animateNeuralMesh();
+    // 16. Local Interactive Background Neural Mesh Canvas Animation
+    const canvas = document.getElementById('neuralCanvas');
+    if (canvas) {
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        
+        function initNeuralMesh() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            particles = [];
+            const isMobile = window.innerWidth < 768;
+            const particleCount = Math.floor((canvas.width * canvas.height) / (isMobile ? 35000 : 18000));
+            
+            for (let i = 0; i < particleCount; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    vx: (Math.random() - 0.5) * 0.4,
+                    vy: (Math.random() - 0.5) * 0.4,
+                    size: Math.random() * 2
+                });
+            }
+        }
+
+        function animateNeuralMesh() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Dynamically fetch active accent colors from computed document variables
+            const rootStyles = getComputedStyle(document.documentElement);
+            const activeAccent = rootStyles.getPropertyValue('--accent').trim();
+            
+            ctx.fillStyle = activeAccent;
+            ctx.strokeStyle = activeAccent;
+            
+            particles.forEach((p, i) => {
+                p.x += p.vx;
+                p.y += p.vy;
+                
+                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+                
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fill();
+                
+                for (let j = i + 1; j < particles.length; j++) {
+                    const p2 = particles[j];
+                    const dx = p.x - p2.x;
+                    const dy = p.y - p2.y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (dist < 135) {
+                        ctx.beginPath();
+                        ctx.lineWidth = (1 - dist / 135) * 0.6;
+                        ctx.globalAlpha = (1 - dist / 135) * 0.35;
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.stroke();
+                        ctx.globalAlpha = 1;
+                    }
+                }
+            });
+            
+            requestAnimationFrame(animateNeuralMesh);
+        }
+
+        window.addEventListener('resize', initNeuralMesh);
+        initNeuralMesh();
+        animateNeuralMesh();
+    }
 });

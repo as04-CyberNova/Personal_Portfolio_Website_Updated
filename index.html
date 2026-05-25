@@ -1,25 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="acid">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abhyudaya Sinha | Data Scientist</title>
+    <title>Abhyudaya Sinha | Data Scientist & High-Performance Analyst</title>
+    
+    <!-- Meta Tags for SEO & Recruiter Parsing -->
+    <meta name="description" content="Portfolio of Abhyudaya Sinha - Data Scientist, Analyst, and Web Developer. High-performance analytical engineering, machine learning, and advanced data visualization.">
+    <meta name="keywords" content="Abhyudaya Sinha, Data Scientist, Data Analyst, Power BI, Tableau, Python, SQL, Machine Learning, Resume, Portfolio, ATS Friendly">
+    <meta name="author" content="Abhyudaya Sinha">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&family=JetBrains+Mono:wght@400;700&display=swap"
-        rel="stylesheet">
+    
+    <!-- Premium Fonts: Syne (Luxury Display), Space Grotesk (HUD Tech), Outfit (Accents), Inter (ATS Readable Body) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@100..900&family=Space+Grotesk:wght@300..700&family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=2.0">
+    <link rel="stylesheet" href="style.css?v=3.0">
 </head>
 
 <body>
 
-
+    <!-- Cinematic Background Ambient & Grid System -->
     <div class="ambient-canvas">
+        <div class="luxury-grid-overlay"></div>
         <canvas id="neuralCanvas"></canvas>
         <div class="cursor-glow" id="cursorGlow"></div>
         <div class="gradient-sphere sphere-1"></div>
@@ -27,31 +34,53 @@
     </div>
     <div class="noise-overlay"></div>
 
+    <!-- Floating HUD Configurator (Dynamic Theme Switcher) -->
+    <div class="hud-colorway-configurator" id="themeConfigurator">
+        <div class="hud-config-title">
+            <i class="fa-solid fa-sliders"></i> COCKPIT THEME
+        </div>
+        <div class="theme-options">
+            <button class="theme-opt active" data-theme="acid" title="Porsche Acid Green">
+                <span class="dot acid"></span> PORSCHE
+            </button>
+            <button class="theme-opt" data-theme="ferrari" title="Ferrari Rouge">
+                <span class="dot ferrari"></span> FERRARI
+            </button>
+            <button class="theme-opt" data-theme="kawaii" title="Kawaii Pastel Luxe">
+                <span class="dot kawaii"></span> KAWAII 🌸
+            </button>
+            <button class="theme-opt" data-theme="lambo" title="Lamborghini Gold & Carbon">
+                <span class="dot lambo"></span> LAMBO
+            </button>
+        </div>
+    </div>
 
-
+    <!-- Header Navigation -->
     <header id="header">
         <nav class="navbar">
-            <a href="#" class="logo">ABHYUDAYA <span>SINHA</span></a>
+            <a href="#" class="logo" id="logoLink">
+                <i class="fa-solid fa-gauge-high"></i> ABHYUDAYA <span class="logo-engine">// ENGINE</span>
+            </a>
 
             <div class="nav-container" id="navContainer">
                 <ul class="nav-links">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#projects">Work</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">The Chassis</a></li>
+                    <li><a href="#skills">Dials</a></li>
+                    <li><a href="#projects">The Fleet</a></li>
+                    <li><a href="#recruiter-cockpit" class="recruiter-pill"><i class="fa-solid fa-user-tie"></i> Recruiter Mode</a></li>
+                    <li><a href="#contact">Book Run</a></li>
                 </ul>
             </div>
 
             <div class="controls">
-
-                <a href="https://github.com/as04-CyberNova" target="_blank" class="control-btn" title="GitHub Profile">
+                <a href="https://github.com/as04-CyberNova" target="_blank" class="control-btn" title="GitHub Engine" id="navGithub">
                     <i class="fab fa-github"></i>
                 </a>
-                <a href="https://www.linkedin.com/in/abhyudaya-sinha-7035a8373" target="_blank" class="control-btn"
-                    title="LinkedIn Profile">
+                <a href="https://www.linkedin.com/in/abhyudaya-sinha-7035a8373" target="_blank" class="control-btn" title="LinkedIn Synapse" id="navLinkedin">
                     <i class="fab fa-linkedin-in"></i>
                 </a>
-                <a href="#contact" class="btn-primary connect-btn">Connect</a>
+                <a href="#contact" class="btn-primary connect-btn" id="atsNavBtn">TEST DRIVE</a>
                 <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Menu">
                     <i class="fa-solid fa-bars"></i>
                 </button>
@@ -60,530 +89,939 @@
     </header>
 
     <main>
-        <!-- ... existing sections ... -->
+        
+        <!-- Hero Section: The HUD Showcase -->
         <section class="hero" id="home">
-            <div class="hero-content">
-                <p class="hero-label">DATA SCIENCE STUDENT & ANALYST</p>
-                <h1>Turning Complex Data Into<span class="gradient-text">Visual Insight</span></h1>
-                <p>Exploring the intersection of Machine Learning, Data Analytics, and modern Web Experiences.</p>
-                <div class="hero-btns">
-                    <a href="#projects" class="btn-primary">VIEW MY WORK <i
-                            class="fa-solid fa-arrow-right-long"></i></a>
-                    <a href="#skills" class="btn-secondary">TECHNICAL STACK <i class="fa-solid fa-layer-group"></i></a>
+            <div class="hero-hud-frame reveal-on-scroll">
+                
+                <div class="hero-content">
+                    <div class="kawaii-stickers-container">
+                        <span class="kawaii-sticker floating-1" title="Kawaii Cloud Helper">☁️✨</span>
+                        <span class="kawaii-sticker floating-2" title="Sparkle Spark">💖</span>
+                        <span class="kawaii-sticker floating-3" title="Speedy Racing Car">🏎️💨</span>
+                        <span class="kawaii-sticker floating-4" title="Tableau Analytics Star">📊🌸</span>
+                    </div>
+
+                    <p class="hero-label"><i class="fa-solid fa-bolt-lightning"></i> MODEL: DATA SCIENCE & HIGH-PERFORMANCE ANALYST</p>
+                    
+                    <h1 class="hero-main-title">
+                        ENGINEERING HIGH-SPEED <span class="gradient-text">DATA INSIGHTS</span>
+                    </h1>
+                    
+                    <p class="hero-description">
+                        Merging analytical rigor and advanced machine learning with pristine web interfaces. Re-designed as a high-performance autonomous data machine to extract predictive logic.
+                    </p>
+                    
+                    <div class="hero-hud-specs">
+                        <div class="hud-spec-block">
+                            <span class="spec-label">ACCURACY</span>
+                            <span class="spec-value">OPTIMAL (94%)</span>
+                        </div>
+                        <div class="hud-spec-block">
+                            <span class="spec-label">MAIN LANGUAGE</span>
+                            <span class="spec-value">PYTHON 3 // SQL</span>
+                        </div>
+                        <div class="hud-spec-block">
+                            <span class="spec-label">CORE TRANSMISSION</span>
+                            <span class="spec-value">TABLEAU // POWER BI</span>
+                        </div>
+                    </div>
+
+                    <div class="hero-btns">
+                        <a href="#recruiter-cockpit" class="btn-primary launch-control-btn"><i class="fa-solid fa-key"></i> INITIATE RECRUITER COCKPIT</a>
+                        <a href="#projects" class="btn-secondary"><i class="fa-solid fa-circle-play"></i> INSPECT THE FLEET</a>
+                    </div>
                 </div>
             </div>
         </section>
 
+        <!-- About Section: The Chassis Bento Grid -->
         <section id="about" class="reveal-on-scroll">
             <div class="section-head">
-                <p>Background</p>
-                <h2>The Analyst Journey</h2>
+                <p><i class="fa-solid fa-microchip"></i> SPECIFICATION BRIEF</p>
+                <h2>The Chassis & Architecture</h2>
             </div>
+            
             <div class="bento-grid">
-                <div class="bento-item persona-item reveal-on-scroll" style="grid-column: span 4; grid-row: span 2;">
+                
+                <!-- Card 1: Core Chassis Details -->
+                <div class="bento-item persona-item reveal-on-scroll" style="grid-column: span 4; grid-row: span 2;" id="aboutCoreItem">
                     <div class="headshot-wrapper">
                         <div class="headshot-placeholder">
-                            <i class="fa-solid fa-user-ninja"></i>
+                            <i class="fa-solid fa-robot-astromaut">🤖</i>
+                            <span class="cute-blush animate-pulse">🌸</span>
                         </div>
                     </div>
+                    <span class="tag tag-spec"><i class="fa-solid fa-id-card"></i> SPEC: CORE ENGINE</span>
                     <h3>Abhyudaya Sinha</h3>
-                    <p class="timeline-subtitle">Data Scientist & Visionary</p>
-                    <p>Merging analytical precision with aesthetic vision to build the future of data experiences.</p>
+                    <p class="timeline-subtitle">Data Scientist & Visual Architect</p>
+                    <p class="bento-text">
+                        A highly versatile, 20-year-old developer specializing in structuring massive datasets, running predictive models, and building modern recruiter-friendly systems.
+                    </p>
                 </div>
-                <div class="bento-item reveal-on-scroll" style="grid-column: span 8; grid-row: span 2;">
+                
+                <!-- Card 2: Academic Fuel cell -->
+                <div class="bento-item reveal-on-scroll" style="grid-column: span 8; grid-row: span 2;" id="aboutFuelItem">
                     <i class="fa-solid fa-graduation-cap bento-icon"></i>
-                    <h3>Academic Focus</h3>
-                    <p>I am a Data Science student specializing in uncovering hidden patterns within large datasets. My
-                        academic journey is fueled by a desire to bridge the gap between raw information and strategic
-                        decision-making.</p>
-                    <div class="skills-grid" style="margin-top: 2rem;">
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <div class="skill-tag"><i class="fas fa-brain"></i> Machine Learning</div>
-                                <span class="skill-percentage">50%</span>
+                    <span class="tag tag-spec"><i class="fa-solid fa-flask"></i> FUEL DISPLACEMENT</span>
+                    <h3>Academic Performance & ML Focus</h3>
+                    <p class="bento-text">
+                        Specializing in statistical analytics and pattern recognition. Engineering data streams to convert unorganized records into actionable forecasting vectors.
+                    </p>
+                    
+                    <div class="hud-inline-readouts" style="margin-top: 2rem;">
+                        <div class="hud-readout-strip">
+                            <span><i class="fas fa-brain"></i> Machine Learning Logic</span>
+                            <div class="hud-strip-track">
+                                <div class="hud-strip-fill" data-width="85%"></div>
                             </div>
-                            <div class="progress-container">
-                                <div class="progress-bar" data-width="50%"></div>
-                            </div>
+                            <span class="hud-strip-val">85%</span>
                         </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <div class="skill-tag"><i class="fas fa-database"></i> SQL Mastery</div>
-                                <span class="skill-percentage">50%</span>
+                        <div class="hud-readout-strip" style="margin-top: 1rem;">
+                            <span><i class="fas fa-database"></i> SQL Relational Architecture</span>
+                            <div class="hud-strip-track">
+                                <div class="hud-strip-fill" data-width="80%"></div>
                             </div>
-                            <div class="progress-container">
-                                <div class="progress-bar" data-width="50%"></div>
-                            </div>
+                            <span class="hud-strip-val">80%</span>
                         </div>
                     </div>
                 </div>
-                <div class="bento-item reveal-on-scroll" style="grid-column: span 4;">
+                
+                <!-- Card 3: Aerodynamics Hobbies -->
+                <div class="bento-item reveal-on-scroll" style="grid-column: span 6;" id="aboutAeroItem">
                     <i class="fa-solid fa-wand-magic-sparkles bento-icon"></i>
-                    <h3>Creative Hobby</h3>
-                    <p>I view web development as my creative outlet—crafting high-end digital experiences to sharpen my
-                        technical versatile skill set.</p>
+                    <span class="tag tag-spec"><i class="fa-solid fa-wind"></i> AERO TUNING</span>
+                    <h3>Creative Frontend Crafting</h3>
+                    <p class="bento-text">
+                        Designing responsive layouts, smooth scroll mechanics, and customized CSS dashboards. Treating web front-ends as the aerodynamic shell of backend data models.
+                    </p>
                 </div>
-                <div class="bento-item reveal-on-scroll" style="grid-column: span 4;">
+                
+                <!-- Card 4: Collaborative traction -->
+                <div class="bento-item reveal-on-scroll" style="grid-column: span 6;" id="aboutTractionItem">
                     <i class="fa-solid fa-users-viewfinder bento-icon"></i>
-                    <h3>Collaborative</h3>
-                    <p>I thrive in environments where data meets design, collaborating on projects that demand both
-                        analytical rigor and aesthetic precision.</p>
+                    <span class="tag tag-spec"><i class="fa-solid fa-gears"></i> TRACTION SYSTEM</span>
+                    <h3>High-Speed Collaboration</h3>
+                    <p class="bento-text">
+                        Thriving in collaborative scrum sprints. Architecting seamless pipelines where technical precision meets high-end UX design to deliver high stakeholder impact.
+                    </p>
                 </div>
+                
             </div>
         </section>
 
+        <!-- Skills Section: The Instrument Cluster Dials -->
         <section id="skills" class="reveal-on-scroll">
             <div class="section-head">
-                <p>Capabilities</p>
-                <h2>Technical Skills</h2>
+                <p><i class="fa-solid fa-gauge"></i> COCKPIT DIALS</p>
+                <h2>The Instrument Cluster</h2>
             </div>
-            <div class="bento-grid">
-                <div class="bento-item reveal-on-scroll" style="grid-column: span 12;">
-                    <h3>Data Visualization & Analytics</h3>
-                    <div class="skills-grid">
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <div class="skill-tag"><i class="fa-solid fa-chart-line"></i> Tableau</div>
-                                <span class="skill-percentage">80%</span>
+            
+            <div class="instrument-grid">
+                
+                <!-- Group 1: Analytics & Data Viz (Circular Dials) -->
+                <div class="bento-item reveal-on-scroll" style="grid-column: span 6;" id="skillsVizItem">
+                    <h3 class="instrument-title"><i class="fa-solid fa-chart-column"></i> Analytics & Visualization Dials</h3>
+                    
+                    <div class="speedometers-container">
+                        
+                        <!-- Speedometer 1: Tableau -->
+                        <div class="speedo-dial-box" data-tooltip="Tableau dashboard creation, visual mapping, calculations and actions! 📊✨">
+                            <div class="svg-dial-wrapper">
+                                <svg class="dial-svg" viewBox="0 0 100 100">
+                                    <circle class="dial-track" cx="50" cy="50" r="40" />
+                                    <circle class="dial-fill" cx="50" cy="50" r="40" data-pct="80" />
+                                </svg>
+                                <div class="dial-inner-text">
+                                    <span class="dial-number">80%</span>
+                                    <span class="dial-label">TABLEAU</span>
+                                </div>
                             </div>
-                            <div class="progress-container">
-                                <div class="progress-bar" data-width="80%"></div>
-                            </div>
+                            <span class="speedo-sub">Model: T-BL</span>
                         </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <div class="skill-tag"><i class="fa-solid fa-chart-bar"></i> Power BI</div>
-                                <span class="skill-percentage">50%</span>
+                        
+                        <!-- Speedometer 2: Power BI -->
+                        <div class="speedo-dial-box" data-tooltip="Power BI dashboards, DAX queries, ETL modeling, and data cleaning! ⚡📊">
+                            <div class="svg-dial-wrapper">
+                                <svg class="dial-svg" viewBox="0 0 100 100">
+                                    <circle class="dial-track" cx="50" cy="50" r="40" />
+                                    <circle class="dial-fill" cx="50" cy="50" r="40" data-pct="75" />
+                                </svg>
+                                <div class="dial-inner-text">
+                                    <span class="dial-number">75%</span>
+                                    <span class="dial-label">POWER BI</span>
+                                </div>
                             </div>
-                            <div class="progress-container">
-                                <div class="progress-bar" data-width="50%"></div>
-                            </div>
+                            <span class="speedo-sub">Model: P-BI</span>
                         </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <div class="skill-tag"><i class="fa-solid fa-file-excel"></i> Excel Analytics</div>
-                                <span class="skill-percentage">50%</span>
+                        
+                        <!-- Speedometer 3: Excel -->
+                        <div class="speedo-dial-box" data-tooltip="Advanced lookup formulas, pivoting tables, and cleaning data pipelines! 📈🌸">
+                            <div class="svg-dial-wrapper">
+                                <svg class="dial-svg" viewBox="0 0 100 100">
+                                    <circle class="dial-track" cx="50" cy="50" r="40" />
+                                    <circle class="dial-fill" cx="50" cy="50" r="40" data-pct="70" />
+                                </svg>
+                                <div class="dial-inner-text">
+                                    <span class="dial-number">70%</span>
+                                    <span class="dial-label">EXCEL</span>
+                                </div>
                             </div>
-                            <div class="progress-container">
-                                <div class="progress-bar" data-width="50%"></div>
-                            </div>
+                            <span class="speedo-sub">Model: EX-CL</span>
                         </div>
+                        
                     </div>
                 </div>
-                <div class="bento-item reveal-on-scroll" style="grid-column: span 12;">
-                    <h3>Languages & Core Tools</h3>
-                    <div class="skills-grid">
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <div class="skill-tag"><i class="fa-brands fa-python"></i> Python</div>
-                                <span class="skill-percentage">60%</span>
+
+                <!-- Group 2: Logic & Engineering Dials -->
+                <div class="bento-item reveal-on-scroll" style="grid-column: span 6;" id="skillsLogicItem">
+                    <h3 class="instrument-title"><i class="fa-solid fa-code"></i> Logic & Systems Engine</h3>
+                    
+                    <div class="speedometers-container">
+                        
+                        <!-- Speedometer 4: Python -->
+                        <div class="speedo-dial-box" data-tooltip="Pandas, NumPy, Scikit-Learn pipelines, and ML model training! 🐍🏎️">
+                            <div class="svg-dial-wrapper">
+                                <svg class="dial-svg" viewBox="0 0 100 100">
+                                    <circle class="dial-track" cx="50" cy="50" r="40" />
+                                    <circle class="dial-fill" cx="50" cy="50" r="40" data-pct="75" />
+                                </svg>
+                                <div class="dial-inner-text">
+                                    <span class="dial-number">75%</span>
+                                    <span class="dial-label">PYTHON</span>
+                                </div>
                             </div>
-                            <div class="progress-container">
-                                <div class="progress-bar" data-width="60%"></div>
-                            </div>
+                            <span class="speedo-sub">Model: PY-3</span>
                         </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <div class="skill-tag"><i class="fa-solid fa-database"></i> SQL</div>
-                                <span class="skill-percentage">50%</span>
+                        
+                        <!-- Speedometer 5: SQL -->
+                        <div class="speedo-dial-box" data-tooltip="Structured complex queries, joining relational tables, indexing & schemas! 💾⚡">
+                            <div class="svg-dial-wrapper">
+                                <svg class="dial-svg" viewBox="0 0 100 100">
+                                    <circle class="dial-track" cx="50" cy="50" r="40" />
+                                    <circle class="dial-fill" cx="50" cy="50" r="40" data-pct="70" />
+                                </svg>
+                                <div class="dial-inner-text">
+                                    <span class="dial-number">70%</span>
+                                    <span class="dial-label">SQL DB</span>
+                                </div>
                             </div>
-                            <div class="progress-container">
-                                <div class="progress-bar" data-width="50%"></div>
-                            </div>
+                            <span class="speedo-sub">Model: SQ-LT</span>
                         </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <div class="skill-tag"><i class="fa-brands fa-js"></i> JavaScript</div>
-                                <span class="skill-percentage">40%</span>
+                        
+                        <!-- Speedometer 6: Core Dev Tools -->
+                        <div class="speedo-dial-box" data-tooltip="JavaScript web components, GitHub repository controls, and VS Code workflows! 💻🌸">
+                            <div class="svg-dial-wrapper">
+                                <svg class="dial-svg" viewBox="0 0 100 100">
+                                    <circle class="dial-track" cx="50" cy="50" r="40" />
+                                    <circle class="dial-fill" cx="50" cy="50" r="40" data-pct="80" />
+                                </svg>
+                                <div class="dial-inner-text">
+                                    <span class="dial-number">80%</span>
+                                    <span class="dial-label">DEV TOOLS</span>
+                                </div>
                             </div>
-                            <div class="progress-container">
-                                <div class="progress-bar" data-width="40%"></div>
-                            </div>
+                            <span class="speedo-sub">Model: GI-VS</span>
                         </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <div class="skill-tag"><i class="fa-brands fa-java"></i> Java</div>
-                                <span class="skill-percentage">50%</span>
-                            </div>
-                            <div class="progress-container">
-                                <div class="progress-bar" data-width="50%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <div class="skill-tag"><i class="fa-brands fa-github"></i> GitHub</div>
-                                <span class="skill-percentage">70%</span>
-                            </div>
-                            <div class="progress-container">
-                                <div class="progress-bar" data-width="70%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <div class="skill-tag"><i class="fa-solid fa-code"></i> VS Code</div>
-                                <span class="skill-percentage">85%</span>
-                            </div>
-                            <div class="progress-container">
-                                <div class="progress-bar" data-width="85%"></div>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
+                
             </div>
         </section>
 
-        <section id="experience">
+        <!-- Experience Section: Chronological Gear Shifts -->
+        <section id="experience" class="reveal-on-scroll">
             <div class="section-head text-center" style="margin-bottom: 4rem;">
-                <h2>Experience</h2>
+                <p><i class="fa-solid fa-timeline"></i> SHIFT LOGS</p>
+                <h2>Transmission Shifts (Experience)</h2>
             </div>
+            
             <div class="timeline-container">
+                
                 <div class="timeline-item">
-                    <div class="timeline-dot">2026</div>
-                    <div class="timeline-content bento-item">
-                        <h3>Data Science Student</h3>
-                        <p class="timeline-subtitle">Academic Focus</p>
-                        <p>Specializing in uncovering hidden patterns within large datasets. Bridging the gap between
-                            raw information and strategic decision-making through advanced analytics and machine
-                            learning techniques.</p>
+                    <div class="timeline-dot"><i class="fa-solid fa-gauge-simple-high"></i> 3RD</div>
+                    <div class="timeline-content bento-item" id="expCoreItem">
+                        <span class="gear-tag"><i class="fa-solid fa-graduation-cap"></i> SHIFT 3 // ACTIVE RUN</span>
+                        <h3>Data Science Specialist</h3>
+                        <p class="timeline-subtitle">Academic Stream & Advanced ML Models</p>
+                        <p class="timeline-details-text">
+                            Analyzing large unstructured data systems. Developing and training local predictive logic formulas (Python, Scikit-learn), refining datasets, and structuring relational database query plans (SQL) to deliver clean predictions.
+                        </p>
                     </div>
                 </div>
+                
                 <div class="timeline-item">
-                    <div class="timeline-dot">2025</div>
-                    <div class="timeline-content bento-item">
+                    <div class="timeline-dot"><i class="fa-solid fa-gauge-simple"></i> 2ND</div>
+                    <div class="timeline-content bento-item" id="expWebItem">
+                        <span class="gear-tag"><i class="fa-solid fa-compass-drafting"></i> SHIFT 2 // TUNING RUN</span>
                         <h3>Creative Web Developer</h3>
-                        <p class="timeline-subtitle">Independent Projects</p>
-                        <p>Crafting high-end digital experiences as a creative outlet. Developing responsive web
-                            applications and interactive dashboards to sharpen versatile technical skills.</p>
+                        <p class="timeline-subtitle">High-End Interactive Systems</p>
+                        <p class="timeline-details-text">
+                            Crafting high-fidelity, responsive client-side UI configurations as a dedicated creative outlet. Implementing dynamic CSS libraries, smooth scroll engines (Lenis, GSAP), and modular responsive elements.
+                        </p>
                     </div>
                 </div>
+                
                 <div class="timeline-item">
-                    <div class="timeline-dot">2024</div>
-                    <div class="timeline-content bento-item">
+                    <div class="timeline-dot"><i class="fa-solid fa-gauge"></i> 1ST</div>
+                    <div class="timeline-content bento-item" id="expAnalystItem">
+                        <span class="gear-tag"><i class="fa-solid fa-chart-line"></i> SHIFT 1 // IGNITION</span>
                         <h3>Data Analyst</h3>
-                        <p class="timeline-subtitle">Collaborative Projects</p>
-                        <p>Thriving in environments where data meets design, collaborating on projects that demand both
-                            analytical rigor and aesthetic precision.</p>
+                        <p class="timeline-subtitle">Collaborative Dashboards & Business Intel</p>
+                        <p class="timeline-details-text">
+                            Collaborating across functional teams to synthesize raw data requirements. Mapping key visual reports in Tableau and Power BI, enabling managers to review trend forecasts and perform operational resource planning.
+                        </p>
                     </div>
                 </div>
+                
             </div>
         </section>
 
-        <section id="projects">
+        <!-- Projects Section: Re-branded Fleet Brochure -->
+        <section id="projects" class="reveal-on-scroll">
             <div class="section-head">
-                <p>Portfolio</p>
-                <h2>Featured Case Studies</h2>
+                <p><i class="fa-solid fa-car-side"></i> PRODUCT PORTFOLIO</p>
+                <h2>The Fleet (Featured Analytics Case Studies)</h2>
+                
+                <!-- Fleet Filter Controls -->
+                <div class="hud-filter-controls">
+                    <button class="filter-btn active" data-filter="all">ALL STAGE MODELS</button>
+                    <button class="filter-btn" data-filter="pbi">POWER BI EDITION</button>
+                    <button class="filter-btn" data-filter="tab">TABLEAU EDITION</button>
+                </div>
             </div>
+            
             <div class="bento-grid">
-                <!-- Power BI Dashboards -->
-
-                <div class="project-card bento-item">
+                
+                <!-- Project 1: Hospital Patient Record (Power BI) -->
+                <div class="project-card bento-item filter-pbi" id="projHospital">
                     <div class="project-image-placeholder">
-                        <img src="images/Hospital_Patient_Record_Analysis_Dashboard.png"
-                            alt="Hospital Patient Records Analysis" loading="lazy">
+                        <img src="images/Hospital_Patient_Record_Analysis_Dashboard.png" alt="Hospital Patient Records Analysis Dashboard" loading="lazy">
+                        <div class="mockup-glare"></div>
                     </div>
-                    <span class="tag"><i class="fa-solid fa-chart-pie"></i> Power BI</span>
-                    <h3>Hospital Patient Records Analysis</h3>
-                    <ul class="project-bullets">
-                        <li>Comprehensive tracking and analysis of hospital patient records and metrics.</li>
-                        <li>Delivered actionable insights for strategic decision making.</li>
-                    </ul>
-                </div>
-                <div class="project-card bento-item">
-                    <div class="project-image-placeholder">
-                        <img src="images/Screenshot 2026-04-09 215716.png" alt="Pokémon Data Analysis" loading="lazy">
+                    <div class="proj-card-body">
+                        <span class="tag tag-pbi"><i class="fa-solid fa-chart-pie"></i> Power BI // Model H-PR</span>
+                        <h3>Hospital Patient Records Analysis</h3>
+                        <ul class="project-bullets">
+                            <li><strong>Objective:</strong> Track administrative metrics across hospital records dynamically.</li>
+                            <li><strong>Performance Specs:</strong> Configured interactive patient filters and triage pipelines.</li>
+                            <li><strong>Telemetry:</strong> Handled complex data cleansing within Power Query.</li>
+                        </ul>
+                        <div class="proj-hud-specs">
+                            <span>DATA SIZE: 10K+</span>
+                            <span>IMPACT: HIGH</span>
+                        </div>
                     </div>
-                    <span class="tag"><i class="fa-solid fa-table-columns"></i> Tableau</span>
-                    <h3>Pokémon Data Analysis</h3>
-                    <ul class="project-bullets">
-                        <li>Comprehensive visual analysis of Pokémon base stats and battle performance.</li>
-                        <li>Delivered actionable insights for strategic decision making.</li>
-                    </ul>
                 </div>
 
-                <div class="project-card bento-item">
+                <!-- Project 2: Pokemon Data Analysis (Tableau) -->
+                <div class="project-card bento-item filter-tab" id="projPokemon">
                     <div class="project-image-placeholder">
-                        <img src="images/Covid19_Analysis_Dashboard.png" alt="COVID-19 Analysis Dashboard" loading="lazy">
+                        <img src="images/Screenshot 2026-04-09 215716.png" alt="Pokémon Battle Stats Analysis Tableau Dashboard" loading="lazy">
+                        <div class="mockup-glare"></div>
                     </div>
-                    <span class="tag"><i class="fa-solid fa-chart-pie"></i> Power BI</span>
-                    <h3>COVID-19 Analysis Dashboard</h3>
-                    <ul class="project-bullets">
-                        <li>Deep-dive analysis of epidemiological data and trend forecasting.</li>
-                        <li>Delivered actionable insights for strategic decision making.</li>
-                    </ul>
-                </div>
-                <div class="project-card bento-item">
-                    <div class="project-image-placeholder">
-                        <img src="images/Faculty & Staff_Allocation_Dashboard.png" alt="Faculty & Staff Allocation" loading="lazy">
+                    <div class="proj-card-body">
+                        <span class="tag tag-tab"><i class="fa-solid fa-table-columns"></i> Tableau // Model P-KM</span>
+                        <h3>Pokémon Battle Performance Stats</h3>
+                        <ul class="project-bullets">
+                            <li><strong>Objective:</strong> Mapping stats, type combinations, and battle telemetry.</li>
+                            <li><strong>Performance Specs:</strong> Real-time dual-axes charts comparing power margins.</li>
+                            <li><strong>Telemetry:</strong> Engineered customized interactive filters for fast search.</li>
+                        </ul>
+                        <div class="proj-hud-specs">
+                            <span>DATA SIZE: 800+</span>
+                            <span>AESTHETIC: EXTREME</span>
+                        </div>
                     </div>
-                    <span class="tag">Power BI</span>
-                    <h3>Faculty & Staff Allocation</h3>
-                    <ul class="project-bullets">
-                        <li>Strategic resource planning and workforce distribution analytics.</li>
-                        <li>Delivered actionable insights for strategic decision making.</li>
-                    </ul>
                 </div>
 
-                <!-- Tableau Dashboards -->
+                <!-- Project 3: COVID-19 Dashboard (Power BI) -->
+                <div class="project-card bento-item filter-pbi" id="projCovid">
+                    <div class="project-image-placeholder">
+                        <img src="images/Covid19_Analysis_Dashboard.png" alt="COVID-19 Analysis Dashboard Power BI" loading="lazy">
+                        <div class="mockup-glare"></div>
+                    </div>
+                    <div class="proj-card-body">
+                        <span class="tag tag-pbi"><i class="fa-solid fa-chart-pie"></i> Power BI // Model COV-19</span>
+                        <h3>COVID-19 Global Telemetry</h3>
+                        <ul class="project-bullets">
+                            <li><strong>Objective:</strong> Aggregate and map global infection rates, mortality ratios, and trends.</li>
+                            <li><strong>Performance Specs:</strong> Scalable forecasting charts tracking rolling averages.</li>
+                            <li><strong>Telemetry:</strong> Built customized DAX gauges and date-slicer tables.</li>
+                        </ul>
+                        <div class="proj-hud-specs">
+                            <span>DATA SIZE: 100K+</span>
+                            <span>PRECISION: OPTIMAL</span>
+                        </div>
+                    </div>
+                </div>
 
-                <div class="project-card bento-item">
+                <!-- Project 4: Faculty Allocation (Power BI) -->
+                <div class="project-card bento-item filter-pbi" id="projFaculty">
                     <div class="project-image-placeholder">
-                        <img src="images/Screenshot 2026-04-14 132701.png" alt="Global Cookie Sales Performance" loading="lazy">
+                        <img src="images/Faculty & Staff_Allocation_Dashboard.png" alt="Faculty and Staff Allocation Dashboard" loading="lazy">
+                        <div class="mockup-glare"></div>
                     </div>
-                    <span class="tag"><i class="fa-solid fa-table-columns"></i> Tableau</span>
-                    <h3>Global Cookie Sales Performance</h3>
-                    <ul class="project-bullets">
-                        <li>Market analysis of consumer goods with regional sales insights.</li>
-                        <li>Delivered actionable insights for strategic decision making.</li>
-                    </ul>
+                    <div class="proj-card-body">
+                        <span class="tag tag-pbi"><i class="fa-solid fa-chart-pie"></i> Power BI // Model F-STF</span>
+                        <h3>Faculty & Staff Allocation Matrix</h3>
+                        <ul class="project-bullets">
+                            <li><strong>Objective:</strong> Resource allocation and workforce distribution analytics.</li>
+                            <li><strong>Performance Specs:</strong> Departmental load monitoring and staffing charts.</li>
+                            <li><strong>Telemetry:</strong> Designed direct data relationships for staff databases.</li>
+                        </ul>
+                        <div class="proj-hud-specs">
+                            <span>DATA SIZE: 5K+</span>
+                            <span>IMPACT: OPERATIONAL</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="project-card bento-item">
+
+                <!-- Project 5: Global Cookie Sales (Tableau) -->
+                <div class="project-card bento-item filter-tab" id="projCookie">
                     <div class="project-image-placeholder">
-                        <img src="images/Screenshot 2026-04-11 170024.png" alt="IPL Analysis Dashboard" loading="lazy">
+                        <img src="images/Screenshot 2026-04-14 132701.png" alt="Global Cookie Sales Performance Tableau" loading="lazy">
+                        <div class="mockup-glare"></div>
                     </div>
-                    <span class="tag"><i class="fa-solid fa-table-columns"></i> Tableau</span>
-                    <h3>IPL Analysis Dashboard</h3>
-                    <ul class="project-bullets">
-                        <li>Historical cricket stats and predictive outcome analysis for IPL.</li>
-                        <li>Delivered actionable insights for strategic decision making.</li>
-                    </ul>
+                    <div class="proj-card-body">
+                        <span class="tag tag-tab"><i class="fa-solid fa-table-columns"></i> Tableau // Model C-SLES</span>
+                        <h3>Global Cookie Sales Tracker</h3>
+                        <ul class="project-bullets">
+                            <li><strong>Objective:</strong> Consumer goods market analytics with regional sales indicators.</li>
+                            <li><strong>Performance Specs:</strong> Bubble map coordinates tracking international profit.</li>
+                            <li><strong>Telemetry:</strong> Clean visual formatting with custom colorways.</li>
+                        </ul>
+                        <div class="proj-hud-specs">
+                            <span>DATA SIZE: 20K+</span>
+                            <span>ROI INDICATOR: HIGH</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="project-card bento-item">
+
+                <!-- Project 6: IPL Analysis (Tableau) -->
+                <div class="project-card bento-item filter-tab" id="projIPL">
                     <div class="project-image-placeholder">
-                        <img src="images/Screenshot 2026-04-11 102327.png" alt="Netflix Content Analysis" loading="lazy">
+                        <img src="images/Screenshot 2026-04-11 170024.png" alt="IPL Cricket Match Stats Tableau" loading="lazy">
+                        <div class="mockup-glare"></div>
                     </div>
-                    <span class="tag"><i class="fa-solid fa-table-columns"></i> Tableau</span>
-                    <h3>Netflix Content Analysis</h3>
-                    <ul class="project-bullets">
-                        <li>Exploring streaming trends, genre distribution, and global reach.</li>
-                        <li>Delivered actionable insights for strategic decision making.</li>
-                    </ul>
+                    <div class="proj-card-body">
+                        <span class="tag tag-tab"><i class="fa-solid fa-table-columns"></i> Tableau // Model IPL-C</span>
+                        <h3>IPL Historical Match Analytics</h3>
+                        <ul class="project-bullets">
+                            <li><strong>Objective:</strong> Indian Premier League cricket statistics and victory forecasting.</li>
+                            <li><strong>Performance Specs:</strong> Pitch-by-pitch metrics, bat speed charts, and victory graphs.</li>
+                            <li><strong>Telemetry:</strong> Designed drill-down actions for individual player cards.</li>
+                        </ul>
+                        <div class="proj-hud-specs">
+                            <span>DATA SIZE: 15K+</span>
+                            <span>SPEED: MAX</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="project-card bento-item">
+
+                <!-- Project 7: Netflix Content (Tableau) -->
+                <div class="project-card bento-item filter-tab" id="projNetflix">
                     <div class="project-image-placeholder">
-                        <img src="images/Screenshot 2026-04-17 143121.png" alt="Telco Customer Churn Insights" loading="lazy">
+                        <img src="images/Screenshot 2026-04-11 102327.png" alt="Netflix Streaming Content Tableau" loading="lazy">
+                        <div class="mockup-glare"></div>
                     </div>
-                    <span class="tag">Tableau</span>
-                    <h3>Telco Customer Churn Insights</h3>
-                    <ul class="project-bullets">
-                        <li>Predictive modeling and analysis of subscriber retention metrics.</li>
-                        <li>Delivered actionable insights for strategic decision making.</li>
-                    </ul>
+                    <div class="proj-card-body">
+                        <span class="tag tag-tab"><i class="fa-solid fa-table-columns"></i> Tableau // Model N-FLX</span>
+                        <h3>Netflix Content Trends Engine</h3>
+                        <ul class="project-bullets">
+                            <li><strong>Objective:</strong> Analyzing global release years, genres, and geographic distributions.</li>
+                            <li><strong>Performance Specs:</strong> Trend indicators forecasting the rise of international shows.</li>
+                            <li><strong>Telemetry:</strong> Word-cloud visualization mapping prevalent tags.</li>
+                        </ul>
+                        <div class="proj-hud-specs">
+                            <span>DATA SIZE: 8K+</span>
+                            <span>DEPTH: EXTREME</span>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- Project 8: Telco Churn (Tableau) -->
+                <div class="project-card bento-item filter-tab" id="projChurn">
+                    <div class="project-image-placeholder">
+                        <img src="images/Screenshot 2026-04-17 143121.png" alt="Telco Customer Churn Insights Tableau" loading="lazy">
+                        <div class="mockup-glare"></div>
+                    </div>
+                    <div class="proj-card-body">
+                        <span class="tag tag-tab"><i class="fa-solid fa-table-columns"></i> Tableau // Model T-CHRN</span>
+                        <h3>Telco Customer Churn Predictor</h3>
+                        <ul class="project-bullets">
+                            <li><strong>Objective:</strong> Predictive analytics on subscriber metrics to reduce customer loss.</li>
+                            <li><strong>Performance Specs:</strong> Risk-assessment scores based on active usage variables.</li>
+                            <li><strong>Telemetry:</strong> Combined cohort analysis with interactive filters.</li>
+                        </ul>
+                        <div class="proj-hud-specs">
+                            <span>DATA SIZE: 7K+</span>
+                            <span>VALUE DETECTED: HIGH</span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
 
-
-        <section id="github-repos">
+        <!-- Open Source GitHub repositories -->
+        <section id="github-repos" class="reveal-on-scroll">
             <div class="section-head">
-                <p>Open Source</p>
-                <h2>GitHub Repositories</h2>
+                <p><i class="fa-solid fa-code-fork"></i> REPOSITORY FLEET</p>
+                <h2>Active GitHub Engine Builds</h2>
             </div>
-            <div class="bento-grid">
+            
+            <div class="github-repos-container">
+                
+                <!-- Repo 1 -->
+                <div class="repo-card-lite">
+                    <div class="repo-header">
+                        <span class="repo-icon"><i class="fa-brands fa-html5"></i></span>
+                        <span class="repo-tag">Web UI</span>
+                    </div>
+                    <h3>Amazon Clone Website</h3>
+                    <p>Clean interactive layout mimicking Amazon interfaces. Built for CSS positioning mastery.</p>
+                    <a href="https://github.com/as04-CyberNova/Amazon_Clone_Website" target="_blank" class="repo-link">
+                        View Repository <i class="fa-brands fa-github"></i>
+                    </a>
+                </div>
+                
+                <!-- Repo 2 -->
+                <div class="repo-card-lite">
+                    <div class="repo-header">
+                        <span class="repo-icon"><i class="fa-solid fa-c"></i></span>
+                        <span class="repo-tag">C Programming</span>
+                    </div>
+                    <h3>C Programming Practice</h3>
+                    <p>Relentless practice scripts covering logical algorithms, data structures, and pointer math.</p>
+                    <a href="https://github.com/as04-CyberNova/C-Programming-Practice" target="_blank" class="repo-link">
+                        View Repository <i class="fa-brands fa-github"></i>
+                    </a>
+                </div>
 
-                <div class="project-card bento-item"
-                    style="grid-column: span 4; padding: 2rem !important; display: flex; flex-direction: column; justify-content: space-between; min-height: 260px;">
-                    <div>
-                        <span class="tag" style="margin-bottom: 1rem;"><i class="fa-brands fa-html5"></i> Web UI</span>
-                        <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">Amazon Clone Website</h3>
-                        <p style="color: var(--text-body); font-size: 0.95rem; margin-bottom: 1.5rem;">Open source
-                            project repository available on GitHub.</p>
+                <!-- Repo 3 -->
+                <div class="repo-card-lite">
+                    <div class="repo-header">
+                        <span class="repo-icon"><i class="fa-brands fa-html5"></i></span>
+                        <span class="repo-tag">Web UI</span>
                     </div>
-                    <a href="https://github.com/as04-CyberNova/Amazon_Clone_Website" target="_blank"
-                        style="color: var(--accent); text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 0.5rem; width: fit-content; padding: 0.5rem 0;">View
-                        Repository <i class="fa-brands fa-github"></i></a>
+                    <h3>College Projects</h3>
+                    <p>Compilation of custom academic front-ends, logic challenges, and team assignments.</p>
+                    <a href="https://github.com/as04-CyberNova/College-projects" target="_blank" class="repo-link">
+                        View Repository <i class="fa-brands fa-github"></i>
+                    </a>
                 </div>
-                <div class="project-card bento-item"
-                    style="grid-column: span 4; padding: 2rem !important; display: flex; flex-direction: column; justify-content: space-between; min-height: 260px;">
-                    <div>
-                        <span class="tag" style="margin-bottom: 1rem;"><i class="fa-solid fa-c"></i> C</span>
-                        <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">C Programming Practice</h3>
-                        <p style="color: var(--text-body); font-size: 0.95rem; margin-bottom: 1.5rem;">Open source
-                            project repository available on GitHub.</p>
+
+                <!-- Repo 4 -->
+                <div class="repo-card-lite">
+                    <div class="repo-header">
+                        <span class="repo-icon"><i class="fa-brands fa-html5"></i></span>
+                        <span class="repo-tag">Web UI</span>
                     </div>
-                    <a href="https://github.com/as04-CyberNova/C-Programming-Practice" target="_blank"
-                        style="color: var(--accent); text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 0.5rem; width: fit-content; padding: 0.5rem 0;">View
-                        Repository <i class="fa-brands fa-github"></i></a>
+                    <h3>College ERP Website</h3>
+                    <p>Academic resource planner with user flows, database portals, and detailed administrative forms.</p>
+                    <a href="https://github.com/as04-CyberNova/College_Erp_Website" target="_blank" class="repo-link">
+                        View Repository <i class="fa-brands fa-github"></i>
+                    </a>
                 </div>
-                <div class="project-card bento-item"
-                    style="grid-column: span 4; padding: 2rem !important; display: flex; flex-direction: column; justify-content: space-between; min-height: 260px;">
-                    <div>
-                        <span class="tag" style="margin-bottom: 1rem;"><i class="fa-brands fa-html5"></i> Web UI</span>
-                        <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">College projects</h3>
-                        <p style="color: var(--text-body); font-size: 0.95rem; margin-bottom: 1.5rem;">Open source
-                            project repository available on GitHub.</p>
+
+                <!-- Repo 5 -->
+                <div class="repo-card-lite">
+                    <div class="repo-header">
+                        <span class="repo-icon"><i class="fa-brands fa-html5"></i></span>
+                        <span class="repo-tag">Web UI</span>
                     </div>
-                    <a href="https://github.com/as04-CyberNova/College-projects" target="_blank"
-                        style="color: var(--accent); text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 0.5rem; width: fit-content; padding: 0.5rem 0;">View
-                        Repository <i class="fa-brands fa-github"></i></a>
+                    <h3>E-Commerce Website EZ</h3>
+                    <p>Clean shop structure with search filtering, pricing logic, cart layouts, and visual checkouts.</p>
+                    <a href="https://github.com/as04-CyberNova/E-Commerce-Website-EZ-" target="_blank" class="repo-link">
+                        View Repository <i class="fa-brands fa-github"></i>
+                    </a>
                 </div>
-                <div class="project-card bento-item"
-                    style="grid-column: span 4; padding: 2rem !important; display: flex; flex-direction: column; justify-content: space-between; min-height: 260px;">
-                    <div>
-                        <span class="tag" style="margin-bottom: 1rem;"><i class="fa-brands fa-html5"></i> Web UI</span>
-                        <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">College Erp Website</h3>
-                        <p style="color: var(--text-body); font-size: 0.95rem; margin-bottom: 1.5rem;">Open source
-                            project repository available on GitHub.</p>
+
+                <!-- Repo 6 -->
+                <div class="repo-card-lite">
+                    <div class="repo-header">
+                        <span class="repo-icon"><i class="fa-brands fa-html5"></i></span>
+                        <span class="repo-tag">Web UI</span>
                     </div>
-                    <a href="https://github.com/as04-CyberNova/College_Erp_Website" target="_blank"
-                        style="color: var(--accent); text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 0.5rem; width: fit-content; padding: 0.5rem 0;">View
-                        Repository <i class="fa-brands fa-github"></i></a>
+                    <h3>Login Form</h3>
+                    <p>Polished, highly responsive CSS login panel with security warnings, and micro-transitions.</p>
+                    <a href="https://github.com/as04-CyberNova/Login_Form" target="_blank" class="repo-link">
+                        View Repository <i class="fa-brands fa-github"></i>
+                    </a>
                 </div>
-                <div class="project-card bento-item"
-                    style="grid-column: span 4; padding: 2rem !important; display: flex; flex-direction: column; justify-content: space-between; min-height: 260px;">
-                    <div>
-                        <span class="tag" style="margin-bottom: 1rem;"><i class="fa-brands fa-html5"></i> Web UI</span>
-                        <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">E Commerce Website EZ </h3>
-                        <p style="color: var(--text-body); font-size: 0.95rem; margin-bottom: 1.5rem;">Open source
-                            project repository available on GitHub.</p>
+
+                <!-- Repo 7 -->
+                <div class="repo-card-lite">
+                    <div class="repo-header">
+                        <span class="repo-icon"><i class="fa-brands fa-html5"></i></span>
+                        <span class="repo-tag">Web UI</span>
                     </div>
-                    <a href="https://github.com/as04-CyberNova/E-Commerce-Website-EZ-" target="_blank"
-                        style="color: var(--accent); text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 0.5rem; width: fit-content; padding: 0.5rem 0;">View
-                        Repository <i class="fa-brands fa-github"></i></a>
+                    <h3>Login Form Redesigned</h3>
+                    <p>Glassmorphic interface overlay featuring animated security validation states.</p>
+                    <a href="https://github.com/as04-CyberNova/Login_Form_Redesigned" target="_blank" class="repo-link">
+                        View Repository <i class="fa-brands fa-github"></i>
+                    </a>
                 </div>
-                <div class="project-card bento-item"
-                    style="grid-column: span 4; padding: 2rem !important; display: flex; flex-direction: column; justify-content: space-between; min-height: 260px;">
-                    <div>
-                        <span class="tag" style="margin-bottom: 1rem;"><i class="fa-brands fa-html5"></i> Web UI</span>
-                        <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">Login Form</h3>
-                        <p style="color: var(--text-body); font-size: 0.95rem; margin-bottom: 1.5rem;">Open source
-                            project repository available on GitHub.</p>
+
+                <!-- Repo 8 -->
+                <div class="repo-card-lite">
+                    <div class="repo-header">
+                        <span class="repo-icon"><i class="fa-brands fa-html5"></i></span>
+                        <span class="repo-tag">Web UI</span>
                     </div>
-                    <a href="https://github.com/as04-CyberNova/Login_Form" target="_blank"
-                        style="color: var(--accent); text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 0.5rem; width: fit-content; padding: 0.5rem 0;">View
-                        Repository <i class="fa-brands fa-github"></i></a>
+                    <h3>Personal Portfolio Old</h3>
+                    <p>Historical, early versions of the layout mapping the evolution of Abhyudaya's UI engine.</p>
+                    <a href="https://github.com/as04-CyberNova/Personal_Portfolio_Website_Old" target="_blank" class="repo-link">
+                        View Repository <i class="fa-brands fa-github"></i>
+                    </a>
                 </div>
-                <div class="project-card bento-item"
-                    style="grid-column: span 4; padding: 2rem !important; display: flex; flex-direction: column; justify-content: space-between; min-height: 260px;">
-                    <div>
-                        <span class="tag" style="margin-bottom: 1rem;"><i class="fa-brands fa-html5"></i> Web UI</span>
-                        <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">Login Form Redesigned</h3>
-                        <p style="color: var(--text-body); font-size: 0.95rem; margin-bottom: 1.5rem;">Open source
-                            project repository available on GitHub.</p>
+
+                <!-- Repo 9 -->
+                <div class="repo-card-lite">
+                    <div class="repo-header">
+                        <span class="repo-icon"><i class="fa-brands fa-html5"></i></span>
+                        <span class="repo-tag">Web UI</span>
                     </div>
-                    <a href="https://github.com/as04-CyberNova/Login_Form_Redesigned" target="_blank"
-                        style="color: var(--accent); text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 0.5rem; width: fit-content; padding: 0.5rem 0;">View
-                        Repository <i class="fa-brands fa-github"></i></a>
+                    <h3>Portfolio Website Updated</h3>
+                    <p>The core framework powering this premium high-performance landing architecture.</p>
+                    <a href="https://github.com/as04-CyberNova/Personal_Portfolio_Website_Updated" target="_blank" class="repo-link">
+                        View Repository <i class="fa-brands fa-github"></i>
+                    </a>
                 </div>
-                <div class="project-card bento-item"
-                    style="grid-column: span 4; padding: 2rem !important; display: flex; flex-direction: column; justify-content: space-between; min-height: 260px;">
-                    <div>
-                        <span class="tag" style="margin-bottom: 1rem;"><i class="fa-brands fa-html5"></i> Web UI</span>
-                        <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">Personal Portfolio Website Old</h3>
-                        <p style="color: var(--text-body); font-size: 0.95rem; margin-bottom: 1.5rem;">Open source
-                            project repository available on GitHub.</p>
+
+                <!-- Repo 10 -->
+                <div class="repo-card-lite">
+                    <div class="repo-header">
+                        <span class="repo-icon"><i class="fa-brands fa-html5"></i></span>
+                        <span class="repo-tag">Web UI</span>
                     </div>
-                    <a href="https://github.com/as04-CyberNova/Personal_Portfolio_Website_Old" target="_blank"
-                        style="color: var(--accent); text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 0.5rem; width: fit-content; padding: 0.5rem 0;">View
-                        Repository <i class="fa-brands fa-github"></i></a>
+                    <h3>Responsive Landing Page</h3>
+                    <p>Sleek, fluid CSS landing page testing elastic flex layouts and multi-breakpoint scaling.</p>
+                    <a href="https://github.com/as04-CyberNova/Responsive_Landing_Page" target="_blank" class="repo-link">
+                        View Repository <i class="fa-brands fa-github"></i>
+                    </a>
                 </div>
-                <div class="project-card bento-item"
-                    style="grid-column: span 4; padding: 2rem !important; display: flex; flex-direction: column; justify-content: space-between; min-height: 260px;">
-                    <div>
-                        <span class="tag" style="margin-bottom: 1rem;"><i class="fa-brands fa-html5"></i> Web UI</span>
-                        <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">Personal Portfolio Website Updated</h3>
-                        <p style="color: var(--text-body); font-size: 0.95rem; margin-bottom: 1.5rem;">Open source
-                            project repository available on GitHub.</p>
+
+                <!-- Repo 11 -->
+                <div class="repo-card-lite">
+                    <div class="repo-header">
+                        <span class="repo-icon"><i class="fa-brands fa-python"></i></span>
+                        <span class="repo-tag">ML Python</span>
                     </div>
-                    <a href="https://github.com/as04-CyberNova/Personal_Portfolio_Website_Updated" target="_blank"
-                        style="color: var(--accent); text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 0.5rem; width: fit-content; padding: 0.5rem 0;">View
-                        Repository <i class="fa-brands fa-github"></i></a>
+                    <h3>Spam Detector System</h3>
+                    <p>Jupyter workflow using NLP vectorizers to classify, parse, and block spam indicators.</p>
+                    <a href="https://github.com/as04-CyberNova/Spam_Detector_System" target="_blank" class="repo-link">
+                        View Repository <i class="fa-brands fa-github"></i>
+                    </a>
                 </div>
-                <div class="project-card bento-item"
-                    style="grid-column: span 4; padding: 2rem !important; display: flex; flex-direction: column; justify-content: space-between; min-height: 260px;">
-                    <div>
-                        <span class="tag" style="margin-bottom: 1rem;"><i class="fa-brands fa-html5"></i> Web UI</span>
-                        <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">Responsive Landing Page</h3>
-                        <p style="color: var(--text-body); font-size: 0.95rem; margin-bottom: 1.5rem;">Open source
-                            project repository available on GitHub.</p>
+
+                <!-- Repo 12 -->
+                <div class="repo-card-lite">
+                    <div class="repo-header">
+                        <span class="repo-icon"><i class="fa-brands fa-html5"></i></span>
+                        <span class="repo-tag">Web UI</span>
                     </div>
-                    <a href="https://github.com/as04-CyberNova/Responsive_Landing_Page" target="_blank"
-                        style="color: var(--accent); text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 0.5rem; width: fit-content; padding: 0.5rem 0;">View
-                        Repository <i class="fa-brands fa-github"></i></a>
+                    <h3>Student Dashboard Portal</h3>
+                    <p>ERP panel mapping attendance, grades, and records in an easy-to-use HUD format.</p>
+                    <a href="https://github.com/as04-CyberNova/Student_Dashboard_Portal" target="_blank" class="repo-link">
+                        View Repository <i class="fa-brands fa-github"></i>
+                    </a>
                 </div>
-                <div class="project-card bento-item"
-                    style="grid-column: span 4; padding: 2rem !important; display: flex; flex-direction: column; justify-content: space-between; min-height: 260px;">
-                    <div>
-                        <span class="tag" style="margin-bottom: 1rem;"><i class="fa-brands fa-python"></i>
-                            Jupyter/Python</span>
-                        <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">Spam Detector System</h3>
-                        <p style="color: var(--text-body); font-size: 0.95rem; margin-bottom: 1.5rem;">Open source
-                            project repository available on GitHub.</p>
+
+                <!-- Repo 13 -->
+                <div class="repo-card-lite">
+                    <div class="repo-header">
+                        <span class="repo-icon"><i class="fa-brands fa-html5"></i></span>
+                        <span class="repo-tag">Web UI</span>
                     </div>
-                    <a href="https://github.com/as04-CyberNova/Spam_Detector_System" target="_blank"
-                        style="color: var(--accent); text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 0.5rem; width: fit-content; padding: 0.5rem 0;">View
-                        Repository <i class="fa-brands fa-github"></i></a>
+                    <h3>Student Dashboard UI</h3>
+                    <p>Clean dashboard grids featuring custom visual charts and administrative control keys.</p>
+                    <a href="https://github.com/as04-CyberNova/Student_Dashboard_UI" target="_blank" class="repo-link">
+                        View Repository <i class="fa-brands fa-github"></i>
+                    </a>
                 </div>
-                <div class="project-card bento-item"
-                    style="grid-column: span 4; padding: 2rem !important; display: flex; flex-direction: column; justify-content: space-between; min-height: 260px;">
-                    <div>
-                        <span class="tag" style="margin-bottom: 1rem;"><i class="fa-brands fa-html5"></i> Web UI</span>
-                        <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">Student Dashboard Portal</h3>
-                        <p style="color: var(--text-body); font-size: 0.95rem; margin-bottom: 1.5rem;">Open source
-                            project repository available on GitHub.</p>
+
+                <!-- Repo 14 -->
+                <div class="repo-card-lite">
+                    <div class="repo-header">
+                        <span class="repo-icon"><i class="fa-brands fa-python"></i></span>
+                        <span class="repo-tag">ML Python</span>
                     </div>
-                    <a href="https://github.com/as04-CyberNova/Student_Dashboard_Portal" target="_blank"
-                        style="color: var(--accent); text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 0.5rem; width: fit-content; padding: 0.5rem 0;">View
-                        Repository <i class="fa-brands fa-github"></i></a>
+                    <h3>Titanic Survival Dashboard</h3>
+                    <p>Predictive analysis of historical passenger lists. Models survivability based on custom attributes.</p>
+                    <a href="https://github.com/as04-CyberNova/Titanic_Survival_Dashboard_Project" target="_blank" class="repo-link">
+                        View Repository <i class="fa-brands fa-github"></i>
+                    </a>
                 </div>
-                <div class="project-card bento-item"
-                    style="grid-column: span 4; padding: 2rem !important; display: flex; flex-direction: column; justify-content: space-between; min-height: 260px;">
-                    <div>
-                        <span class="tag" style="margin-bottom: 1rem;"><i class="fa-brands fa-html5"></i> Web UI</span>
-                        <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">Student Dashboard UI</h3>
-                        <p style="color: var(--text-body); font-size: 0.95rem; margin-bottom: 1.5rem;">Open source
-                            project repository available on GitHub.</p>
-                    </div>
-                    <a href="https://github.com/as04-CyberNova/Student_Dashboard_UI" target="_blank"
-                        style="color: var(--accent); text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 0.5rem; width: fit-content; padding: 0.5rem 0;">View
-                        Repository <i class="fa-brands fa-github"></i></a>
-                </div>
-                <div class="project-card bento-item"
-                    style="grid-column: span 4; padding: 2rem !important; display: flex; flex-direction: column; justify-content: space-between; min-height: 260px;">
-                    <div>
-                        <span class="tag" style="margin-bottom: 1rem;"><i class="fa-brands fa-python"></i>
-                            Jupyter/Python</span>
-                        <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">Titanic Survival Dashboard Project</h3>
-                        <p style="color: var(--text-body); font-size: 0.95rem; margin-bottom: 1.5rem;">Open source
-                            project repository available on GitHub.</p>
-                    </div>
-                    <a href="https://github.com/as04-CyberNova/Titanic_Survival_Dashboard_Project" target="_blank"
-                        style="color: var(--accent); text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 0.5rem; width: fit-content; padding: 0.5rem 0;">View
-                        Repository <i class="fa-brands fa-github"></i></a>
-                </div>
+
             </div>
         </section>
 
-        <section id="contact">
-            <div class="bento-item" style="width: 100%; max-width: 800px; margin: auto; text-align: center;">
-                <h2>Start a Project</h2>
-                <p style="margin-bottom: 2rem;">Interested in a data-driven collaboration? Let's connect and build
-                    something remarkable.</p>
+        <!-- New Recruiter Section: The ATS & Recruiter Cockpit (Fully SELECTABLE & ATS friendly) -->
+        <section id="recruiter-cockpit" class="reveal-on-scroll">
+            <div class="section-head">
+                <p><i class="fa-solid fa-heart-pulse"></i> HIGH ACCESS MODE</p>
+                <h2>ATS & Recruiter Control Center</h2>
+            </div>
+            
+            <div class="recruiter-cockpit-grid">
+                
+                <!-- Left Pane: Recruiter Tools & Copy Command HUD -->
+                <div class="recruiter-control-panel bento-item">
+                    <span class="tag tag-ats"><i class="fa-solid fa-circle-check"></i> ATS LEVEL: GREEN</span>
+                    <h3>Recruiter Launchpad</h3>
+                    <p class="panel-desc">Quickly pull credentials, copy keyword-rich summaries directly, and download clean files.</p>
+                    
+                    <div class="ats-action-grid">
+                        
+                        <div class="ats-action-card">
+                            <span class="action-title"><i class="fa-solid fa-copy"></i> Tech Stack Tags</span>
+                            <p class="action-desc">Copy all tech keywords to paste into your tracking portal.</p>
+                            <button class="hud-copy-btn" id="copyTechBtn" data-copy="Python, SQL, Tableau, Power BI, Excel Analytics, Machine Learning, Java, JavaScript, GitHub, VS Code, Relational Databases, DAX, Data Warehousing">
+                                <i class="fa-solid fa-clone"></i> COPY ALL KEYWORDS
+                            </button>
+                        </div>
+                        
+                        <div class="ats-action-card">
+                            <span class="action-title"><i class="fa-solid fa-copy"></i> Contact Telemetry</span>
+                            <p class="action-desc">Instantly copy email address for calendar invites.</p>
+                            <button class="hud-copy-btn" id="copyEmailBtn" data-copy="abhyudayasinha04@gmail.com">
+                                <i class="fa-solid fa-envelope"></i> COPY EMAIL ADDRESS
+                            </button>
+                        </div>
+                        
+                        <div class="ats-action-card" style="grid-column: span 2;">
+                            <span class="action-title"><i class="fa-solid fa-file-pdf"></i> Printable Document</span>
+                            <p class="action-desc">Download a standardized, parseable clean resume layout in PDF format.</p>
+                            <a href="AbhyudayaSinha Resume.pdf" download="Abhyudaya_Sinha_Resume.pdf" class="hud-download-btn" id="downloadResumeBtn">
+                                <i class="fa-solid fa-file-arrow-down"></i> DOWNLOAD ATS RESUME (PDF)
+                            </a>
+                        </div>
+                        
+                    </div>
+
+                    <div class="ats-metric-hud">
+                        <div class="metric-row">
+                            <span>RECRUITER SCAN:</span>
+                            <span class="val">APPROVED 💖</span>
+                        </div>
+                        <div class="metric-row">
+                            <span>COGNITIVE MATCH:</span>
+                            <span class="val">98% OPTIMAL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Pane: Selectable Standard ATS Resume Paper -->
+                <div class="selectable-resume-container bento-item">
+                    <div class="resume-paper-header">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                        <span class="resume-hud-indicator"><i class="fa-solid fa-i-cursor"></i> TEXT HIGHLIGHTABLE FOR ATS SCANNER</span>
+                    </div>
+                    
+                    <div class="resume-paper" id="atsResumePaper">
+                        <!-- Standard structured semantic layout for flawless ATS parsing -->
+                        <div class="resume-header text-center">
+                            <h1 class="resume-name">ABHYUDAYA SINHA</h1>
+                            <p class="resume-sub">Data Scientist & High-Performance Analyst</p>
+                            <p class="resume-contacts">
+                                <span class="contact-item"><i class="fa-solid fa-envelope"></i> abhyudayasinha04@gmail.com</span> | 
+                                <span class="contact-item"><i class="fa-brands fa-github"></i> github.com/as04-CyberNova</span> | 
+                                <span class="contact-item"><i class="fa-brands fa-linkedin"></i> linkedin.com/in/abhyudaya-sinha-7035a8373</span>
+                            </p>
+                        </div>
+                        
+                        <hr class="resume-divider">
+                        
+                        <div class="resume-section">
+                            <h2 class="resume-section-title">PROFESSIONAL SUMMARY</h2>
+                            <p class="resume-text">
+                                Highly analytical and versatile Data Science student specializing in extracting high-octane insights, running predictive modeling, and designing beautiful digital dashboards. Proven capability in Python pipelines, SQL database structures, and advanced visual telemetry using Power BI and Tableau. Passionate about linking core business needs to predictive, data-driven decisions.
+                            </p>
+                        </div>
+                        
+                        <div class="resume-section">
+                            <h2 class="resume-section-title">TECHNICAL SKILLS</h2>
+                            <ul class="resume-skills-list">
+                                <li><strong>Analytics & BI:</strong> Tableau Analytics, Power BI Dashboards, Advanced Excel, DAX, Power Query</li>
+                                <li><strong>Languages & Logic:</strong> Python (Pandas, NumPy, Scikit-Learn), SQL, Java, JavaScript, HTML, CSS</li>
+                                <li><strong>Systems & Tools:</strong> GitHub, VS Code, Git Repository Control, Relational Databases</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="resume-section">
+                            <h2 class="resume-section-title">ACADEMIC & PROFESSIONAL HISTORY</h2>
+                            
+                            <div class="resume-job">
+                                <div class="job-header">
+                                    <span class="job-title"><strong>Data Science Student & ML Specialist</strong></span>
+                                    <span class="job-date">Present</span>
+                                </div>
+                                <p class="job-company">Academic Focus & Independent Models</p>
+                                <ul class="job-bullets">
+                                    <li>Architected predictive algorithms in Python, analyzing multivariate datasets to forecast trends with high precision.</li>
+                                    <li>Built advanced relational database queries in SQL to index, filter, and extract targeted operational data.</li>
+                                    <li>Analyzed multiple data vectors, performing regression and text classification tests for NLP spam blocking systems.</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="resume-job">
+                                <div class="job-header">
+                                    <span class="job-title"><strong>Creative Web UI Architect</strong></span>
+                                    <span class="job-date">2025</span>
+                                </div>
+                                <p class="job-company">High-Fidelity Dashboard front-ends</p>
+                                <ul class="job-bullets">
+                                    <li>Engineered custom responsive interfaces utilizing smooth scroll triggers, complex CSS animations, and variable-driven layout options.</li>
+                                    <li>Maintained full codebase version controls on GitHub, managing multiple builds and deploying structured, mobile-ready portals.</li>
+                                    <li>Structured semantic HTML codes to maintain 100% accessible compliance and friendly search engine indexing.</li>
+                                </ul>
+                            </div>
+
+                            <div class="resume-job">
+                                <div class="job-header">
+                                    <span class="job-title"><strong>Data Analyst</strong></span>
+                                    <span class="job-date">2024</span>
+                                </div>
+                                <p class="job-company">Collaborative Business Intel Projects</p>
+                                <ul class="job-bullets">
+                                    <li>Collaborated in agile cross-functional sprints, matching data points to stakeholder metrics.</li>
+                                    <li>Configured 8+ interactive, advanced dashboards (Power BI & Tableau), reducing report extraction times for managers.</li>
+                                    <li>Mapped epidemiological COVID-19 graphs and customer churn variables to uncover subscriber risk indices.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="resume-section">
+                            <h2 class="resume-section-title">FEATURED CASE STUDIES</h2>
+                            <ul class="resume-projects-list">
+                                <li><strong>Hospital Patient Record Analysis:</strong> Structured administrative record-tracking in Power BI, delivering high-impact operational metrics for hospital planners.</li>
+                                <li><strong>Pokémon Stats Analyzer:</strong> Visualized combat telemetry and stats comparisons in Tableau using complex dual-axis graphing layouts.</li>
+                                <li><strong>Telco Subscriber Churn Predictor:</strong> Engineered predictive metrics in Tableau to monitor subscriber loss vectors and retain accounts.</li>
+                            </ul>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+
+        <!-- Porsche-style Vehicle Configurator Contact Form (Reserve a Test Drive) -->
+        <section id="contact" class="reveal-on-scroll">
+            <div class="bento-item configurator-form-box" style="width: 100%; max-width: 900px; margin: auto;">
+                <div class="hud-form-header">
+                    <span class="form-badge"><i class="fa-solid fa-rocket"></i> RESERVATION LINE</span>
+                    <h2>Configure Your Collaboration Run</h2>
+                    <p>Select your operational parameters below and submit to initiate our partnership drive.</p>
+                </div>
+                
                 <form id="contactForm" class="contact-form">
-                    <div class="input-group">
-                        <i class="fa-solid fa-user input-icon"></i>
-                        <input type="text" placeholder="Full Name" required>
+                    
+                    <!-- Form Step 1: Collaboration model selector -->
+                    <div class="config-step-group">
+                        <label class="config-label"><i class="fa-solid fa-gears"></i> 1. SELECT COLLABORATION PACKAGE</label>
+                        <div class="package-selector-grid">
+                            <button type="button" class="pack-opt-btn active" data-pack="Full-Time Drive">
+                                <span class="pack-title">FULL-TIME RUN</span>
+                                <span class="pack-desc">Core Engineering // 40h/week</span>
+                            </button>
+                            <button type="button" class="pack-opt-btn" data-pack="Internship Race">
+                                <span class="pack-title">INTERNSHIP RACE</span>
+                                <span class="pack-desc">Summer/Fall 2026 Shift</span>
+                            </button>
+                            <button type="button" class="pack-opt-btn" data-pack="Freelance Tuning">
+                                <span class="pack-title">FREELANCE TUNING</span>
+                                <span class="pack-desc">Custom dashboard builds</span>
+                            </button>
+                            <button type="button" class="pack-opt-btn" data-pack="Quick Connect">
+                                <span class="pack-title">QUICK TELEMETRY</span>
+                                <span class="pack-desc">General networking check</span>
+                            </button>
+                        </div>
+                        <input type="hidden" name="collaboration_pack" id="collaborationPackInput" value="Full-Time Drive">
                     </div>
-                    <div class="input-group">
-                        <i class="fa-solid fa-envelope input-icon"></i>
-                        <input type="email" placeholder="Email Address" required>
+                    
+                    <!-- Form Step 2: Pilot Telemetry -->
+                    <div class="config-step-group">
+                        <label class="config-label"><i class="fa-solid fa-user-gear"></i> 2. INPUT PILOT INFORMATION</label>
+                        <div class="dual-inputs-grid">
+                            <div class="input-group">
+                                <i class="fa-solid fa-user input-icon"></i>
+                                <input type="text" id="pilotName" placeholder="Pilot Name" required>
+                            </div>
+                            <div class="input-group">
+                                <i class="fa-solid fa-envelope input-icon"></i>
+                                <input type="email" id="pilotEmail" placeholder="Pilot Email Address" required>
+                            </div>
+                        </div>
                     </div>
-                    <div class="input-group">
-                        <i class="fa-solid fa-pen-nib input-icon"></i>
-                        <textarea placeholder="Your Message" required></textarea>
+                    
+                    <!-- Form Step 3: Message parameters -->
+                    <div class="config-step-group">
+                        <label class="config-label"><i class="fa-solid fa-comments"></i> 3. TRANSMIT FLIGHT PARAMETERS</label>
+                        <div class="input-group">
+                            <i class="fa-solid fa-pen-nib input-icon"></i>
+                            <textarea id="pilotMessage" placeholder="Specify mission specs, questions, or invite parameters here..." required></textarea>
+                        </div>
                     </div>
-                    <button type="submit" class="btn-primary" id="submit-btn">Send Message</button>
+                    
+                    <button type="submit" class="btn-primary" id="submit-btn"><i class="fa-solid fa-paper-plane"></i> INITIATE LAUNCH CONTROL</button>
                     <div id="formStatus" class="form-status"></div>
                 </form>
             </div>
         </section>
     </main>
 
+    <!-- Footer -->
     <footer>
-        <p>© 2025 Abhyudaya Sinha | Crafted with <i class="fa-solid fa-heart"
-                style="color: var(--accent); margin: 0 5px;"></i> Precision</p>
+        <div class="footer-hud-grid">
+            <p>© 2026 Abhyudaya Sinha | Crafted with <i class="fa-solid fa-heart animate-pulse" style="color: var(--accent); margin: 0 5px;"></i> & Precision Engineering</p>
+        </div>
     </footer>
 
-    <!-- Motion Engine -->
+    <!-- CSS-based Kawaii Assistant Widget: Sparky 🌸 -->
+    <div class="sparky-assistant-widget" id="sparkyWidget">
+        <div class="sparky-chatbot-avatar" id="sparkyAvatar" title="Sparky 🌸 - Recruiter Assistant">
+            <div class="cute-cat-face">
+                <div class="cat-ear left"></div>
+                <div class="cat-ear right"></div>
+                <div class="cat-eye left">
+                    <span class="sparkle"></span>
+                </div>
+                <div class="cat-eye right">
+                    <span class="sparkle"></span>
+                </div>
+                <div class="cat-blushes">
+                    <span class="blush left"></span>
+                    <span class="blush right"></span>
+                </div>
+                <div class="cat-mouth">w</div>
+            </div>
+            <span class="sparky-notification-dot animate-ping"></span>
+        </div>
+        
+        <div class="sparky-chat-bubble" id="sparkyChatBubble">
+            <div class="chat-bubble-header">
+                <span>Sparky 🌸</span>
+                <button class="close-chat" id="closeSparkyChat" aria-label="Close Chat"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="chat-bubble-body">
+                <p class="sparky-msg">Hello recruiter! 🌸 I am Abhyudaya's virtual assistant! Click a telemetry scan question below so I can translate his credentials for you! Mew! 🏎️💨</p>
+                <div class="chat-preset-options">
+                    <button class="preset-btn" data-answer="active">Are you looking for internships? 🚀</button>
+                    <button class="preset-btn" data-answer="strengths">What are your top strengths? 💪</button>
+                    <button class="preset-btn" data-answer="fun">Do you have a fun fact? 🌸</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Motion Engine Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js" defer></script>
