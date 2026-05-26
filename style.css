@@ -294,7 +294,9 @@ body:hover .cursor-glow {
     bottom: 2.5rem;
     left: 2.5rem;
     z-index: 999;
-    background: rgba(var(--bg-darker), 0.8);
+    background: var(--bg-darker);
+    background: var(--bg-glass);
+    background-color: var(--bg-darker);
     backdrop-filter: blur(25px);
     border: 1px solid var(--glass-border);
     border-radius: 16px;
@@ -2032,7 +2034,9 @@ section {
 /* The Helper Dialog Chat Bubble */
 .sparky-chat-bubble {
     width: 320px;
-    background: rgba(var(--bg-darker), 0.95);
+    background: var(--bg-darker);
+    background: var(--bg-glass);
+    background-color: var(--bg-darker);
     backdrop-filter: blur(30px);
     border: 1px solid var(--glass-border);
     border-radius: 20px;
@@ -2147,9 +2151,9 @@ section {
 }
 
 .bot-msg .msg-bubble {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    color: var(--text-body);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #f1f5f9;
     border-top-left-radius: 2px;
 }
 
