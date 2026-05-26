@@ -1007,15 +1007,31 @@
         
         <div class="sparky-chat-bubble" id="sparkyChatBubble">
             <div class="chat-bubble-header">
-                <span>Sparky 🌸</span>
+                <span>Sparky 🌸 // COCKPIT AI</span>
                 <button class="close-chat" id="closeSparkyChat" aria-label="Close Chat"><i class="fa-solid fa-xmark"></i></button>
             </div>
             <div class="chat-bubble-body">
-                <p class="sparky-msg">Hello recruiter! 🌸 I am Abhyudaya's virtual assistant! Click a telemetry scan question below so I can translate his credentials for you! Mew! 🏎️💨</p>
-                <div class="chat-preset-options">
-                    <button class="preset-btn" data-answer="active">Are you looking for internships? 🚀</button>
-                    <button class="preset-btn" data-answer="strengths">What are your top strengths? 💪</button>
-                    <button class="preset-btn" data-answer="fun">Do you have a fun fact? 🌸</button>
+                <div class="chat-history" id="chatHistory">
+                    <!-- Default initial message -->
+                    <div class="chat-msg bot-msg">
+                        <span class="msg-avatar">🐱</span>
+                        <div class="msg-bubble">
+                            Hello! 🌸 I am Sparky, Abhyudaya's virtual cockpit copilot! Ask me anything about his skills, case studies, academic focus, or internship availability! Mew! 🏎️💨
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Compact Quick suggestions -->
+                <div class="chat-preset-options" id="chatPresets">
+                    <button class="preset-btn" data-query="Are you looking for internships?">Internships? 🚀</button>
+                    <button class="preset-btn" data-query="What are your top skills?">Top Skills? 💪</button>
+                    <button class="preset-btn" data-query="Tell me about your projects.">Case Studies? 📊</button>
+                </div>
+                
+                <!-- Chat Input area -->
+                <div class="chat-input-area">
+                    <input type="text" id="chatInput" placeholder="Ask about Abhyudaya..." autocomplete="off">
+                    <button id="sendChatBtn" aria-label="Send message"><i class="fa-solid fa-paper-plane"></i></button>
                 </div>
             </div>
         </div>
