@@ -1,4 +1,4 @@
-// Cinematic High-Performance Kawaii-Luxe Portfolio Engine 2026
+// Cinematic High-Performance Supercar Portfolio Engine 2026
 document.addEventListener('DOMContentLoaded', () => {
     
     // 1. Initialize Lenis Smooth Scroll
@@ -200,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             navigator.clipboard.writeText(textToCopy).then(() => {
                 btn.classList.add('copied');
-                btn.innerHTML = '<i class="fa-solid fa-square-check"></i> COPIED! 🏎️💨';
+                btn.innerHTML = '<i class="fa-solid fa-square-check"></i> COPIED!';
                 
                 // Show floating text indicator using GSAP
                 const rect = btn.getBoundingClientRect();
@@ -276,7 +276,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             if (formStatus) {
                 formStatus.style.display = 'flex';
-                formStatus.innerHTML = '<i class="fa-solid fa-satellite-dish animate-pulse"></i> TRANSMITTING FLIGHT DATA // SECURING ENGINE PATH... 🏎️';
+                formStatus.innerHTML = '<i class="fa-solid fa-satellite-dish animate-pulse"></i> TRANSMITTING FLIGHT DATA // SECURING ENGINE PATH...';
                 formStatus.className = 'form-status transmitting';
                 
                 gsap.fromTo(formStatus, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.5 });

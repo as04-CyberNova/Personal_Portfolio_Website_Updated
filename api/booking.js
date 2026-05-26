@@ -54,7 +54,7 @@ export default async function handler(req, res) {
         // 4. Return pristine locked telemetry confirmation
         return res.status(200).json({
             success: true,
-            message: "TELEMETRY SYNAPSE LOCKED // MISSION FLIGHT SECURED 🏎️💨",
+            message: "TELEMETRY SYNAPSE LOCKED // MISSION FLIGHT SECURED",
             timestamp: sanitizedPayload.timestamp
         });
 

@@ -1,6 +1,6 @@
 /* -------------------------------------------------------------------------- */
-/* THE HIGH-PERFORMANCE KAWAII-LUXE CSS ENGINE (style.css)                   */
-/* Inspired by Ferrari, Porsche, Lamborghini & Adorable Kawaii Accents       */
+/* THE HIGH-PERFORMANCE SUPERCAR TELEMETRY CSS ENGINE (style.css)             */
+/* Inspired by Ferrari, Porsche & Lamborghini High-Octane Aesthetics         */
 /* -------------------------------------------------------------------------- */
 
 :root {
@@ -463,36 +463,6 @@ header.scrolled .navbar {
     z-index: 3;
 }
 
-/* Kawaii Floating Stickers */
-.kawaii-stickers-container {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    z-index: 2;
-}
-
-.kawaii-sticker {
-    position: absolute;
-    font-size: 1.8rem;
-    filter: drop-shadow(0 8px 15px rgba(0,0,0,0.3));
-    user-select: none;
-    opacity: 0.85;
-    animation: hoverFloating 6s ease-in-out infinite;
-}
-
-.kawaii-sticker.floating-1 { top: 15%; left: 8%; animation-delay: 0s; }
-.kawaii-sticker.floating-2 { top: 20%; right: 10%; animation-delay: 1.5s; font-size: 2.2rem; }
-.kawaii-sticker.floating-3 { bottom: 20%; left: 12%; animation-delay: 3s; }
-.kawaii-sticker.floating-4 { bottom: 15%; right: 8%; animation-delay: 4.5s; }
-
-@keyframes hoverFloating {
-    0% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-15px) rotate(8deg); }
-    100% { transform: translateY(0) rotate(0deg); }
-}
 
 .hero-label {
     font-family: var(--font-accent);
@@ -794,12 +764,6 @@ section {
     box-shadow: 0 12px 30px rgba(var(--accent-rgb), 0.25);
 }
 
-.cute-blush {
-    position: absolute;
-    bottom: -6px;
-    right: -6px;
-    font-size: 1rem;
-}
 
 .timeline-subtitle {
     font-size: 0.95rem;
@@ -1195,11 +1159,13 @@ section {
 }
 
 .project-bullets li::before {
-    content: '🌸';
+    content: '›';
     position: absolute;
     left: 0;
-    top: 0.1rem;
-    font-size: 0.75rem;
+    top: -0.05rem;
+    font-size: 1.25rem;
+    color: var(--accent);
+    line-height: 1;
 }
 
 /* Card Specs Hud Row */
@@ -2224,7 +2190,7 @@ footer p i {
 }
 
 /* Maintain special structural background rules */
-.project-image-placeholder, .headshot-wrapper, .mockup-glare, .kawaii-stickers-container {
+.project-image-placeholder, .headshot-wrapper, .mockup-glare {
     z-index: 3 !important;
 }
 
