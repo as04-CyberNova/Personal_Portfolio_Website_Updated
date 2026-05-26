@@ -90,28 +90,76 @@ document.addEventListener('DOMContentLoaded', () => {
     // 7. Cockpit Theme Configurator Switcher (Porsche Acid Green Fixed Theme)
     document.documentElement.setAttribute('data-theme', 'acid');
 
-    // 8. Dashboard SVG Speedometers Scroll Animation
+    // 8. Dashboard SVG Speedometers Scroll Animation with Elastic Velocity-Driven Revving Physics
     const speedoFills = document.querySelectorAll('.dial-fill');
     
     speedoFills.forEach(fill => {
         const targetPercent = parseInt(fill.getAttribute('data-pct'));
         const circumference = 251.2; // 2 * Math.PI * 40
+        const baseOffset = circumference - (targetPercent / 100) * circumference;
         
-        // Start completely empty (dashoffset = circumference)
+        // Save these targets directly on the element for global RAF access
+        fill.dataset.baseOffset = baseOffset;
+        fill.dataset.currentOffset = circumference; // Start completely empty
+        fill.dataset.circumference = circumference;
+        fill.dataset.revealed = "false";
+        
+        // Start completely empty
         fill.style.strokeDashoffset = circumference;
         
         ScrollTrigger.create({
             trigger: fill,
             start: 'top 85%',
             onEnter: () => {
-                const targetOffset = circumference - (targetPercent / 100) * circumference;
+                fill.dataset.revealed = "true";
                 gsap.to(fill, {
-                    strokeDashoffset: targetOffset,
+                    strokeDashoffset: baseOffset,
                     duration: 1.8,
-                    ease: 'power3.out'
+                    ease: 'power3.out',
+                    onUpdate: function() {
+                        // Keep our current tracking offset in sync during the entry animation
+                        fill.dataset.currentOffset = gsap.getProperty(fill, "stroke-dashoffset");
+                    }
                 });
             }
         });
+    });
+
+    // Reactive velocity engine mapping: modulating HUD gauges on extreme scroll shifts
+    lenis.on('scroll', (e) => {
+        const scrollVelocity = Math.abs(e.velocity);
+        if (scrollVelocity > 0.1) {
+            speedoFills.forEach(fill => {
+                if (fill.dataset.revealed === "true") {
+                    const baseOffset = parseFloat(fill.dataset.baseOffset);
+                    
+                    // The faster the scroll, the higher the tachometer "revs" (dashoffset decreases)
+                    // Math.min(scrollVelocity * 4, 30) gives up to 30px elastic shift
+                    const revFactor = Math.min(scrollVelocity * 4, 30);
+                    const dynamicOffset = Math.max(baseOffset - revFactor, 0); // never go past full fill (0 offset)
+                    
+                    gsap.to(fill, {
+                        strokeDashoffset: dynamicOffset,
+                        duration: 0.3,
+                        ease: 'power1.out',
+                        overwrite: 'auto'
+                    });
+                }
+            });
+        } else {
+            // Smoothly settle back to base values when scroll slows down
+            speedoFills.forEach(fill => {
+                if (fill.dataset.revealed === "true") {
+                    const baseOffset = parseFloat(fill.dataset.baseOffset);
+                    gsap.to(fill, {
+                        strokeDashoffset: baseOffset,
+                        duration: 0.8,
+                        ease: 'power2.out',
+                        overwrite: 'auto'
+                    });
+                }
+            });
+        }
     });
 
     // 9. Interactive Fleet Filters (Projects Show/Hide)
@@ -211,12 +259,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 13. Vehicle Booking Form Telemetry Mailto Submit
+    // 13. Vehicle Booking Form Telemetry Mailto Submit (with Serverless API and fallback)
     const contactForm = document.getElementById('contactForm');
     const formStatus = document.getElementById('formStatus');
 
     if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
+        contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             
             const selectedPack = collaborationPackInput ? collaborationPackInput.value : "General Inquiry";
@@ -228,26 +276,63 @@ document.addEventListener('DOMContentLoaded', () => {
             
             if (formStatus) {
                 formStatus.style.display = 'flex';
-                formStatus.innerHTML = '<i class="fa-solid fa-satellite-dish animate-pulse"></i> TRANSMITTING FLIGHT DATA // OPENING CLIENT...';
-                formStatus.className = 'form-status success';
-                
-                // Triggers direct location mapping
-                window.location.href = mailtoLink;
+                formStatus.innerHTML = '<i class="fa-solid fa-satellite-dish animate-pulse"></i> TRANSMITTING FLIGHT DATA // SECURING ENGINE PATH... 🏎️';
+                formStatus.className = 'form-status transmitting';
                 
                 gsap.fromTo(formStatus, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.5 });
                 
-                setTimeout(() => {
-                    contactForm.reset();
-                    // Re-set active class on the first option
-                    packBtns.forEach((b, i) => {
-                        if (i === 0) {
-                            b.classList.add('active');
-                            if (collaborationPackInput) collaborationPackInput.value = b.getAttribute('data-pack');
-                        } else {
-                            b.classList.remove('active');
-                        }
+                try {
+                    const response = await fetch('/api/booking', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            pilotName: pilotName,
+                            pilotEmail: pilotEmail,
+                            collaborationPack: selectedPack,
+                            pilotMessage: pilotMessage
+                        })
                     });
-                }, 1000);
+                    
+                    const data = await response.json();
+                    
+                    if (response.ok && data.success) {
+                        formStatus.innerHTML = `<i class="fa-solid fa-circle-check"></i> ${data.message || 'TELEMETRY LOCKED // PILOT CONNECTED'}`;
+                        formStatus.className = 'form-status success';
+                        
+                        setTimeout(() => {
+                            contactForm.reset();
+                            packBtns.forEach((b, i) => {
+                                if (i === 0) {
+                                    b.classList.add('active');
+                                    if (collaborationPackInput) collaborationPackInput.value = b.getAttribute('data-pack');
+                                } else {
+                                    b.classList.remove('active');
+                                }
+                            });
+                        }, 2000);
+                    } else {
+                        throw new Error(data.error || 'Serverless circuit failed.');
+                    }
+                } catch (error) {
+                    console.warn("API Transmission failed, falling back to mailto client:", error);
+                    formStatus.innerHTML = `<i class="fa-solid fa-triangle-exclamation animate-pulse"></i> OFFLINE FALLBACK ENABLED // LAUNCHING PILOT EMAIL CLIENT...`;
+                    formStatus.className = 'form-status warning';
+                    
+                    setTimeout(() => {
+                        window.location.href = mailtoLink;
+                        contactForm.reset();
+                        packBtns.forEach((b, i) => {
+                            if (i === 0) {
+                                b.classList.add('active');
+                                if (collaborationPackInput) collaborationPackInput.value = b.getAttribute('data-pack');
+                            } else {
+                                b.classList.remove('active');
+                            }
+                        });
+                    }, 2000);
+                }
             }
         });
     }

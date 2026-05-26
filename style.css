@@ -1748,6 +1748,43 @@ section {
     justify-content: center;
 }
 
+.form-status {
+    margin-top: 1.5rem;
+    padding: 1.15rem 1.5rem;
+    border-radius: 14px;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    display: none;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 700;
+    transition: var(--transition-smooth);
+}
+
+.form-status.transmitting {
+    display: flex;
+    background: rgba(255, 170, 0, 0.05);
+    border: 1px solid #ffaa00;
+    color: #ffaa00;
+    box-shadow: 0 0 20px rgba(255, 170, 0, 0.1);
+}
+
+.form-status.success {
+    display: flex;
+    background: rgba(var(--accent-rgb), 0.05);
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    box-shadow: 0 0 20px var(--glow-soft);
+}
+
+.form-status.warning {
+    display: flex;
+    background: rgba(255, 62, 62, 0.05);
+    border: 1px solid #ff3e3e;
+    color: #ff3e3e;
+    box-shadow: 0 0 20px rgba(255, 62, 62, 0.1);
+}
+
 /* -------------------------------------------------------------------------- */
 /* FOOTER & TELEMETRY PANEL                                                   */
 /* -------------------------------------------------------------------------- */
