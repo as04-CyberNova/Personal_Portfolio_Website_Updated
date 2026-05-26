@@ -34,27 +34,6 @@
     </div>
     <div class="noise-overlay"></div>
 
-    <!-- Floating HUD Configurator (Dynamic Theme Switcher) -->
-    <div class="hud-colorway-configurator" id="themeConfigurator">
-        <div class="hud-config-title">
-            <i class="fa-solid fa-sliders"></i> COCKPIT THEME
-        </div>
-        <div class="theme-options">
-            <button class="theme-opt active" data-theme="acid" title="Porsche Acid Green">
-                <span class="dot acid"></span> PORSCHE
-            </button>
-            <button class="theme-opt" data-theme="ferrari" title="Ferrari Rouge">
-                <span class="dot ferrari"></span> FERRARI
-            </button>
-            <button class="theme-opt" data-theme="kawaii" title="Kawaii Pastel Luxe">
-                <span class="dot kawaii"></span> KAWAII 🌸
-            </button>
-            <button class="theme-opt" data-theme="lambo" title="Lamborghini Gold & Carbon">
-                <span class="dot lambo"></span> LAMBO
-            </button>
-        </div>
-    </div>
-
     <!-- Header Navigation -->
     <header id="header">
         <nav class="navbar">
@@ -983,59 +962,6 @@
             <p>© 2026 Abhyudaya Sinha | Crafted with <i class="fa-solid fa-heart animate-pulse" style="color: var(--accent); margin: 0 5px;"></i> & Precision Engineering</p>
         </div>
     </footer>
-
-    <!-- CSS-based Kawaii Assistant Widget: Sparky 🌸 -->
-    <div class="sparky-assistant-widget" id="sparkyWidget">
-        <div class="sparky-chatbot-avatar" id="sparkyAvatar" title="Sparky 🌸 - Recruiter Assistant">
-            <div class="cute-cat-face">
-                <div class="cat-ear left"></div>
-                <div class="cat-ear right"></div>
-                <div class="cat-eye left">
-                    <span class="sparkle"></span>
-                </div>
-                <div class="cat-eye right">
-                    <span class="sparkle"></span>
-                </div>
-                <div class="cat-blushes">
-                    <span class="blush left"></span>
-                    <span class="blush right"></span>
-                </div>
-                <div class="cat-mouth">w</div>
-            </div>
-            <span class="sparky-notification-dot animate-ping"></span>
-        </div>
-        
-        <div class="sparky-chat-bubble" id="sparkyChatBubble">
-            <div class="chat-bubble-header">
-                <span>Sparky 🌸 // COCKPIT AI</span>
-                <button class="close-chat" id="closeSparkyChat" aria-label="Close Chat"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-            <div class="chat-bubble-body">
-                <div class="chat-history" id="chatHistory">
-                    <!-- Default initial message -->
-                    <div class="chat-msg bot-msg">
-                        <span class="msg-avatar">🐱</span>
-                        <div class="msg-bubble">
-                            Hello! 🌸 I am Sparky, Abhyudaya's virtual cockpit copilot! Ask me anything about his skills, case studies, academic focus, or internship availability! Mew! 🏎️💨
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Compact Quick suggestions -->
-                <div class="chat-preset-options" id="chatPresets">
-                    <button class="preset-btn" data-query="Are you looking for internships?">Internships? 🚀</button>
-                    <button class="preset-btn" data-query="What are your top skills?">Top Skills? 💪</button>
-                    <button class="preset-btn" data-query="Tell me about your projects.">Case Studies? 📊</button>
-                </div>
-                
-                <!-- Chat Input area -->
-                <div class="chat-input-area">
-                    <input type="text" id="chatInput" placeholder="Ask about Abhyudaya..." autocomplete="off">
-                    <button id="sendChatBtn" aria-label="Send message"><i class="fa-solid fa-paper-plane"></i></button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Motion Engine Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
