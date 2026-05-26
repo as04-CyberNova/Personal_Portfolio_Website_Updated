@@ -2367,12 +2367,52 @@ footer p i {
         padding: 1.5rem !important;
     }
     
+    .hud-filter-controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        justify-content: center;
+        margin-top: 2rem;
+    }
+    
+    .filter-btn {
+        padding: 0.5rem 1.1rem;
+        font-size: 0.6rem;
+        border-radius: 100px;
+        min-height: 40px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
     .project-image-placeholder {
-        height: 190px;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 9;
     }
     
     .proj-card-body {
-        padding: 1.5rem;
+        padding: 1.6rem;
+    }
+    
+    .proj-card-body h3 {
+        font-size: 1.35rem;
+        margin-bottom: 1rem;
+    }
+    
+    .project-bullets {
+        margin-bottom: 1.4rem;
+        gap: 0.4rem;
+    }
+    
+    .project-bullets li {
+        font-size: 0.85rem;
+    }
+    
+    .proj-hud-specs {
+        gap: 1rem;
+        flex-wrap: wrap;
+        padding-top: 1rem;
     }
     
     .package-selector-grid {
@@ -2433,8 +2473,22 @@ footer p i {
         max-height: 500px;
     }
     
-    .resume-name {
-        font-size: 1.65rem;
+}
+
+/* Extra-Narrow Mobile Optimization */
+@media (max-width: 480px) {
+    .bento-item {
+        padding: 1.5rem !important;
+    }
+    .proj-card-body {
+        padding: 1.2rem !important;
+    }
+    .hud-filter-controls {
+        gap: 0.4rem !important;
+    }
+    .filter-btn {
+        padding: 0.4rem 0.8rem !important;
+        font-size: 0.55rem !important;
     }
 }
 
