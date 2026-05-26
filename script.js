@@ -366,8 +366,8 @@ document.addEventListener('DOMContentLoaded', () => {
             return "Fun fact! 🌸 Abhyudaya views CSS visual tuning as the customized aero-body kit for his backend analytical equations! Everything should look as fast and responsive as a race car! Purr... 🏎️💨";
         }
         
-        if (cleaned.includes('who') || cleaned.includes('about') || cleaned.includes('name') || cleaned.includes('age') || cleaned.includes('sinha') || cleaned.includes('abhyudaya')) {
-            return "Mew! 🏎️ Abhyudaya Sinha is a 20-year-old Data Scientist and visual architect specializing in structuring massive datasets, running predictive models, and building premium web dashboards. Purr... 🌸";
+        if (cleaned.includes('who') || cleaned.includes('about') || cleaned.includes('name') || cleaned.includes('age') || cleaned.includes('sinha') || cleaned.includes('abhyudaya') || cleaned.includes('yourself') || cleaned.includes('background') || cleaned.includes('introduce')) {
+            return "Mew! 🏎️ **Abhyudaya Sinha** is a highly versatile, 20-year-old **Data Scientist & High-Performance Analyst**! He specializes in:\n\n• **Core ML & Logic**: Engineering statistical pipelines, predictive models (Python, Pandas, Scikit-Learn), and clean relational schemas (SQL DB).\n• **High-Fidelity BI**: Building visually stunning, interactive dashboards in **Tableau** and **Power BI** (like his Hospital Records analysis or Pokémon Stats studies).\n• **Creative Frontend**: Treating visual responsive web UI as the customized aerodynamic body kit for his backend equations!\n\nHe is actively seeking internships for **Summer/Fall 2026**! Mew! 🌸";
         }
 
         // Standard, high-quality fallback queries
