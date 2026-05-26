@@ -943,7 +943,7 @@ section {
 
 .dial-label {
     font-family: var(--font-mono);
-    font-size: 0.5rem;
+    font-size: 0.65rem;
     color: var(--text-body);
     font-weight: 700;
     letter-spacing: 0.05em;
@@ -952,7 +952,7 @@ section {
 
 .speedo-sub {
     font-family: var(--font-mono);
-    font-size: 0.55rem;
+    font-size: 0.72rem;
     color: var(--accent);
     letter-spacing: 0.05em;
     text-transform: uppercase;
@@ -1057,6 +1057,10 @@ section {
 
 .timeline-content {
     padding: 2.5rem 3rem !important;
+}
+
+.timeline-content h3 {
+    padding-right: 14rem;
 }
 
 .timeline-details-text {
@@ -1203,7 +1207,7 @@ section {
     display: flex;
     gap: 1.5rem;
     font-family: var(--font-mono);
-    font-size: 0.6rem;
+    font-size: 0.72rem;
     color: var(--accent);
 }
 
@@ -1254,7 +1258,7 @@ section {
 
 .repo-tag {
     font-family: var(--font-mono);
-    font-size: 0.55rem;
+    font-size: 0.68rem;
     color: var(--text-body);
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255,255,255,0.06);
@@ -1271,7 +1275,7 @@ section {
 }
 
 .repo-card-lite p {
-    font-size: 0.85rem;
+    font-size: 0.92rem;
     color: var(--text-body);
     line-height: 1.6;
     margin-bottom: 1.5rem;
@@ -1283,7 +1287,7 @@ section {
     text-decoration: none;
     font-family: var(--font-accent);
     font-weight: 700;
-    font-size: 0.7rem;
+    font-size: 0.78rem;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
@@ -2048,6 +2052,10 @@ footer p i {
     
     .timeline-content {
         padding: 1.5rem !important;
+    }
+    
+    .timeline-content h3 {
+        padding-right: 0 !important;
     }
     
     .hud-filter-controls {
