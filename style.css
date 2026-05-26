@@ -2139,6 +2139,62 @@ footer p i {
 }
 
 /* -------------------------------------------------------------------------- */
+/* THE HIGH-OCTANE CRT HUD SCREEN ENGINE                                      */
+/* -------------------------------------------------------------------------- */
+.bento-item, .project-card, .repo-card-lite {
+    position: relative;
+    overflow: hidden;
+}
+
+/* CRT grid line overlay */
+.bento-item::before, .project-card::before, .repo-card-lite::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(135deg, rgba(255, 255, 255, 0.01) 0%, transparent 100%),
+        linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.12) 50%),
+        linear-gradient(90deg, rgba(204, 255, 0, 0.015), rgba(0, 240, 255, 0.005), rgba(204, 255, 0, 0.015));
+    background-size: 100% 100%, 100% 4px, 6px 100%;
+    pointer-events: none;
+    z-index: 1;
+    transition: var(--transition-smooth);
+}
+
+/* CRT horizontal scanning cathode beam */
+.bento-item::after, .project-card::after, .repo-card-lite::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(204, 255, 0, 0) 0%, rgba(204, 255, 0, 0.03) 10%, rgba(204, 255, 0, 0) 20%);
+    animation: crtScanline 8s linear infinite;
+    z-index: 1;
+    pointer-events: none;
+}
+
+@keyframes crtScanline {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+}
+
+/* Ensure inner elements stay above scanlines for perfect selectability and clicks */
+.bento-item > *, .project-card > *, .repo-card-lite > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* Maintain special structural background rules */
+.project-image-placeholder, .headshot-wrapper, .mockup-glare, .kawaii-stickers-container {
+    z-index: 3 !important;
+}
+
+/* -------------------------------------------------------------------------- */
 /* DYNAMIC PRINT ENGINE (PRINT OVERLAY RULES)                                 */
 /* -------------------------------------------------------------------------- */
 @media print {
