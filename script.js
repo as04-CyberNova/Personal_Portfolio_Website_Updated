@@ -381,253 +381,331 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 16. Immersive 3D WebGL V6 Engine Block using Three.js
+    // 16. Immersive 3D WebGL V6 Engine Block (Three.js) with 2D Neural Mesh Fallback
     const canvas = document.getElementById('neuralCanvas');
     if (canvas) {
-        // Initialize Three.js scene, camera, renderer
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
-        
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        if (typeof THREE !== 'undefined') {
+            console.log("WebGL Engine: Initializing 3D V6 Supercar Engine...");
+            try {
+                // Initialize Three.js scene, camera, renderer
+                const scene = new THREE.Scene();
+                const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+                const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+                
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-        // Get theme color
-        const rootStyles = getComputedStyle(document.documentElement);
-        let themeColorHex = rootStyles.getPropertyValue('--accent').trim() || '#ccff00';
-        
-        // Create materials
-        const lineMaterial = new THREE.LineBasicMaterial({
-            color: new THREE.Color(themeColorHex),
-            transparent: true,
-            opacity: 0.28
-        });
+                // Get theme color
+                const rootStyles = getComputedStyle(document.documentElement);
+                let themeColorHex = rootStyles.getPropertyValue('--accent').trim() || '#ccff00';
+                
+                // Create materials
+                const lineMaterial = new THREE.LineBasicMaterial({
+                    color: new THREE.Color(themeColorHex),
+                    transparent: true,
+                    opacity: 0.28
+                });
 
-        const activeMaterial = new THREE.LineBasicMaterial({
-            color: new THREE.Color(themeColorHex),
-            transparent: true,
-            opacity: 0.7
-        });
+                const activeMaterial = new THREE.LineBasicMaterial({
+                    color: new THREE.Color(themeColorHex),
+                    transparent: true,
+                    opacity: 0.7
+                });
 
-        // Create an Engine Block Group
-        const engineGroup = new THREE.Group();
-        scene.add(engineGroup);
+                // Create an Engine Block Group
+                const engineGroup = new THREE.Group();
+                scene.add(engineGroup);
 
-        // 1. Crankcase (base box)
-        const crankcaseGeo = new THREE.BoxGeometry(4, 2, 3, 2, 1, 2);
-        const crankcaseLines = new THREE.LineSegments(
-            new THREE.WireframeGeometry(crankcaseGeo),
-            lineMaterial
-        );
-        engineGroup.add(crankcaseLines);
+                // 1. Crankcase (base box)
+                const crankcaseGeo = new THREE.BoxGeometry(4, 2, 3, 2, 1, 2);
+                const crankcaseLines = new THREE.LineSegments(
+                    new THREE.WireframeGeometry(crankcaseGeo),
+                    lineMaterial
+                );
+                engineGroup.add(crankcaseLines);
 
-        // 2. V-Cylinders (arranged in V-shape V6)
-        const cylinders = [];
-        const pistons = [];
-        const cylinderGeo = new THREE.CylinderGeometry(0.5, 0.5, 1.4, 8, 1, true);
-        
-        const cylinderOffsets = [
-            { x: -1.2, z: 0.8, angle: Math.PI / 6 },  // Left bank cylinder 1
-            { x: 0, z: 0.8, angle: Math.PI / 6 },     // Left bank cylinder 2
-            { x: 1.2, z: 0.8, angle: Math.PI / 6 },    // Left bank cylinder 3
-            { x: -1.2, z: -0.8, angle: -Math.PI / 6 }, // Right bank cylinder 1
-            { x: 0, z: -0.8, angle: -Math.PI / 6 },    // Right bank cylinder 2
-            { x: 1.2, z: -0.8, angle: -Math.PI / 6 }   // Right bank cylinder 3
-        ];
+                // 2. V-Cylinders (arranged in V-shape V6)
+                const cylinders = [];
+                const pistons = [];
+                const cylinderGeo = new THREE.CylinderGeometry(0.5, 0.5, 1.4, 8, 1, true);
+                
+                const cylinderOffsets = [
+                    { x: -1.2, z: 0.8, angle: Math.PI / 6 },  // Left bank cylinder 1
+                    { x: 0, z: 0.8, angle: Math.PI / 6 },     // Left bank cylinder 2
+                    { x: 1.2, z: 0.8, angle: Math.PI / 6 },    // Left bank cylinder 3
+                    { x: -1.2, z: -0.8, angle: -Math.PI / 6 }, // Right bank cylinder 1
+                    { x: 0, z: -0.8, angle: -Math.PI / 6 },    // Right bank cylinder 2
+                    { x: 1.2, z: -0.8, angle: -Math.PI / 6 }   // Right bank cylinder 3
+                ];
 
-        cylinderOffsets.forEach((offset, idx) => {
-            const cylinderHolder = new THREE.Group();
-            cylinderHolder.position.set(offset.x, 1.1, offset.z);
-            cylinderHolder.rotation.z = offset.angle;
+                cylinderOffsets.forEach((offset, idx) => {
+                    const cylinderHolder = new THREE.Group();
+                    cylinderHolder.position.set(offset.x, 1.1, offset.z);
+                    cylinderHolder.rotation.z = offset.angle;
 
-            const cylLines = new THREE.LineSegments(
-                new THREE.WireframeGeometry(cylinderGeo),
-                lineMaterial
-            );
-            cylinderHolder.add(cylLines);
+                    const cylLines = new THREE.LineSegments(
+                        new THREE.WireframeGeometry(cylinderGeo),
+                        lineMaterial
+                    );
+                    cylinderHolder.add(cylLines);
 
-            // Piston inside cylinder
-            const pistonGeo = new THREE.CylinderGeometry(0.4, 0.4, 0.3, 8, 1);
-            const pistonLines = new THREE.LineSegments(
-                new THREE.WireframeGeometry(pistonGeo),
-                activeMaterial
-            );
-            // Offset starting position of pistons for out-of-phase motion
-            pistonLines.datasetOffset = idx * Math.PI / 3; 
-            cylinderHolder.add(pistonLines);
-            pistons.push(pistonLines);
+                    // Piston inside cylinder
+                    const pistonGeo = new THREE.CylinderGeometry(0.4, 0.4, 0.3, 8, 1);
+                    const pistonLines = new THREE.LineSegments(
+                        new THREE.WireframeGeometry(pistonGeo),
+                        activeMaterial
+                    );
+                    pistonLines.datasetOffset = idx * Math.PI / 3; 
+                    cylinderHolder.add(pistonLines);
+                    pistons.push(pistonLines);
 
-            engineGroup.add(cylinderHolder);
-            cylinders.push(cylinderHolder);
-        });
+                    engineGroup.add(cylinderHolder);
+                    cylinders.push(cylinderHolder);
+                });
 
-        // 3. Crankshaft (Central cylinder)
-        const shaftGeo = new THREE.CylinderGeometry(0.18, 0.18, 4.8, 8, 1, false);
-        const shaft = new THREE.LineSegments(
-            new THREE.WireframeGeometry(shaftGeo),
-            activeMaterial
-        );
-        shaft.rotation.z = Math.PI / 2;
-        engineGroup.add(shaft);
+                // 3. Crankshaft (Central cylinder)
+                const shaftGeo = new THREE.CylinderGeometry(0.18, 0.18, 4.8, 8, 1, false);
+                const shaft = new THREE.LineSegments(
+                    new THREE.WireframeGeometry(shaftGeo),
+                    activeMaterial
+                );
+                shaft.rotation.z = Math.PI / 2;
+                engineGroup.add(shaft);
 
-        // 4. Exhaust manifold pipes (connected side pipes)
-        const manifoldGeo = new THREE.TorusGeometry(0.8, 0.1, 8, 16, Math.PI);
-        const leftManifold = new THREE.LineSegments(
-            new THREE.WireframeGeometry(manifoldGeo),
-            lineMaterial
-        );
-        leftManifold.position.set(0, 0.8, 1.5);
-        leftManifold.rotation.x = Math.PI / 2;
-        engineGroup.add(leftManifold);
+                // 4. Exhaust manifold pipes (connected side pipes)
+                const manifoldGeo = new THREE.TorusGeometry(0.8, 0.1, 8, 16, Math.PI);
+                const leftManifold = new THREE.LineSegments(
+                    new THREE.WireframeGeometry(manifoldGeo),
+                    lineMaterial
+                );
+                leftManifold.position.set(0, 0.8, 1.5);
+                leftManifold.rotation.x = Math.PI / 2;
+                engineGroup.add(leftManifold);
 
-        const rightManifold = new THREE.LineSegments(
-            new THREE.WireframeGeometry(manifoldGeo),
-            lineMaterial
-        );
-        rightManifold.position.set(0, 0.8, -1.5);
-        rightManifold.rotation.x = -Math.PI / 2;
-        engineGroup.add(rightManifold);
+                const rightManifold = new THREE.LineSegments(
+                    new THREE.WireframeGeometry(manifoldGeo),
+                    lineMaterial
+                );
+                rightManifold.position.set(0, 0.8, -1.5);
+                rightManifold.rotation.x = -Math.PI / 2;
+                engineGroup.add(rightManifold);
 
-        // 5. Ambient Particles (fuel/spark combustion exhaust)
-        const particleCount = 120;
-        const particleGeo = new THREE.BufferGeometry();
-        const positions = new Float32Array(particleCount * 3);
-        const velocities = [];
+                // 5. Ambient Particles (fuel/spark combustion exhaust)
+                const particleCount = 120;
+                const particleGeo = new THREE.BufferGeometry();
+                const positions = new Float32Array(particleCount * 3);
+                const velocities = [];
 
-        for (let i = 0; i < particleCount; i++) {
-            // Position particles randomly around the engine block
-            positions[i * 3] = (Math.random() - 0.5) * 8;
-            positions[i * 3 + 1] = (Math.random() - 0.5) * 6;
-            positions[i * 3 + 2] = (Math.random() - 0.5) * 8;
+                for (let i = 0; i < particleCount; i++) {
+                    positions[i * 3] = (Math.random() - 0.5) * 8;
+                    positions[i * 3 + 1] = (Math.random() - 0.5) * 6;
+                    positions[i * 3 + 2] = (Math.random() - 0.5) * 8;
 
-            velocities.push({
-                x: (Math.random() - 0.5) * 0.02,
-                y: (Math.random() + 0.15) * 0.03, // upward trend
-                z: (Math.random() - 0.5) * 0.02
-            });
+                    velocities.push({
+                        x: (Math.random() - 0.5) * 0.02,
+                        y: (Math.random() + 0.15) * 0.03,
+                        z: (Math.random() - 0.5) * 0.02
+                    });
+                }
+
+                particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+                
+                const pMaterial = new THREE.PointsMaterial({
+                    color: new THREE.Color(themeColorHex),
+                    size: 0.09,
+                    transparent: true,
+                    opacity: 0.5
+                });
+
+                const particlesSystem = new THREE.Points(particleGeo, pMaterial);
+                scene.add(particlesSystem);
+
+                // Position camera
+                camera.position.z = 6.2;
+                camera.position.y = 0.5;
+
+                // Track mouse dragging & cursor movement
+                let targetX = 0, targetY = 0;
+                let isDragging = false;
+                let prevMouseX = 0, prevMouseY = 0;
+
+                window.addEventListener('mousemove', (e) => {
+                    if (!isDragging) {
+                        targetX = (e.clientX - window.innerWidth / 2) * 0.0003;
+                        targetY = (e.clientY - window.innerHeight / 2) * 0.0003;
+                    }
+                });
+
+                // Touch & mouse drag listeners
+                window.addEventListener('mousedown', (e) => {
+                    isDragging = true;
+                    prevMouseX = e.clientX;
+                    prevMouseY = e.clientY;
+                });
+
+                window.addEventListener('mousemove', (e) => {
+                    if (isDragging) {
+                        const deltaX = e.clientX - prevMouseX;
+                        const deltaY = e.clientY - prevMouseY;
+                        engineGroup.rotation.y += deltaX * 0.006;
+                        engineGroup.rotation.x += deltaY * 0.006;
+                        prevMouseX = e.clientX;
+                        prevMouseY = e.clientY;
+                    }
+                });
+
+                window.addEventListener('mouseup', () => { isDragging = false; });
+                window.addEventListener('mouseleave', () => { isDragging = false; });
+
+                let currentVelocity = 0;
+                let clock = new THREE.Clock();
+
+                function animate3D() {
+                    requestAnimationFrame(animate3D);
+
+                    const elapsedTime = clock.getElapsedTime();
+
+                    // Sync visual theme accent if colorway updates
+                    const updatedAccent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
+                    if (updatedAccent && updatedAccent !== themeColorHex) {
+                        themeColorHex = updatedAccent;
+                        const newCol = new THREE.Color(themeColorHex);
+                        lineMaterial.color = newCol;
+                        activeMaterial.color = newCol;
+                        pMaterial.color = newCol;
+                    }
+
+                    // Mouse follow lag (smooth rotation spring)
+                    if (!isDragging) {
+                        engineGroup.rotation.y += (targetX - engineGroup.rotation.y) * 0.05;
+                        engineGroup.rotation.x += (targetY - engineGroup.rotation.x) * 0.05;
+                    }
+
+                    // Base idle rotation + dynamic speed from Lenis velocity
+                    const scrollVel = (typeof lenis !== 'undefined') ? Math.abs(lenis.velocity) : 0;
+                    currentVelocity += (scrollVel * 0.04 - currentVelocity) * 0.1; // Smooth dampening
+                    
+                    const rotationSpeed = 0.004 + currentVelocity * 0.08;
+                    engineGroup.rotation.y += rotationSpeed;
+
+                    // Piston reciprocating motion (V6 out-of-phase strokes)
+                    pistons.forEach((piston) => {
+                        const strokeSpeed = 5 + currentVelocity * 18;
+                        piston.position.y = Math.sin(elapsedTime * strokeSpeed + parseFloat(piston.datasetOffset)) * 0.45;
+                    });
+
+                    // Spin the crankshaft in sync with pistons
+                    shaft.rotation.y += (1 + currentVelocity * 4) * 0.05;
+
+                    // Animate combustion/exhaust particle systems
+                    const posAttr = particleGeo.getAttribute('position');
+                    const posArray = posAttr.array;
+
+                    for (let i = 0; i < particleCount; i++) {
+                        const index = i * 3;
+                        
+                        posArray[index] += velocities[i].x * (1 + currentVelocity * 4);
+                        posArray[index + 1] += velocities[i].y * (1 + currentVelocity * 7);
+                        posArray[index + 2] += velocities[i].z * (1 + currentVelocity * 4);
+
+                        // Re-spawn particles if they wander too far or float too high
+                        if (Math.abs(posArray[index]) > 8 || posArray[index + 1] > 5 || Math.abs(posArray[index + 2]) > 8) {
+                            posArray[index] = (Math.random() - 0.5) * 1.5;
+                            posArray[index + 1] = -0.8;
+                            posArray[index + 2] = (Math.random() - 0.5) * 1.5;
+                        }
+                    }
+                    
+                    posAttr.needsUpdate = true;
+
+                    renderer.render(scene, camera);
+                }
+
+                // Resize event
+                window.addEventListener('resize', () => {
+                    camera.aspect = window.innerWidth / window.innerHeight;
+                    camera.updateProjectionMatrix();
+                    renderer.setSize(window.innerWidth, window.innerHeight);
+                });
+
+                // Start WebGL render loop
+                animate3D();
+            } catch (err) {
+                console.warn("WebGL crash, falling back to 2D neural mesh:", err);
+                init2DNeuralMeshFallback();
+            }
+        } else {
+            console.warn("THREE undefined, falling back to 2D neural mesh.");
+            init2DNeuralMeshFallback();
         }
 
-        particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-        
-        const pMaterial = new THREE.PointsMaterial({
-            color: new THREE.Color(themeColorHex),
-            size: 0.09,
-            transparent: true,
-            opacity: 0.5
-        });
-
-        const particlesSystem = new THREE.Points(particleGeo, pMaterial);
-        scene.add(particlesSystem);
-
-        // Position camera
-        camera.position.z = 6.2;
-        camera.position.y = 0.5;
-
-        // Track mouse dragging & cursor movement
-        let targetX = 0, targetY = 0;
-        let isDragging = false;
-        let prevMouseX = 0, prevMouseY = 0;
-
-        window.addEventListener('mousemove', (e) => {
-            if (!isDragging) {
-                targetX = (e.clientX - window.innerWidth / 2) * 0.0003;
-                targetY = (e.clientY - window.innerHeight / 2) * 0.0003;
-            }
-        });
-
-        // Touch & mouse drag listeners
-        window.addEventListener('mousedown', (e) => {
-            isDragging = true;
-            prevMouseX = e.clientX;
-            prevMouseY = e.clientY;
-        });
-
-        window.addEventListener('mousemove', (e) => {
-            if (isDragging) {
-                const deltaX = e.clientX - prevMouseX;
-                const deltaY = e.clientY - prevMouseY;
-                engineGroup.rotation.y += deltaX * 0.006;
-                engineGroup.rotation.x += deltaY * 0.006;
-                prevMouseX = e.clientX;
-                prevMouseY = e.clientY;
-            }
-        });
-
-        window.addEventListener('mouseup', () => { isDragging = false; });
-        window.addEventListener('mouseleave', () => { isDragging = false; });
-
-        let currentVelocity = 0;
-        let clock = new THREE.Clock();
-
-        function animate3D() {
-            requestAnimationFrame(animate3D);
-
-            const elapsedTime = clock.getElapsedTime();
-
-            // Sync visual theme accent if colorway updates
-            const updatedAccent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
-            if (updatedAccent && updatedAccent !== themeColorHex) {
-                themeColorHex = updatedAccent;
-                const newCol = new THREE.Color(themeColorHex);
-                lineMaterial.color = newCol;
-                activeMaterial.color = newCol;
-                pMaterial.color = newCol;
-            }
-
-            // Mouse follow lag (smooth rotation spring)
-            if (!isDragging) {
-                engineGroup.rotation.y += (targetX - engineGroup.rotation.y) * 0.05;
-                engineGroup.rotation.x += (targetY - engineGroup.rotation.x) * 0.05;
-            }
-
-            // Base idle rotation + dynamic speed from Lenis velocity
-            const scrollVel = (typeof lenis !== 'undefined') ? Math.abs(lenis.velocity) : 0;
-            currentVelocity += (scrollVel * 0.04 - currentVelocity) * 0.1; // Smooth dampening
+        // 2D Neural Mesh Fallback System (Ensures visual background never breaks)
+        function init2DNeuralMeshFallback() {
+            const ctx = canvas.getContext('2d');
+            let particles = [];
             
-            const rotationSpeed = 0.004 + currentVelocity * 0.08;
-            engineGroup.rotation.y += rotationSpeed;
-
-            // Piston reciprocating motion (V6 out-of-phase strokes)
-            pistons.forEach((piston) => {
-                const strokeSpeed = 5 + currentVelocity * 18; // Revs up piston speed on scroll!
-                piston.position.y = Math.sin(elapsedTime * strokeSpeed + parseFloat(piston.datasetOffset)) * 0.45;
-            });
-
-            // Spin the crankshaft in sync with pistons
-            shaft.rotation.y += (1 + currentVelocity * 4) * 0.05;
-
-            // Animate combustion/exhaust particle systems
-            const posAttr = particleGeo.getAttribute('position');
-            const posArray = posAttr.array;
-
-            for (let i = 0; i < particleCount; i++) {
-                const index = i * 3;
+            function initNeuralMesh() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                particles = [];
+                const isMobile = window.innerWidth < 768;
+                const particleCount = Math.floor((canvas.width * canvas.height) / (isMobile ? 35000 : 18000));
                 
-                posArray[index] += velocities[i].x * (1 + currentVelocity * 4);
-                posArray[index + 1] += velocities[i].y * (1 + currentVelocity * 7);
-                posArray[index + 2] += velocities[i].z * (1 + currentVelocity * 4);
-
-                // Re-spawn particles if they wander too far or float too high
-                if (Math.abs(posArray[index]) > 8 || posArray[index + 1] > 5 || Math.abs(posArray[index + 2]) > 8) {
-                    posArray[index] = (Math.random() - 0.5) * 1.5;
-                    posArray[index + 1] = -0.8; // respawn at bottom of engine block
-                    posArray[index + 2] = (Math.random() - 0.5) * 1.5;
+                for (let i = 0; i < particleCount; i++) {
+                    particles.push({
+                        x: Math.random() * canvas.width,
+                        y: Math.random() * canvas.height,
+                        vx: (Math.random() - 0.5) * 0.4,
+                        vy: (Math.random() - 0.5) * 0.4,
+                        size: Math.random() * 2
+                    });
                 }
             }
-            
-            posAttr.needsUpdate = true;
 
-            renderer.render(scene, camera);
+            function animateNeuralMesh() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                const rootStyles = getComputedStyle(document.documentElement);
+                const activeAccent = rootStyles.getPropertyValue('--accent').trim() || '#ccff00';
+                
+                ctx.fillStyle = activeAccent;
+                ctx.strokeStyle = activeAccent;
+                
+                particles.forEach((p, i) => {
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    
+                    if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                    if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+                    
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                    ctx.fill();
+                    
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const p2 = particles[j];
+                        const dx = p.x - p2.x;
+                        const dy = p.y - p2.y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        
+                        if (dist < 135) {
+                            ctx.beginPath();
+                            ctx.lineWidth = (1 - dist / 135) * 0.6;
+                            ctx.globalAlpha = (1 - dist / 135) * 0.35;
+                            ctx.moveTo(p.x, p.y);
+                            ctx.lineTo(p2.x, p2.y);
+                            ctx.stroke();
+                            ctx.globalAlpha = 1;
+                        }
+                    }
+                });
+                
+                requestAnimationFrame(animateNeuralMesh);
+            }
+
+            window.addEventListener('resize', initNeuralMesh);
+            initNeuralMesh();
+            animateNeuralMesh();
         }
-
-        // Resize event
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-        });
-
-        // Start WebGL render loop
-        animate3D();
     }
 });
