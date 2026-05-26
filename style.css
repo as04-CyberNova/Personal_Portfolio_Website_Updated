@@ -1007,10 +1007,7 @@ section {
 }
 
 .gear-tag {
-    position: absolute;
-    top: 2.2rem;
-    right: 3rem;
-    left: auto;
+    display: inline-block;
     font-family: var(--font-mono);
     font-size: 0.68rem;
     color: var(--accent);
@@ -1018,6 +1015,8 @@ section {
     padding: 4px 10px;
     border-radius: 6px;
     letter-spacing: 0.08em;
+    margin-bottom: 1.2rem;
+    text-transform: uppercase;
 }
 
 .timeline-content {
@@ -1026,7 +1025,7 @@ section {
 }
 
 .timeline-content h3 {
-    padding-right: 14rem;
+    /* Removed absolute padding-right spacer to support clean auto-wrapping on narrow screens */
 }
 
 .timeline-details-text {
@@ -2012,18 +2011,8 @@ footer p i {
         font-size: 0.5rem;
     }
     
-    .gear-tag {
-        position: static;
-        display: inline-block;
-        margin-bottom: 1rem;
-    }
-    
     .timeline-content {
         padding: 1.5rem !important;
-    }
-    
-    .timeline-content h3 {
-        padding-right: 0 !important;
     }
     
     .hud-filter-controls {
