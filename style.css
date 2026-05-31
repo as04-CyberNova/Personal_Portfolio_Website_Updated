@@ -354,7 +354,7 @@ header.scrolled {
 }
 
 .hero-main-title {
-    font-size: 2.1rem; /* Fluid title scaling for 360px+ devices */
+    font-size: clamp(1.4rem, 7.5vw, 2.1rem); /* Fluid title scaling prevents container overflow on narrow devices */
     line-height: 1.15;
     margin-bottom: 1.25rem;
     text-transform: uppercase;
