@@ -29,23 +29,25 @@
 
 /* data-theme="acid" maintained for backward-compatibility with tests */
 html[data-theme="acid"] {
-    --accent: #38bdf8; /* Clean Sky Blue */
+    /* Premium Professional Analytics Palette (SaaS / Databricks / Snowflake Inspired) */
+    --accent: #38BDF8; /* Sky Blue Accent */
     --accent-rgb: 56, 189, 248;
-    --accent-secondary: #0ea5e9;
-    --accent-secondary-rgb: 14, 165, 233;
+    --accent-secondary: #06B6D4; /* Soft Teal Accent */
+    --accent-secondary-rgb: 6, 182, 212;
     
-    --bg-base: #0b0f19; /* Executive Deep Slate */
-    --bg-darker: #060913;
-    --bg-surface: rgba(15, 23, 42, 0.65);
-    --bg-glass: rgba(10, 15, 30, 0.95);
+    --bg-base: #0B1220; /* Primary Deep Slate Background */
+    --bg-darker: #111827; /* Secondary Darker Slate Background */
+    --bg-surface: #1E293B; /* Card Base Background */
+    --bg-glass: rgba(30, 41, 59, 0.96); /* Glass Card Overlay */
     
-    --text-head: #ffffff;
-    --text-body: #94a3b8; /* Optimal WCAG contrast ratio */
-    --text-muted: #64748b;
+    --text-head: #F8FAFC; /* Near-White Title Text */
+    --text-body: #CBD5E1; /* High-Contrast Soft Slate Body Text */
+    --text-muted: #94A3B8; /* Muted Caption/Subtitle Text */
     
-    --glass-border: rgba(56, 189, 248, 0.15);
-    --accent-gradient: linear-gradient(135deg, #38bdf8 0%, #0ea5e9 100%);
-    --glow-soft: rgba(56, 189, 248, 0.04);
+    --glass-border: rgba(148, 163, 184, 0.15); /* Clean Professional Card Border */
+    --accent-gradient: linear-gradient(135deg, #38BDF8 0%, #06B6D4 100%);
+    --glow-soft: rgba(56, 189, 248, 0.02); /* Extremely restrained, subtle highlights only */
+    --success: #22C55E; /* Clean Green Success Indicator */
 }
 
 /* -------------------------------------------------------------------------- */
