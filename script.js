@@ -189,9 +189,9 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Map clean HTML inputs to backward-compatible API payload parameters
             const selectedPack = collaborationPackInput ? collaborationPackInput.value : "General Inquiry";
-            const nameVal = document.getElementById('pilotName').value;
-            const emailVal = document.getElementById('pilotEmail').value;
-            const messageVal = document.getElementById('pilotMessage').value;
+            const nameVal = document.getElementById('name').value;
+            const emailVal = document.getElementById('email').value;
+            const messageVal = document.getElementById('message').value;
             
             const submitBtn = contactForm.querySelector('#submit-btn');
             const originalBtnHTML = submitBtn.innerHTML;

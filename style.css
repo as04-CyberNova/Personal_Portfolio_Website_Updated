@@ -1,13 +1,12 @@
 /* -------------------------------------------------------------------------- */
-/* THE MOBILE-FIRST CLEAN-TECH PORTFOLIO CSS ENGINE                           */
+/* THE MOBILE-FIRST PROFESSIONAL DATA PORTFOLIO CSS ENGINE                    */
 /* Optimized for High-Density 20:9 Mobile Screens & Desktop Performance        */
 /* -------------------------------------------------------------------------- */
 
 :root {
-    /* Fonts */
-    --font-heading: 'Syne', sans-serif;
-    --font-accent: 'Space Grotesk', sans-serif;
-    --font-sub: 'Outfit', sans-serif;
+    /* Typography */
+    --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-accent: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
     
@@ -16,38 +15,36 @@
     --header-max-width: 1280px;
     
     /* Transitions */
-    --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    --transition-fast: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-fast: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+
+    /* Professional Analytics Color Palette */
+    --bg-primary: #0B1220;
+    --bg-secondary: #111827;
+    --bg-card: #1E293B;
+    --accent-primary: #38BDF8;
+    --accent-secondary: #06B6D4;
+    --text-primary: #F8FAFC;
+    --text-secondary: #CBD5E1;
+    --text-muted: #94A3B8;
+    --success: #22C55E;
+    --border: rgba(148, 163, 184, 0.15);
+
+    /* Legacy Mappings to maintain stylesheet-wide consistency */
+    --accent: var(--accent-primary);
+    --accent-rgb: 56, 189, 248;
+    --bg-base: var(--bg-primary);
+    --bg-darker: var(--bg-secondary);
+    --bg-surface: var(--bg-card);
+    --bg-glass: rgba(30, 41, 59, 0.96);
+    --text-head: var(--text-primary);
+    --text-body: var(--text-secondary);
+    --glass-border: var(--border);
+    --accent-gradient: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+    --glow-soft: rgba(56, 189, 248, 0.01);
     
     /* Focus Ring */
-    --focus-ring: 2px solid var(--accent);
-}
-
-/* -------------------------------------------------------------------------- */
-/* THEME VARIABLES (Slate Blue & Ice Blue)                                    */
-/* -------------------------------------------------------------------------- */
-
-/* data-theme="acid" maintained for backward-compatibility with tests */
-html[data-theme="acid"] {
-    /* Premium Professional Analytics Palette (SaaS / Databricks / Snowflake Inspired) */
-    --accent: #38BDF8; /* Sky Blue Accent */
-    --accent-rgb: 56, 189, 248;
-    --accent-secondary: #06B6D4; /* Soft Teal Accent */
-    --accent-secondary-rgb: 6, 182, 212;
-    
-    --bg-base: #0B1220; /* Primary Deep Slate Background */
-    --bg-darker: #111827; /* Secondary Darker Slate Background */
-    --bg-surface: #1E293B; /* Card Base Background */
-    --bg-glass: rgba(30, 41, 59, 0.96); /* Glass Card Overlay */
-    
-    --text-head: #F8FAFC; /* Near-White Title Text */
-    --text-body: #CBD5E1; /* High-Contrast Soft Slate Body Text */
-    --text-muted: #94A3B8; /* Muted Caption/Subtitle Text */
-    
-    --glass-border: rgba(148, 163, 184, 0.15); /* Clean Professional Card Border */
-    --accent-gradient: linear-gradient(135deg, #38BDF8 0%, #06B6D4 100%);
-    --glow-soft: rgba(56, 189, 248, 0.02); /* Extremely restrained, subtle highlights only */
-    --success: #22C55E; /* Clean Green Success Indicator */
+    --focus-ring: 2px solid var(--accent-primary);
 }
 
 /* -------------------------------------------------------------------------- */
@@ -441,6 +438,27 @@ header.scrolled {
     width: 100%;
 }
 
+.about-card {
+    background: var(--bg-surface);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
+    width: 100%;
+}
+
+.about-lead-text {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.about-body-text {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
 .bento-item h3 {
     font-size: 1.35rem;
     margin-bottom: 0.75rem;
@@ -555,66 +573,130 @@ header.scrolled {
     border-radius: 4px;
 }
 
+.skill-pill.learning {
+    border-color: rgba(6, 182, 212, 0.25);
+    color: var(--accent-secondary);
+    background: rgba(6, 182, 212, 0.04);
+}
+
 /* -------------------------------------------------------------------------- */
-/* MOBILE-FIRST TIMELINE                                                      */
+/* MOBILE-FIRST EXPERIENCE & SIMULATIONS                                      */
 /* -------------------------------------------------------------------------- */
 
-.timeline-container {
-    width: 100%;
-    position: relative;
-    padding-left: 1.75rem;
-}
-
-.timeline-container::before {
-    content: '';
-    position: absolute;
-    left: 0.4rem;
-    top: 0.5rem;
-    bottom: 0.5rem;
-    width: 2px;
-    background: dashed rgba(255, 255, 255, 0.08);
-}
-
-.timeline-item {
-    position: relative;
-    margin-bottom: 2rem;
-}
-
-.timeline-dot {
-    position: absolute;
-    left: -1.75rem;
-    top: 0.85rem;
-    width: 26px;
-    height: 26px;
-    background: var(--bg-darker);
-    border: 2px solid var(--accent);
-    border-radius: 50%;
+.experience-container {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--accent);
-    font-weight: 700;
-    font-family: var(--font-accent);
-    font-size: 0.55rem;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
 }
 
-.gear-tag {
-    display: inline-block;
-    font-family: var(--font-mono);
-    font-size: 0.6rem;
-    color: var(--accent);
-    border: 1px dashed rgba(var(--accent-rgb), 0.3);
-    padding: 2px 6px;
-    border-radius: 4px;
-    margin-bottom: 0.6rem;
-    text-transform: uppercase;
-}
-
-.timeline-content {
+.experience-card, .simulations-card {
     background: var(--bg-surface);
-    border: 1px solid rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border);
     border-radius: 16px;
-    padding: 1.5rem !important;
+    padding: 2rem 1.5rem;
+}
+
+.exp-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1rem;
+}
+
+.exp-title-box h3 {
+    font-size: 1.4rem;
+    color: var(--text-primary);
+    margin-top: 0.25rem;
+}
+
+.company-name {
+    font-size: 1.05rem;
+    color: var(--accent-secondary);
+    font-family: var(--font-accent);
+    font-weight: 600;
+}
+
+.exp-date {
+    font-family: var(--font-accent);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 700;
+}
+
+.exp-intro-text, .sim-intro-text {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.25rem;
+}
+
+.exp-details h5 {
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.exp-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.exp-bullets li {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    position: relative;
+    padding-left: 1.2rem;
+    line-height: 1.5;
+}
+
+.exp-bullets li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent-primary);
+    font-weight: bold;
+}
+
+/* Simulations Grid */
+.simulations-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.sim-item {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+}
+
+.sim-icon {
+    font-size: 1.5rem;
+    color: var(--accent-primary);
+    display: flex;
+    align-items: flex-start;
+    padding-top: 0.15rem;
+}
+
+.sim-details h4 {
+    font-size: 1.05rem;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.sim-details p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -652,6 +734,12 @@ header.scrolled {
     background: var(--accent);
     color: #000000;
     border-color: transparent;
+}
+
+.projects-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
 }
 
 .project-card {
@@ -1091,8 +1179,8 @@ header.scrolled {
     gap: 0.25rem;
 }
 
-/* -------------------------------------------------------------------------- */
-/* MOBILE-FIRST CONTACT                                                       */
+/* -------------------------------------------------------------------------- *//* -------------------------------------------------------------------------- */
+/* MOBILE-FIRST CONTACT & SOCIALS                                             */
 /* -------------------------------------------------------------------------- */
 
 .configurator-form-box {
@@ -1102,13 +1190,14 @@ header.scrolled {
 .hud-form-header {
     text-align: center;
     margin-bottom: 2rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    border-bottom: 1px solid var(--border);
     padding-bottom: 1.25rem;
 }
 
 .hud-form-header h2 {
     font-size: 1.85rem;
     margin: 0.3rem 0;
+    font-family: var(--font-heading);
 }
 
 .form-badge {
@@ -1121,65 +1210,29 @@ header.scrolled {
 }
 
 .config-step-group {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
 }
 
 .config-label {
     display: block;
     font-family: var(--font-accent);
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     font-weight: 700;
-    color: #ffffff;
-    margin-bottom: 0.85rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
     text-transform: uppercase;
 }
 
-.package-selector-grid {
+.contact-grid-layout {
     display: flex;
     flex-direction: column;
-    gap: 0.6rem;
-}
-
-.pack-opt-btn {
-    background: rgba(255, 255, 255, 0.01);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 12px;
-    padding: 1rem;
-    cursor: pointer;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-    min-height: 44px; /* Touch target safety */
-    transition: var(--transition-fast);
-}
-
-.pack-title {
-    font-family: var(--font-accent);
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: #ffffff;
-}
-
-.pack-opt-btn.active .pack-title {
-    color: var(--accent);
-}
-
-.pack-desc {
-    font-size: 0.62rem;
-    color: var(--text-body);
-    line-height: 1.2;
-}
-
-.dual-inputs-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    gap: 2.5rem;
 }
 
 .contact-form {
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 .input-group {
@@ -1192,45 +1245,43 @@ header.scrolled {
 .input-icon {
     position: absolute;
     left: 1.25rem;
-    color: var(--text-body);
+    color: var(--text-secondary);
     opacity: 0.5;
     pointer-events: none;
     font-size: 0.85rem;
 }
 
-/* Touch targets at least 44px height.
-   IMPORTANT: Setting font-size to 16px on mobile inputs prevents automatic 
-   browser zoom on iOS Safari, preserving standard layouts perfectly! */
+/* Form inputs styling */
 .input-group input,
 .input-group textarea {
     width: 100%;
     padding: 1rem 1rem 1rem 3rem;
     background: rgba(255, 255, 255, 0.01);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
     border-radius: 10px;
-    color: #ffffff !important;
+    color: var(--text-primary) !important;
     font-family: var(--font-body);
-    font-size: 16px; /* Highly important mobile Safari zoom fix */
-    min-height: 46px; /* Touch target size comfort */
+    font-size: 16px; /* iOS zoom fix */
+    min-height: 46px;
     transition: var(--transition-fast);
 }
 
 .input-group input::placeholder,
 .input-group textarea::placeholder {
-    color: var(--text-body);
-    opacity: 0.4;
+    color: var(--text-muted);
+    opacity: 0.6;
 }
 
 .input-group textarea {
-    min-height: 130px;
+    min-height: 120px;
     resize: vertical;
 }
 
 .input-group input:focus,
 .input-group textarea:focus {
     outline: none;
-    border-color: var(--accent);
-    background: rgba(var(--accent-rgb), 0.02);
+    border-color: var(--accent-primary);
+    background: rgba(56, 189, 248, 0.02);
 }
 
 #submit-btn {
@@ -1253,14 +1304,81 @@ header.scrolled {
     font-weight: 700;
 }
 
+/* Direct Contact Info card layout */
+.contact-direct-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.contact-direct-info h3 {
+    font-size: 1.35rem;
+    color: var(--text-primary);
+    text-transform: uppercase;
+}
+
+.contact-direct-info p {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.direct-links-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.direct-link-card {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.25rem;
+    background: rgba(255, 255, 255, 0.015);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: var(--transition-fast);
+    min-height: 44px; /* Touch target size comfort */
+}
+
+.direct-link-card i {
+    font-size: 1.5rem;
+    color: var(--accent-primary);
+}
+
+.direct-link-card .link-card-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.direct-link-card .link-card-text .label {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+
+.direct-link-card .link-card-text .val {
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.direct-link-card:hover {
+    border-color: var(--accent-primary);
+    background: rgba(56, 189, 248, 0.03);
+    transform: translateY(-2px);
+}
+
 /* -------------------------------------------------------------------------- */
 /* FOOTER                                                                     */
 /* -------------------------------------------------------------------------- */
 
 footer {
     padding: 3rem 1rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.04);
-    background: var(--bg-darker);
+    border-top: 1px solid var(--border);
+    background: var(--bg-secondary);
 }
 
 .footer-hud-grid {
@@ -1273,7 +1391,7 @@ footer {
 
 footer p {
     color: var(--text-muted);
-    font-size: 0.7rem;
+    font-size: 0.72rem;
 }
 
 
@@ -1358,7 +1476,7 @@ footer p {
         padding: 8rem 2rem 3rem;
     }
 
-    .hero-hud-frame {
+    .hero-card-frame {
         padding: 4rem 3rem;
     }
 
@@ -1366,8 +1484,9 @@ footer p {
         font-size: 3rem;
     }
 
-    .hero-btns {
-        flex-direction: row;
+    .hero-btns-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
     }
 
@@ -1412,8 +1531,10 @@ footer p {
     }
 
     /* Projects Grid reflow */
-    .project-card {
-        grid-column: span 6; /* Switch to 2 columns */
+    .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
     }
 
     .project-image-placeholder {
@@ -1455,10 +1576,11 @@ footer p {
     }
 
     /* Contact forms input configurations */
-    .package-selector-grid {
+    .contact-grid-layout {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 0.75rem;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 2rem;
+        align-items: start;
     }
 
     .dual-inputs-grid {
@@ -1498,6 +1620,10 @@ footer p {
     /* Hero main title expansion */
     .hero-main-title {
         font-size: 3.8rem;
+    }
+
+    .hero-btns-grid {
+        grid-template-columns: repeat(4, 1fr);
     }
 
     /* Bento details card spans */
@@ -1542,7 +1668,7 @@ footer p {
     }
     
     body > *, 
-    main > section:not(#recruiter-cockpit),
+    main > section:not(#resume),
     .recruiter-control-panel,
     .resume-paper-header,
     header,
@@ -1553,7 +1679,7 @@ footer p {
         opacity: 0 !important;
     }
     
-    #recruiter-cockpit,
+    #resume,
     .selectable-resume-container,
     .resume-paper,
     .resume-paper * {
@@ -1562,9 +1688,10 @@ footer p {
         opacity: 1 !important;
         background: #ffffff !important;
         color: #000000 !important;
+        user-select: text !important;
     }
     
-    #recruiter-cockpit {
+    #resume {
         padding: 0 !important;
         margin: 0 !important;
         border: none !important;
