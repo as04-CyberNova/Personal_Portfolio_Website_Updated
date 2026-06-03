@@ -127,6 +127,7 @@ section {
     max-width: var(--container-max-width);
     margin: 0 auto;
     width: 100%;
+    scroll-margin-top: 90px; /* Offset for fixed header */
 }
 
 .section-head {

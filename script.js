@@ -6,13 +6,20 @@ document.addEventListener('DOMContentLoaded', () => {
     styleSheet.innerText = `
         .reveal-on-scroll, section, .bento-item, .project-card, .repo-card-lite {
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateY(12px);
+            transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
             will-change: opacity, transform;
         }
         .reveal-on-scroll.revealed, section.revealed, .bento-item.revealed, .project-card.revealed, .repo-card-lite.revealed {
             opacity: 1;
             transform: translateY(0);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .reveal-on-scroll, section, .bento-item, .project-card, .repo-card-lite {
+                opacity: 1 !important;
+                transform: none !important;
+                transition: none !important;
+            }
         }
         .copied-floating-badge {
             position: fixed;
