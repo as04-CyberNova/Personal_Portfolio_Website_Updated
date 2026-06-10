@@ -1807,6 +1807,361 @@ footer p {
 }
 
 /* -------------------------------------------------------------------------- */
+/* NEW RECRUITER UPGRADE COMPONENTS & VIZ STYLES                              */
+/* -------------------------------------------------------------------------- */
+
+/* --- Current Roadmap Styles --- */
+#current-roadmap {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+.roadmap-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    width: 100%;
+}
+.roadmap-column {
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.75rem 1.25rem !important;
+}
+.roadmap-col-title {
+    font-size: 1.15rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.roadmap-col-title.completed { color: var(--success); }
+.roadmap-col-title.in-progress { color: var(--accent-primary); }
+.roadmap-col-title.upcoming { color: var(--text-muted); }
+
+.roadmap-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+.roadmap-list li {
+    position: relative;
+    border-left: 2px solid rgba(255, 255, 255, 0.05);
+    padding-left: 1rem;
+}
+.roadmap-tag {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 0.35rem;
+}
+.tag-completed {
+    background: rgba(34, 197, 94, 0.1);
+    color: var(--success);
+    border: 1px solid rgba(34, 197, 94, 0.2);
+}
+.tag-in-progress {
+    background: rgba(56, 189, 248, 0.1);
+    color: var(--accent-primary);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+}
+.tag-upcoming {
+    background: rgba(148, 163, 184, 0.1);
+    color: var(--text-muted);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+}
+.roadmap-list h4 {
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    margin-bottom: 0.15rem;
+}
+.roadmap-list p {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+@media (min-width: 769px) {
+    .roadmap-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+}
+
+/* About Competencies Grid */
+.about-competencies-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+.about-comp-card {
+    background: rgba(255, 255, 255, 0.015);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: var(--transition-fast);
+}
+.about-comp-card:hover {
+    border-color: var(--accent-primary) !important;
+    background: rgba(56, 189, 248, 0.02) !important;
+    transform: translateY(-2px);
+}
+@media (min-width: 769px) {
+    .about-competencies-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+}
+
+/* --- Collapsible Case Study Styles --- */
+.case-study-details {
+    margin-top: 1rem;
+    border-top: 1px dashed var(--border);
+    padding-top: 1rem;
+    width: 100%;
+}
+.case-study-trigger {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-family: var(--font-accent);
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    color: var(--accent-primary);
+    padding: 0.5rem 0;
+    list-style: none; /* Hide default triangle */
+}
+.case-study-trigger::-webkit-details-marker {
+    display: none; /* Safari marker hide */
+}
+.case-study-trigger:hover {
+    color: var(--accent-secondary);
+}
+.case-study-details[open] .trigger-icon {
+    transform: rotate(180deg);
+}
+.trigger-icon {
+    transition: transform 0.3s ease;
+}
+.case-study-content {
+    animation: csSlideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    padding-top: 0.75rem;
+}
+.case-study-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+.cs-field {
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+    padding: 0.75rem;
+}
+.cs-label {
+    display: block;
+    font-family: var(--font-accent);
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--accent-secondary);
+    margin-bottom: 0.25rem;
+}
+.cs-field p {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+.cs-tools-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.25rem;
+}
+@keyframes csSlideDown {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Current Focus Styles --- */
+#current-focus {
+    padding-top: 1.5rem;
+    padding-bottom: 2rem;
+}
+.focus-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    width: 100%;
+}
+.focus-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    transition: var(--transition-smooth);
+}
+.focus-card:hover {
+    border-color: var(--accent-primary);
+    transform: translateY(-3px);
+}
+.focus-icon {
+    font-size: 1.5rem;
+    color: var(--accent-primary);
+    background: rgba(56, 189, 248, 0.08);
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.focus-info h3 {
+    font-size: 1rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+.focus-info p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: 0.85rem;
+}
+.focus-progress-container {
+    background: rgba(255, 255, 255, 0.05);
+    height: 6px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 0.35rem;
+}
+.focus-progress {
+    background: var(--accent-gradient);
+    height: 100%;
+    border-radius: 10px;
+}
+.focus-status {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--accent-secondary);
+    font-weight: 700;
+}
+@media (min-width: 769px) {
+    .focus-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+    .focus-grid > div:nth-child(5) {
+        grid-column: span 2 !important;
+    }
+}
+
+/* --- Learning Timeline Styles --- */
+#learning-timeline {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+.timeline-wrapper {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1rem 0;
+}
+.timeline-track {
+    position: absolute;
+    left: 1.5rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--accent-primary), var(--accent-secondary));
+    opacity: 0.3;
+}
+.timeline-node {
+    position: relative;
+    margin-bottom: 2rem;
+    padding-left: 3.5rem;
+    width: 100%;
+}
+.timeline-dot {
+    position: absolute;
+    left: 1.15rem;
+    top: 1.25rem;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--bg-primary);
+    border: 3px solid var(--accent-primary);
+    z-index: 2;
+    transition: transform 0.3s ease;
+}
+.timeline-node:hover .timeline-dot {
+    transform: scale(1.3);
+    border-color: var(--accent-secondary);
+}
+.timeline-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 1.25rem !important;
+}
+.timeline-card h3 {
+    font-size: 1rem;
+    margin-bottom: 0.4rem;
+}
+.timeline-card p {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+.timeline-date {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--accent-primary);
+    display: inline-block;
+    margin-bottom: 0.4rem;
+}
+@media (min-width: 769px) {
+    .timeline-track {
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+    }
+    .timeline-node {
+        width: 50% !important;
+        padding-left: 0 !important;
+        margin-bottom: 3rem !important;
+    }
+    .timeline-node.left {
+        left: 0 !important;
+        padding-right: 3rem !important;
+        text-align: right !important;
+    }
+    .timeline-node.right {
+        left: 50% !important;
+        padding-left: 3rem !important;
+        text-align: left !important;
+    }
+    .timeline-dot {
+        left: auto !important;
+        right: -6px !important;
+    }
+    .timeline-node.left .timeline-dot {
+        right: -6px !important;
+    }
+    .timeline-node.right .timeline-dot {
+        left: -6px !important;
+        right: auto !important;
+    }
+}
+
+/* -------------------------------------------------------------------------- */
+
+/* -------------------------------------------------------------------------- */
 /* 4. DYNAMIC PRINT ENGINE OVERRIDES                                          */
 /* -------------------------------------------------------------------------- */
 @media print {
