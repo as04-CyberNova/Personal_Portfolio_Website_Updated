@@ -30,9 +30,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     
-    <!-- Premium Fonts: Outfit (Headings & Accent), Inter (ATS Readable Body) -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Premium Fonts: Fraunces (Editorial Accent), Outfit (Headings), Inter (ATS Readable Body) -->
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,700;0,800;1,700;1,800&family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <link rel="stylesheet" href="style.css?v=6.0">
     
     <!-- JSON-LD Semantic Structured Schema Markup for Search Engines -->
@@ -62,6 +63,9 @@
 </head>
 
 <body>
+
+    <!-- Glowing mouse cursor background -->
+    <div id="cursor-glow"></div>
 
     <!-- Lightweight Background Gradients -->
     <div class="ambient-canvas"></div>
@@ -109,13 +113,13 @@
                     <p class="hero-label"><i class="fa-solid fa-database"></i> DATA ANALYST | BUSINESS ANALYST</p>
                     
                     <h1 class="hero-main-title">
-                        Abhyudaya Sinha
+                        Abhyudaya <em>Sinha</em>
                     </h1>
                     <p class="hero-subtitle-p">Python • SQL • Power BI • Tableau • Data Science</p>
                     
                     <div class="hero-meta-info">
                         <span class="meta-pill"><i class="fa-solid fa-graduation-cap"></i> B.Tech CSE (Data Science) Student</span>
-                        <span class="meta-pill open-to-work"><i class="fa-solid fa-briefcase"></i> Seeking Data / Business Analytics Internships</span>
+                        <span class="meta-pill open-to-work"><span class="h-dot"></span> Seeking Data / Business Analytics Internships</span>
                     </div>
                     
                     <p class="hero-description">
@@ -127,6 +131,13 @@
                         <a href="AbhyudayaSinha Resume.pdf" download="Abhyudaya_Sinha_Resume.pdf" class="btn-secondary"><i class="fa-solid fa-file-pdf"></i> Download Resume</a>
                         <a href="#contact" class="btn-secondary"><i class="fa-solid fa-envelope"></i> Contact Me</a>
                         <a href="https://github.com/as04-CyberNova" target="_blank" rel="noopener noreferrer" class="btn-secondary"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+
+                    <div class="h-stats">
+                        <div class="hst"><span class="hst-n">1K<span>+</span></span><span class="hst-l">Linkedin Followers</span></div>
+                        <div class="hst"><span class="hst-n">14<span>+</span></span><span class="hst-l">Github Repositories</span></div>
+                        <div class="hst"><span class="hst-n">5<span>+</span></span><span class="hst-l">Projects Built(Web Dev)</span></div>
+                        <div class="hst"><span class="hst-n">6<span>+</span></span><span class="hst-l">SQL Optimizations</span></div>
                     </div>
                 </div>
             </div>
@@ -177,26 +188,96 @@
                 <h2>About Me</h2>
             </div>
             
-            <div class="about-card bento-item">
-                <div class="about-content" style="max-width: 950px; margin: 0 auto;">
-                    <p class="about-body-text" style="font-size: 1.05rem; line-height: 1.7; text-align: center; max-width: 800px; margin: 0 auto 2.5rem;">
-                        I am a B.Tech CSE (Data Science) student focused on translating raw data streams into actionable business intelligence. Through academic studies, industry simulations, and hands-on internship projects at Codec Technologies, I build scalable data pipelines, clean messy files, and design executive dashboards that isolate bottlenecks and highlight growth.
-                    </p>
-                    
-                    <div class="about-competencies-grid" style="display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 1.5rem;">
-                        <div class="about-comp-card" style="background: rgba(255,255,255,0.01); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; transition: var(--transition-fast);">
-                            <h3 style="font-size: 1.1rem; color: var(--accent-primary); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;"><i class="fa-brands fa-python"></i> Data Pipeline Automation</h3>
-                            <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5;">Structuring clean, reusable Python code to automate ETL tasks. Proficient in NumPy and Pandas for data wrangling, handling missing values, profiling distributions, and preprocessing data for analytical modeling.</p>
-                        </div>
+            <div class="about-grid-container">
+                <div class="about-card bento-item">
+                    <div class="about-content" style="max-width: 950px; margin: 0 auto;">
+                        <p class="about-body-text" style="font-size: 1.05rem; line-height: 1.7; text-align: center; max-width: 800px; margin: 0 auto 2.5rem;">
+                            I am a B.Tech CSE (Data Science) student focused on translating raw data streams into actionable business intelligence. Through academic studies, industry simulations, and hands-on internship projects at Codec Technologies, I build scalable data pipelines, clean messy files, and design executive dashboards that isolate bottlenecks and highlight growth.
+                        </p>
                         
-                        <div class="about-comp-card" style="background: rgba(255,255,255,0.01); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; transition: var(--transition-fast);">
-                            <h3 style="font-size: 1.1rem; color: var(--accent-primary); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;"><i class="fa-solid fa-database"></i> Relational SQL Modeling</h3>
-                            <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5;">Querying large databases with complex SQL. Skilled in implementing window functions (ranking, partition cohorts), recursive CTEs, subqueries, and table joins to transform transactional data into structured reports.</p>
+                        <div class="about-competencies-grid" style="display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 1.5rem;">
+                            <div class="about-comp-card" style="background: rgba(255,255,255,0.01); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; transition: var(--transition-fast);">
+                                <h3 style="font-size: 1.1rem; color: var(--accent-primary); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;"><i class="fa-brands fa-python"></i> Data Pipeline Automation</h3>
+                                <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5;">Structuring clean, reusable Python code to automate ETL tasks. Proficient in NumPy and Pandas for data wrangling, handling missing values, profiling distributions, and preprocessing data for analytical modeling.</p>
+                            </div>
+                            
+                            <div class="about-comp-card" style="background: rgba(255,255,255,0.01); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; transition: var(--transition-fast);">
+                                <h3 style="font-size: 1.1rem; color: var(--accent-primary); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;"><i class="fa-solid fa-database"></i> Relational SQL Modeling</h3>
+                                <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5;">Querying large databases with complex SQL. Skilled in implementing window functions (ranking, partition cohorts), recursive CTEs, subqueries, and table joins to transform transactional data into structured reports.</p>
+                            </div>
+                            
+                            <div class="about-comp-card" style="background: rgba(255,255,255,0.01); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; transition: var(--transition-fast);">
+                                <h3 style="font-size: 1.1rem; color: var(--accent-primary); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;"><i class="fa-solid fa-chart-column"></i> BI & KPI Visualization</h3>
+                                <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5;">Translating business requirements into dynamic visual stories in Tableau and Power BI. Experienced in custom DAX modeling, parameter-driven toggles, star-schema optimization, and operational dashboards.</p>
+                            </div>
                         </div>
-                        
-                        <div class="about-comp-card" style="background: rgba(255,255,255,0.01); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; transition: var(--transition-fast);">
-                            <h3 style="font-size: 1.1rem; color: var(--accent-primary); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;"><i class="fa-solid fa-chart-column"></i> BI & KPI Visualization</h3>
-                            <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5;">Translating business requirements into dynamic visual stories in Tableau and Power BI. Experienced in custom DAX modeling, parameter-driven toggles, star-schema optimization, and operational dashboards.</p>
+
+                        <div class="si-list reveal-on-scroll">
+                            <h3 class="si-title">What Drives My Analysis</h3>
+                            <div class="si-item">
+                                <div class="si-h">🔍 Uncovering the "Why" Behind Trends</div>
+                                <div class="si-p">Every dashboard starts with curiosity. I analyzed what drives Apple's massive global product popularity and tracked COVID-19's spread to visualize real-world impacts.</div>
+                            </div>
+                            <div class="si-item">
+                                <div class="si-h">🧹 Messy Data & Premium Aesthetics</div>
+                                <div class="si-p">I specialize in turning messy raw tables into clean, structured datasets to find the truth in them. I build premium, eye-friendly dashboards that present insights clearly without visual strain.</div>
+                            </div>
+                            <div class="si-item">
+                                <div class="si-h">📢 Documenting My Growth</div>
+                                <div class="si-p">I document my entire learning journey on LinkedIn—whether it is a small coding win, a new dashboard project, or personal milestones. I value transparent proof of work.</div>
+                            </div>
+                            <div class="si-item">
+                                <div class="si-h">🎯 Data-Driven Business Growth</div>
+                                <div class="si-p">My ultimate goal as an analyst isn't just making pretty charts; it is delivering actionable findings that directly drive business revenue, efficiency, and real profit.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="different-card bento-item reveal-on-scroll">
+                    <h3 class="different-head">What Makes Me Different</h3>
+                    <div class="different-list">
+                        <div class="diff-item">
+                            <span class="diff-icon">📈</span>
+                            <div>
+                                <div class="diff-h">Analyst, not just a coder</div>
+                                <div class="diff-p">I bridge raw data and business logic—querying and cleaning to drive actual revenue and operational metrics.</div>
+                            </div>
+                        </div>
+                        <div class="diff-item">
+                            <span class="diff-icon">🛡️</span>
+                            <div>
+                                <div class="diff-h">Relational database focus</div>
+                                <div class="diff-p">Writing clean, normalized SQL query architectures (CTEs, window functions) to prevent downstream reporting lag.</div>
+                            </div>
+                        </div>
+                        <div class="diff-item">
+                            <span class="diff-icon">🎨</span>
+                            <div>
+                                <div class="diff-h">Eye-friendly visual design</div>
+                                <div class="diff-p">Building high-contrast, premium, and accessible Tableau & Power BI dashboards that communicate stats without visual fatigue.</div>
+                            </div>
+                        </div>
+                        <div class="diff-item">
+                            <span class="diff-icon">📢</span>
+                            <div>
+                                <div class="diff-h">Active builder in public</div>
+                                <div class="diff-p">1K+ LinkedIn followers. Sharing database challenges, dashboard case study specs, and personal learning curves weekly.</div>
+                            </div>
+                        </div>
+                        <div class="diff-item">
+                            <span class="diff-icon">⚡</span>
+                            <div>
+                                <div class="diff-h">Fast workflow adaptation</div>
+                                <div class="diff-p">Completed multiple structured simulations (Deloitte, Tata, British Airways) modeling enterprise analyst pipelines.</div>
+                            </div>
+                        </div>
+                        <div class="diff-item">
+                            <span class="diff-icon">🎯</span>
+                            <div>
+                                <div class="diff-h">Outcome-driven thinking</div>
+                                <div class="diff-p">I believe dashboards should answer decisions, not just look complex. Optimizing for business profit and bottleneck fixes.</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -591,9 +672,9 @@
             <div class="projects-grid">
                 
                 <!-- Project 1: Apple Retail Analytics Dashboard (Tableau, Excel) -->
-                <div class="project-card bento-item filter-tab">
+                <div class="project-card bento-item filter-tab featured-project">
                     <div class="project-image-placeholder">
-                        <img src="images/Screenshot_2026-06-03_001716.webp" alt="Apple Retail Analytics Dashboard Tableau" loading="lazy">
+                        <img src="images/Screenshot 2026-06-03 001716.png" alt="Apple Retail Analytics Dashboard Tableau" loading="lazy">
                     </div>
                     <div class="proj-card-body">
                         <span class="tag tag-tab"><i class="fa-solid fa-table-columns"></i> Tableau & Excel</span>
@@ -653,7 +734,7 @@
                 <!-- Project 2: Netflix Content Analytics Dashboard (Tableau / Excel) -->
                 <div class="project-card bento-item filter-tab">
                     <div class="project-image-placeholder">
-                        <img src="images/Screenshot_2026-04-11_102327.webp" alt="Netflix Content Analytics Dashboard" loading="lazy">
+                        <img src="images/Screenshot 2026-04-11 102327.png" alt="Netflix Content Analytics Dashboard" loading="lazy">
                     </div>
                     <div class="proj-card-body">
                         <span class="tag tag-tab"><i class="fa-solid fa-table-columns"></i> Tableau & Excel</span>
@@ -713,7 +794,7 @@
                 <!-- Project 3: COVID-19 Global Infection Analytics (Power BI) -->
                 <div class="project-card bento-item filter-pbi">
                     <div class="project-image-placeholder">
-                        <img src="images/Covid19_Analysis_Dashboard.webp" alt="COVID-19 Analysis Dashboard Power BI" loading="lazy">
+                        <img src="images/Covid19_Analysis_Dashboard.png" alt="COVID-19 Analysis Dashboard Power BI" loading="lazy">
                     </div>
                     <div class="proj-card-body">
                         <span class="tag tag-pbi"><i class="fa-solid fa-chart-pie"></i> Power BI</span>
@@ -774,7 +855,7 @@
                 <!-- Project 4: Hospital Patient Records Analysis (Tableau) -->
                 <div class="project-card bento-item filter-tab">
                     <div class="project-image-placeholder">
-                        <img src="images/Hospital_Patient_Record_Analysis_Dashboard.webp" alt="Hospital Patient Records Analysis Tableau Dashboard" loading="lazy">
+                        <img src="images/Hospital_Patient_Record_Analysis_Dashboard.png" alt="Hospital Patient Records Analysis Tableau Dashboard" loading="lazy">
                     </div>
                     <div class="proj-card-body">
                         <span class="tag tag-tab"><i class="fa-solid fa-table-columns"></i> Tableau</span>
@@ -834,7 +915,7 @@
                 <!-- Project 5: Customer Churn / Telco Dashboard (Tableau) -->
                 <div class="project-card bento-item filter-tab">
                     <div class="project-image-placeholder">
-                        <img src="images/Screenshot_2026-04-17_143121.webp" alt="Telco Customer Churn Insights Tableau" loading="lazy">
+                        <img src="images/Screenshot 2026-04-17 143121.png" alt="Telco Customer Churn Insights Tableau" loading="lazy">
                     </div>
                     <div class="proj-card-body">
                         <span class="tag tag-tab"><i class="fa-solid fa-table-columns"></i> Tableau & Excel</span>

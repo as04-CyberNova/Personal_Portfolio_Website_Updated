@@ -37,6 +37,19 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
     document.head.appendChild(styleSheet);
 
+    // 1.5. Trailing Mouse Cursor Glow Background
+    const glow = document.getElementById('cursor-glow');
+    if (glow) {
+        let mx = window.innerWidth / 2, my = window.innerHeight / 2, gx = mx, gy = my;
+        document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+        function animGlow() {
+            gx += (mx - gx) * 0.06; gy += (my - gy) * 0.06;
+            glow.style.left = gx + 'px'; glow.style.top = gy + 'px';
+            requestAnimationFrame(animGlow);
+        }
+        animGlow();
+    }
+
     // 2. High-Performance Scroll Reveals using standard IntersectionObserver
     const revealElements = document.querySelectorAll('.reveal-on-scroll, section, .bento-item, .project-card, .repo-card-lite');
     
@@ -214,32 +227,25 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> SENDING...';
             
             try {
-                const response = await fetch('/api/booking', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        pilotName: nameVal,
-                        pilotEmail: emailVal,
-                        collaborationPack: selectedPack,
-                        pilotMessage: messageVal
-                    })
+                // Initialize EmailJS with Public Key
+                emailjs.init('0radgAcsuvaKv3pPc');
+                
+                // Transmit form data client-side using EmailJS
+                await emailjs.send('service_q2lh3yp', 'template_jjntvbt', {
+                    from_name: nameVal,
+                    reply_to: emailVal,
+                    message: messageVal,
+                    to_name: 'Abhyudaya',
+                    collaboration_pack: selectedPack
                 });
                 
-                const data = await response.json();
+                formStatus.innerHTML = '<i class="fa-solid fa-circle-check"></i> Message sent successfully! Thank you for connecting.';
+                formStatus.className = 'form-status success';
                 
-                if (response.ok && data.success) {
-                    formStatus.innerHTML = '<i class="fa-solid fa-circle-check"></i> Message sent successfully! Thank you for connecting.';
-                    formStatus.className = 'form-status success';
-                    
-                    setTimeout(() => {
-                        contactForm.reset();
-                        formStatus.style.display = 'none';
-                    }, 4000);
-                } else {
-                    throw new Error(data.error || 'API response failed.');
-                }
+                setTimeout(() => {
+                    contactForm.reset();
+                    formStatus.style.display = 'none';
+                }, 4000);
             } catch (error) {
                 console.warn("API Transmission failed, executing client mailto fallback:", error);
                 
