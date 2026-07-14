@@ -8,6 +8,7 @@
     --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-accent: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-sub: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-editorial: 'Fraunces', Georgia, serif;
     --font-mono: 'JetBrains Mono', monospace;
     
@@ -306,6 +307,11 @@ header.scrolled {
     background: rgba(255, 255, 255, 0.03);
 }
 
+.nav-links a.nav-active {
+    color: var(--accent-primary);
+    background: rgba(56, 189, 248, 0.06);
+}
+
 .controls {
     display: flex;
     align-items: center;
@@ -435,6 +441,12 @@ header.scrolled {
     border-color: rgba(34, 197, 94, 0.3);
     background: rgba(34, 197, 94, 0.06);
     color: var(--success);
+}
+
+.meta-pill.location-pill {
+    border-color: rgba(148, 163, 184, 0.2);
+    background: rgba(148, 163, 184, 0.04);
+    color: var(--text-muted);
 }
 
 .hero-description {
@@ -979,6 +991,12 @@ header.scrolled {
     color: #00f0ff;
 }
 
+.tag-py {
+    background: rgba(60, 179, 113, 0.08);
+    border-color: rgba(60, 179, 113, 0.2);
+    color: #3cb371;
+}
+
 .project-bullets {
     list-style: none;
     margin-bottom: 1.25rem;
@@ -1397,7 +1415,7 @@ header.scrolled {
     gap: 0.25rem;
 }
 
-/* -------------------------------------------------------------------------- *//* -------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------- */
 /* MOBILE-FIRST CONTACT & SOCIALS                                             */
 /* -------------------------------------------------------------------------- */
 
@@ -1603,13 +1621,96 @@ footer {
     max-width: var(--header-max-width);
     margin: 0 auto;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
     text-align: center;
+}
+
+.footer-social-links {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+}
+
+.footer-social-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    transition: var(--transition-fast);
+    text-decoration: none;
+}
+
+.footer-social-btn:hover {
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+    background: rgba(56, 189, 248, 0.06);
+    transform: translateY(-2px);
 }
 
 footer p {
     color: var(--text-muted);
     font-size: 0.72rem;
+}
+
+.footer-copy {
+    font-size: 0.82rem !important;
+    color: var(--text-secondary) !important;
+}
+
+.footer-copy strong {
+    color: var(--text-primary);
+}
+
+.footer-tagline {
+    font-size: 0.7rem !important;
+    color: var(--text-muted) !important;
+}
+
+.footer-heart {
+    color: #ef4444;
+}
+
+/* Back to Top Button */
+.back-to-top-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--accent-primary);
+    color: #000000;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    z-index: 999;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+    box-shadow: 0 4px 20px rgba(56, 189, 248, 0.3);
+}
+
+.back-to-top-btn.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+}
+
+.back-to-top-btn:hover {
+    background: #ffffff;
+    transform: translateY(-3px);
 }
 
 

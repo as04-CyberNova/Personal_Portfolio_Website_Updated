@@ -1,4 +1,4 @@
-// Professional Data Analyst Portfolio - Vanilla JS Engine
+// Professional Data Analyst Portfolio - Vanilla JS Engine v7.0
 document.addEventListener('DOMContentLoaded', () => {
 
     // 1. Inject Lightweight Scroll Reveal Styles dynamically to keep stylesheet pristine
@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 5. Interactive Project Filters (Vanilla JS Show/Hide)
+    // 5. Interactive Project Filters (Vanilla JS Show/Hide) - now supports Python filter
     const filterBtns = document.querySelectorAll('.filter-btn');
     const projectCards = document.querySelectorAll('.project-card');
 
@@ -140,7 +140,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Determine matches
                 const showCard = (filterValue === 'all') || 
                                  (filterValue === 'pbi' && card.classList.contains('filter-pbi')) || 
-                                 (filterValue === 'tab' && card.classList.contains('filter-tab'));
+                                 (filterValue === 'tab' && card.classList.contains('filter-tab')) ||
+                                 (filterValue === 'py' && card.classList.contains('filter-py'));
                 
                 if (showCard) {
                     card.style.display = 'flex';
@@ -265,4 +266,110 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // 8. [NEW] Back to Top Button
+    const backToTopBtn = document.getElementById('backToTop');
+    if (backToTopBtn) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        }, { passive: true });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+    // 9. [NEW] Scroll-Spy Active Navigation Highlighting
+    const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+    const sections = document.querySelectorAll('section[id]');
+
+    if (navLinks.length && sections.length && 'IntersectionObserver' in window) {
+        const navObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    navLinks.forEach(link => {
+                        link.classList.remove('nav-active');
+                        if (link.getAttribute('href') === `#${id}`) {
+                            link.classList.add('nav-active');
+                        }
+                    });
+                }
+            });
+        }, {
+            root: null,
+            threshold: 0.3,
+            rootMargin: '-10% 0px -50% 0px'
+        });
+
+        sections.forEach(section => navObserver.observe(section));
+    }
+
+    // 10. [NEW] Animated Counter Numbers in Hero Stats
+    const counterSpans = document.querySelectorAll('.hst-n[data-target]');
+    let countersStarted = false;
+
+    function animateCounters() {
+        if (countersStarted) return;
+        countersStarted = true;
+
+        counterSpans.forEach(span => {
+            const target = parseInt(span.getAttribute('data-target'), 10);
+            const suffix = span.getAttribute('data-suffix') || '';
+            const duration = 1200; // ms
+            const startTime = performance.now();
+
+            // Special formatting for 1000 → "1K"
+            const isKilo = target >= 1000;
+
+            function update(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                // Ease-out cubic
+                const eased = 1 - Math.pow(1 - progress, 3);
+                const current = Math.round(eased * target);
+
+                if (isKilo) {
+                    span.innerHTML = `${(current / 1000).toFixed(current < 1000 ? 1 : 0)}K<span>${suffix}</span>`;
+                } else {
+                    span.innerHTML = `${current}<span>${suffix}</span>`;
+                }
+
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                }
+            }
+
+            requestAnimationFrame(update);
+        });
+    }
+
+    // Trigger counters when hero stats section enters view
+    const heroStats = document.querySelector('.h-stats');
+    if (heroStats && counterSpans.length) {
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    counterObserver.disconnect();
+                }
+            });
+        }, { threshold: 0.5 });
+        counterObserver.observe(heroStats);
+    }
+
+    // 11. [NEW] GitHub Stats Widget Error Fallback
+    document.querySelectorAll('.stats-svg').forEach(img => {
+        img.addEventListener('error', () => {
+            img.outerHTML = `<div class="github-stats-fallback" style="border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem 2rem; min-width: 200px; text-align: center; background: rgba(255,255,255,0.01);">
+                <i class="fab fa-github" style="font-size: 1.5rem; color: var(--text-muted); display: block; margin-bottom: 0.5rem;"></i>
+                <span style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted);">GitHub stats loading...</span>
+            </div>`;
+        });
+    });
+
 });

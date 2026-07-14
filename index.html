@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Abhyudaya Sinha | Aspiring Data Analyst</title>
+
+    <!-- Inline SVG Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230B1220'/%3E%3Cpath d='M6 22 L12 10 L18 18 L22 12 L26 22' stroke='%2338BDF8' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
     
     <!-- Meta Tags for SEO & Recruiter Parsing -->
     <meta name="description" content="Professional portfolio of Abhyudaya Sinha - Aspiring Data Analyst. Specializing in Python data cleaning, SQL relational queries, and interactive Power BI & Tableau dashboards. Focused on internship opportunities.">
@@ -120,6 +123,7 @@
                     <div class="hero-meta-info">
                         <span class="meta-pill"><i class="fa-solid fa-graduation-cap"></i> B.Tech CSE (Data Science) Student</span>
                         <span class="meta-pill open-to-work"><span class="h-dot"></span> Seeking Data / Business Analytics Internships</span>
+                        <span class="meta-pill location-pill"><i class="fa-solid fa-location-dot"></i> India &middot; Open to Remote</span>
                     </div>
                     
                     <p class="hero-description">
@@ -134,10 +138,10 @@
                     </div>
 
                     <div class="h-stats">
-                        <div class="hst"><span class="hst-n">1K<span>+</span></span><span class="hst-l">Linkedin Followers</span></div>
-                        <div class="hst"><span class="hst-n">14<span>+</span></span><span class="hst-l">Github Repositories</span></div>
-                        <div class="hst"><span class="hst-n">5<span>+</span></span><span class="hst-l">Projects Built(Web Dev)</span></div>
-                        <div class="hst"><span class="hst-n">6<span>+</span></span><span class="hst-l">SQL Optimizations</span></div>
+                        <div class="hst"><span class="hst-n" data-target="1000" data-suffix="+">1K<span>+</span></span><span class="hst-l">LinkedIn Followers</span></div>
+                        <div class="hst"><span class="hst-n" data-target="14" data-suffix="+">14<span>+</span></span><span class="hst-l">GitHub Repositories</span></div>
+                        <div class="hst"><span class="hst-n" data-target="5" data-suffix="+">5<span>+</span></span><span class="hst-l">Projects Built</span></div>
+                        <div class="hst"><span class="hst-n" data-target="6" data-suffix="+">6<span>+</span></span><span class="hst-l">SQL Optimizations</span></div>
                     </div>
                 </div>
             </div>
@@ -504,11 +508,12 @@
                         <div class="sim-item">
                             <span class="sim-icon"><i class="fa-solid fa-cloud"></i></span>
                             <div class="sim-details">
-                                <h4>Oracle Cloud, AI & Data Foundations</h4>
+                                <h4>Oracle Cloud, AI &amp; Data Foundations</h4>
                                 <p>Completed foundational studies on cloud infrastructure database structures, AI modeling, and data management concepts.</p>
                             </div>
+                        </div>
+                    </div>
                 </div>
-                
             </div>
         </section>
 
@@ -666,13 +671,14 @@
                     <button class="filter-btn active" data-filter="all">ALL CASE STUDIES</button>
                     <button class="filter-btn" data-filter="pbi">POWER BI</button>
                     <button class="filter-btn" data-filter="tab">TABLEAU</button>
+                    <button class="filter-btn" data-filter="py">PYTHON</button>
                 </div>
             </div>
             
             <div class="projects-grid">
                 
                 <!-- Project 1: Apple Retail Analytics Dashboard (Tableau, Excel) -->
-                <div class="project-card bento-item filter-tab featured-project">
+                <div class="project-card bento-item filter-tab filter-py featured-project">
                     <div class="project-image-placeholder">
                         <img src="images/Screenshot 2026-06-03 001716.png" alt="Apple Retail Analytics Dashboard Tableau" loading="lazy">
                     </div>
@@ -732,7 +738,7 @@
                 </div>
 
                 <!-- Project 2: Netflix Content Analytics Dashboard (Tableau / Excel) -->
-                <div class="project-card bento-item filter-tab">
+                <div class="project-card bento-item filter-tab filter-py">
                     <div class="project-image-placeholder">
                         <img src="images/Screenshot 2026-04-11 102327.png" alt="Netflix Content Analytics Dashboard" loading="lazy">
                     </div>
@@ -913,7 +919,7 @@
                 </div>
 
                 <!-- Project 5: Customer Churn / Telco Dashboard (Tableau) -->
-                <div class="project-card bento-item filter-tab">
+                <div class="project-card bento-item filter-tab filter-py">
                     <div class="project-image-placeholder">
                         <img src="images/Screenshot 2026-04-17 143121.png" alt="Telco Customer Churn Insights Tableau" loading="lazy">
                     </div>
@@ -1347,15 +1353,32 @@
         </section>
     </main>
 
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top-btn" aria-label="Back to top">
+        <i class="fa-solid fa-chevron-up"></i>
+    </button>
+
     <!-- Footer -->
     <footer>
         <div class="footer-hud-grid">
-            <p>© 2026 Abhyudaya Sinha | Designed for Professional Performance, Accessibility, and Data Integrity</p>
+            <div class="footer-social-links">
+                <a href="https://www.linkedin.com/in/abhyudaya-sinha-7035a8373" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com/as04-CyberNova" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="mailto:abhyudayasinha04@gmail.com" class="footer-social-btn" aria-label="Email">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+            </div>
+            <p class="footer-copy">© 2026 <strong>Abhyudaya Sinha</strong> &mdash; Data Analyst Portfolio</p>
+            <p class="footer-tagline">Built with <span class="footer-heart">♥</span> for recruiters, by a data enthusiast</p>
         </div>
     </footer>
 
     <!-- Clean Scripts -->
-    <script src="script.js?v=6.0" defer></script>
+    <script src="script.js?v=7.0" defer></script>
 </body>
 
 </html>
