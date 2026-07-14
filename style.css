@@ -2580,28 +2580,68 @@ footer p {
 }
 
 /* -------------------------------------------------------------------------- */
-/* 8. PROJECT CARD LAYOUT (ALL SPLIT HORIZONTAL ON DESKTOP)                   */
+/* 8. PROJECT CARD LAYOUT — VERTICAL CARD GRID (image top, text below)        */
 /* -------------------------------------------------------------------------- */
+
+/* Mobile: single column, fully vertical */
+.project-card {
+    flex-direction: column !important;
+}
+
+.project-card .project-image-placeholder {
+    width: 100% !important;
+    height: 220px !important;
+    min-height: unset !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important;
+    border-right: none !important;
+    flex-shrink: 0;
+}
+
+.project-card .proj-card-body {
+    width: 100% !important;
+    justify-content: flex-start !important;
+}
+
+/* Tablet: 2-column card grid */
 @media (min-width: 769px) {
+    .projects-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1.5rem !important;
+    }
+
     .project-card {
-        grid-column: span 2 !important;
+        grid-column: span 1 !important; /* each card takes one column */
+    }
+
+    .project-card .project-image-placeholder {
+        height: 200px !important;
     }
 }
 
+/* Desktop: 2-column grid, taller images */
 @media (min-width: 1025px) {
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1.75rem !important;
+    }
+
     .project-card {
-        flex-direction: row !important;
-        align-items: stretch;
+        flex-direction: column !important;
+        grid-column: span 1 !important;
     }
+
     .project-card .project-image-placeholder {
-        width: 50% !important;
-        height: auto !important;
-        min-height: 360px;
-        border-bottom: none !important;
-        border-right: 1px solid rgba(255, 255, 255, 0.04);
+        width: 100% !important;
+        height: 240px !important;
+        min-height: unset !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important;
+        border-right: none !important;
     }
+
     .project-card .proj-card-body {
-        width: 50% !important;
-        justify-content: center;
+        width: 100% !important;
+        justify-content: flex-start !important;
+        padding: 1.75rem !important;
     }
 }
