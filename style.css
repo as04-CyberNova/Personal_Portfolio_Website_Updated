@@ -21,16 +21,23 @@
     --transition-fast: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
 
     /* Professional Analytics Color Palette */
-    --bg-primary: #0B1220;
-    --bg-secondary: #111827;
-    --bg-card: #1E293B;
+    --bg-primary: #070C18;
+    --bg-secondary: #0D1526;
+    --bg-card: #111E30;
     --accent-primary: #38BDF8;
     --accent-secondary: #06B6D4;
+    --accent-purple: #818CF8;
+    --accent-rose: #F472B6;
     --text-primary: #F8FAFC;
     --text-secondary: #CBD5E1;
     --text-muted: #94A3B8;
     --success: #22C55E;
-    --border: rgba(148, 163, 184, 0.15);
+    --border: rgba(148, 163, 184, 0.12);
+
+    /* Glow Variables */
+    --glow-cyan: rgba(56, 189, 248, 0.18);
+    --glow-purple: rgba(129, 140, 248, 0.12);
+    --glow-card: 0 0 0 1px rgba(56, 189, 248, 0.12), 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 80px rgba(56, 189, 248, 0.04);
 
     /* Legacy Mappings to maintain stylesheet-wide consistency */
     --accent: var(--accent-primary);
@@ -38,11 +45,12 @@
     --bg-base: var(--bg-primary);
     --bg-darker: var(--bg-secondary);
     --bg-surface: var(--bg-card);
-    --bg-glass: rgba(30, 41, 59, 0.96);
+    --bg-glass: rgba(13, 21, 38, 0.97);
     --text-head: var(--text-primary);
     --text-body: var(--text-secondary);
     --glass-border: var(--border);
     --accent-gradient: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+    --accent-gradient-v2: linear-gradient(135deg, #38BDF8 0%, #818CF8 100%);
     --glow-soft: rgba(56, 189, 248, 0.01);
     
     /* Focus Ring */
@@ -2643,5 +2651,469 @@ footer p {
         width: 100% !important;
         justify-content: flex-start !important;
         padding: 1.75rem !important;
+    }
+}
+
+
+/* ================================================================== */
+/*  SLEEK MODERN UPGRADE — Premium Visual Layer                        */
+/*  Gradient text, orbs, glows, shimmers, micro-interactions           */
+/* ================================================================== */
+
+/* ---- Enhanced Ambient Background ---------------------------------- */
+.ambient-canvas {
+    background:
+        radial-gradient(ellipse at 15% 8%,  rgba(129, 140, 248, 0.06) 0%, transparent 45%),
+        radial-gradient(ellipse at 85% 20%, rgba(56,  189, 248, 0.07) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 75%, rgba(6,   182, 212, 0.04) 0%, transparent 40%),
+        var(--bg-base);
+}
+
+/* Subtle noise grain overlay */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.018;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 180px 180px;
+}
+
+/* ---- Section Heading Gradient Text -------------------------------- */
+.section-head h2 {
+    background: linear-gradient(125deg, #F8FAFC 0%, #38BDF8 55%, #818CF8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Gradient accent underline below each section label */
+.section-head::after {
+    content: '';
+    display: block;
+    width: 48px;
+    height: 2px;
+    background: var(--accent-gradient-v2);
+    border-radius: 10px;
+    margin: 1rem auto 0;
+    opacity: 0.7;
+}
+
+/* Section eyebrow label glow */
+.section-head p {
+    letter-spacing: 0.14em;
+    text-shadow: 0 0 24px rgba(56, 189, 248, 0.35);
+}
+
+/* ---- Hero Name Gradient Em ---------------------------------------- */
+.hero-main-title em {
+    background: var(--accent-gradient-v2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-style: italic;
+}
+
+/* ---- Hero Card Frame: gradient border + floating orbs ------------- */
+.hero-card-frame {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid transparent;
+    background-clip: padding-box;
+    background:
+        linear-gradient(var(--bg-secondary), var(--bg-secondary)) padding-box,
+        linear-gradient(135deg,
+            rgba(56, 189, 248, 0.35) 0%,
+            rgba(129, 140, 248, 0.25) 50%,
+            rgba(56, 189, 248, 0.15) 100%) border-box;
+    box-shadow:
+        0 0 0 1px rgba(56, 189, 248, 0.06),
+        0 30px 80px rgba(0, 0, 0, 0.5),
+        0 0 120px rgba(56, 189, 248, 0.04);
+}
+
+/* Cyan orb — top-right */
+.hero-card-frame::before {
+    content: '';
+    position: absolute;
+    width: 560px;
+    height: 560px;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.1) 0%, transparent 65%);
+    top: -220px;
+    right: -180px;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: orbFloat 9s ease-in-out infinite;
+    z-index: 0;
+}
+
+/* Purple orb — bottom-left */
+.hero-card-frame::after {
+    content: '';
+    position: absolute;
+    width: 440px;
+    height: 440px;
+    background: radial-gradient(circle, rgba(129, 140, 248, 0.09) 0%, transparent 65%);
+    bottom: -160px;
+    left: -120px;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: orbFloat 12s ease-in-out infinite reverse;
+    z-index: 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes orbFloat {
+    0%,  100% { transform: translate(0,   0)   scale(1);    }
+    33%        { transform: translate(20px, -25px) scale(1.06); }
+    66%        { transform: translate(-15px, 18px) scale(0.94); }
+}
+
+/* ---- Hero subtitle tech stack pill styling ----------------------- */
+.hero-subtitle-p {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+    margin-bottom: 1.25rem;
+    opacity: 0.9;
+}
+
+/* ---- Navbar: floating glass glow ---------------------------------- */
+.navbar {
+    background: rgba(7, 12, 24, 0.85) !important;
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.45),
+        0 0 0 1px rgba(56, 189, 248, 0.07),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+header.scrolled .navbar {
+    box-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.6),
+        0 0 0 1px rgba(56, 189, 248, 0.12),
+        0 0 50px rgba(56, 189, 248, 0.03),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+/* ---- Active Nav Link Indicator ------------------------------------ */
+.nav-links a.nav-active {
+    color: var(--accent-primary) !important;
+    background: rgba(56, 189, 248, 0.08) !important;
+    box-shadow: inset 0 0 0 1px rgba(56, 189, 248, 0.18);
+}
+
+/* ---- Primary Button: shimmer + glow ------------------------------- */
+.btn-primary {
+    box-shadow: 0 0 22px rgba(56, 189, 248, 0.28), 0 4px 12px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 80%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.6s ease;
+    pointer-events: none;
+}
+
+.btn-primary:hover::after {
+    left: 160%;
+}
+
+.btn-primary:hover {
+    box-shadow: 0 0 35px rgba(56, 189, 248, 0.45), 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+    transform: translateY(-1px);
+}
+
+/* ---- Secondary Button upgrade ------------------------------------ */
+.btn-secondary {
+    border: 1px solid rgba(255, 255, 255, 0.07) !important;
+    transition: all 0.2s ease !important;
+}
+.btn-secondary:hover {
+    border-color: rgba(56, 189, 248, 0.25) !important;
+    color: var(--accent-primary) !important;
+    background: rgba(56, 189, 248, 0.04) !important;
+    transform: translateY(-1px);
+}
+
+/* ---- Bento Item: glow hover --------------------------------------- */
+.bento-item {
+    border: 1px solid rgba(255, 255, 255, 0.04) !important;
+    transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease !important;
+}
+
+.bento-item:hover {
+    border-color: rgba(56, 189, 248, 0.18) !important;
+    box-shadow:
+        0 0 0 1px rgba(56, 189, 248, 0.08),
+        0 16px 50px rgba(0, 0, 0, 0.5),
+        0 0 60px rgba(56, 189, 248, 0.04) !important;
+    transform: translateY(-3px) !important;
+}
+
+/* ---- Project Cards: image zoom + border glow ---------------------- */
+.project-image-placeholder {
+    overflow: hidden;
+}
+
+.project-image-placeholder img {
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    will-change: transform;
+}
+
+.project-card:hover .project-image-placeholder img {
+    transform: scale(1.05) !important;
+}
+
+.project-card {
+    transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease !important;
+    border: 1px solid rgba(255, 255, 255, 0.04) !important;
+}
+
+.project-card:hover {
+    border-color: rgba(56, 189, 248, 0.22) !important;
+    box-shadow: var(--glow-card) !important;
+    transform: translateY(-5px) !important;
+}
+
+/* ---- Repo Cards: hover glow --------------------------------------- */
+.repo-card-lite {
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease !important;
+    border: 1px solid rgba(255, 255, 255, 0.04) !important;
+}
+
+.repo-card-lite:hover {
+    border-color: rgba(56, 189, 248, 0.2) !important;
+    box-shadow:
+        0 0 0 1px rgba(56, 189, 248, 0.08),
+        0 12px 40px rgba(0, 0, 0, 0.45) !important;
+    transform: translateY(-3px) !important;
+}
+
+/* ---- Snapshot & Focus Cards: glow --------------------------------- */
+.snapshot-card:hover {
+    box-shadow:
+        0 0 0 1px rgba(56, 189, 248, 0.15),
+        0 10px 35px rgba(0, 0, 0, 0.4) !important;
+}
+
+.focus-card:hover {
+    box-shadow:
+        0 0 0 1px rgba(56, 189, 248, 0.15),
+        0 10px 35px rgba(0, 0, 0, 0.4) !important;
+}
+
+.snapshot-icon {
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.12);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.snapshot-card:hover .snapshot-icon {
+    box-shadow: 0 0 30px rgba(56, 189, 248, 0.25);
+    transform: scale(1.08);
+}
+
+/* ---- Skill Pills: interactive glow -------------------------------- */
+.skill-pill {
+    transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease !important;
+    cursor: default;
+}
+
+.skill-pill:hover {
+    border-color: rgba(56, 189, 248, 0.3) !important;
+    color: var(--accent-primary) !important;
+    background: rgba(56, 189, 248, 0.05) !important;
+}
+
+/* ---- Timeline Dot: pulse glow ------------------------------------- */
+.timeline-dot {
+    animation: dotPulse 2.5s ease-out infinite !important;
+}
+
+@keyframes dotPulse {
+    0%   { box-shadow: 0 0 0 0   rgba(56, 189, 248, 0.5); }
+    70%  { box-shadow: 0 0 0 9px rgba(56, 189, 248, 0);   }
+    100% { box-shadow: 0 0 0 0   rgba(56, 189, 248, 0);   }
+}
+
+.timeline-card {
+    transition: border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.timeline-card:hover {
+    border-color: rgba(56, 189, 248, 0.2) !important;
+    box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.08), 0 8px 30px rgba(0,0,0,0.4) !important;
+}
+
+/* ---- Progress Bar: shimmer animation ------------------------------ */
+.focus-progress {
+    position: relative;
+    overflow: hidden;
+}
+
+.focus-progress::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+    animation: barShimmer 2.8s ease-in-out infinite;
+    border-radius: 10px;
+}
+
+@keyframes barShimmer {
+    0%   { left: -100%; }
+    100% { left: 220%;  }
+}
+
+/* ---- Hero Stats: number glow + gradient ens ----------------------- */
+.h-stats {
+    background: linear-gradient(135deg, rgba(13, 21, 38, 0.7) 0%, rgba(7, 12, 24, 0.8) 100%) !important;
+    box-shadow:
+        0 4px 30px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(56, 189, 248, 0.1) !important;
+    backdrop-filter: blur(10px);
+}
+
+.hst-n {
+    text-shadow: 0 0 25px rgba(56, 189, 248, 0.35);
+}
+
+/* ---- Direct Contact Link Cards: glow ------------------------------ */
+.direct-link-card:hover {
+    box-shadow:
+        0 0 0 1px rgba(56, 189, 248, 0.15),
+        0 8px 30px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* ---- Recruiter Resume Nav Pill ------------------------------------ */
+.recruiter-pill {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(129, 140, 248, 0.1)) !important;
+    border: 1px solid rgba(56, 189, 248, 0.25) !important;
+    color: var(--accent-primary) !important;
+    box-shadow: 0 0 14px rgba(56, 189, 248, 0.12);
+}
+
+/* ---- Roadmap Column hover ----------------------------------------- */
+.roadmap-column {
+    transition: border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.roadmap-column:hover {
+    border-color: rgba(56, 189, 248, 0.18) !important;
+    box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.06), 0 10px 35px rgba(0,0,0,0.4) !important;
+}
+
+/* ---- Experience & Simulation Cards -------------------------------- */
+.experience-card,
+.simulations-card {
+    transition: border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.experience-card:hover,
+.simulations-card:hover {
+    border-color: rgba(56, 189, 248, 0.18) !important;
+    box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.07), 0 12px 40px rgba(0,0,0,0.45) !important;
+}
+
+/* ---- Contact Form Inputs: focus glow ------------------------------ */
+.input-group input:focus,
+.input-group textarea:focus {
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.08), 0 0 20px rgba(56, 189, 248, 0.06) !important;
+    border-color: rgba(56, 189, 248, 0.5) !important;
+}
+
+/* ---- Footer: gradient border top ---------------------------------- */
+footer {
+    border-top: 1px solid transparent !important;
+    background:
+        linear-gradient(var(--bg-secondary), var(--bg-secondary)) padding-box,
+        linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.3), rgba(129, 140, 248, 0.2), rgba(56, 189, 248, 0.3), transparent) border-box !important;
+}
+
+/* ---- GitHub Stats Widgets: glow border ---------------------------- */
+.stats-svg {
+    border: 1px solid rgba(56, 189, 248, 0.12) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), 0 0 30px rgba(56, 189, 248, 0.04);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.stats-svg:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4), 0 0 40px rgba(56, 189, 248, 0.08) !important;
+    transform: translateY(-2px);
+}
+
+/* ---- hud-copy-btn glow -------------------------------------------- */
+.hud-download-btn {
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+    transition: box-shadow 0.3s ease, transform 0.2s ease !important;
+}
+
+.hud-download-btn:hover {
+    box-shadow: 0 0 35px rgba(56, 189, 248, 0.4) !important;
+    transform: translateY(-1px) !important;
+}
+
+/* ---- Diff item hover accent --------------------------------------- */
+.diff-item {
+    transition: background 0.2s ease, padding-left 0.2s ease;
+}
+
+.diff-item:hover {
+    background: rgba(56, 189, 248, 0.02);
+    padding-left: 0.5rem;
+    border-radius: 8px;
+}
+
+/* ---- si-item (What drives my analysis) accent hover --------------- */
+.si-item:hover {
+    background: rgba(56, 189, 248, 0.02);
+    border-radius: 8px;
+    padding-left: 0.5rem;
+    margin-left: -0.5rem;
+}
+
+/* ---- About comp cards gradient on hover --------------------------- */
+.about-comp-card:hover {
+    border-color: rgba(56, 189, 248, 0.25) !important;
+    background: rgba(56, 189, 248, 0.025) !important;
+    box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.08), 0 8px 30px rgba(0,0,0,0.35) !important;
+}
+
+/* ---- Tag badges: subtle glow on hover ----------------------------- */
+.tag {
+    transition: box-shadow 0.2s ease;
+}
+
+.tag:hover {
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.2);
+}
+
+/* ---- Reduce motion: disable all animations for accessibility ------ */
+@media (prefers-reduced-motion: reduce) {
+    .hero-card-frame::before,
+    .hero-card-frame::after,
+    .focus-progress::after,
+    .timeline-dot,
+    .btn-primary::after,
+    body::before {
+        animation: none !important;
+        transition: none !important;
     }
 }
