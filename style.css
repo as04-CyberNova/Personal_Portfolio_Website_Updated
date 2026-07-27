@@ -20,38 +20,38 @@
     --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     --transition-fast: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
 
-    /* Professional Analytics Color Palette */
-    --bg-primary: #070C18;
-    --bg-secondary: #0D1526;
-    --bg-card: #111E30;
-    --accent-primary: #38BDF8;
-    --accent-secondary: #06B6D4;
-    --accent-purple: #818CF8;
-    --accent-rose: #F472B6;
-    --text-primary: #F8FAFC;
-    --text-secondary: #CBD5E1;
-    --text-muted: #94A3B8;
-    --success: #22C55E;
-    --border: rgba(148, 163, 184, 0.12);
+    /* Minimalist & Soft Classic Color Palette */
+    --bg-primary: #0F0F11;
+    --bg-secondary: #161619;
+    --bg-card: #1C1C20;
+    --accent-primary: #C5A880; /* Warm champagne gold */
+    --accent-secondary: #9EB0A5; /* Muted sage green */
+    --accent-purple: #B2A29D; /* Soft dusty rose / clay */
+    --accent-rose: #C8BAB0; /* Warm linen */
+    --text-primary: #F3F3F5;
+    --text-secondary: #C8C8CC;
+    --text-muted: #8E8E93;
+    --success: #8EAF9D; /* Soft muted success green */
+    --border: rgba(197, 168, 128, 0.09);
 
     /* Glow Variables */
-    --glow-cyan: rgba(56, 189, 248, 0.18);
-    --glow-purple: rgba(129, 140, 248, 0.12);
-    --glow-card: 0 0 0 1px rgba(56, 189, 248, 0.12), 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 80px rgba(56, 189, 248, 0.04);
+    --glow-cyan: rgba(197, 168, 128, 0.1);
+    --glow-purple: rgba(158, 176, 165, 0.08);
+    --glow-card: 0 0 0 1px rgba(197, 168, 128, 0.1), 0 20px 60px rgba(0, 0, 0, 0.55), 0 0 80px rgba(197, 168, 128, 0.02);
 
     /* Legacy Mappings to maintain stylesheet-wide consistency */
     --accent: var(--accent-primary);
-    --accent-rgb: 56, 189, 248;
+    --accent-rgb: 197, 168, 128;
     --bg-base: var(--bg-primary);
     --bg-darker: var(--bg-secondary);
     --bg-surface: var(--bg-card);
-    --bg-glass: rgba(13, 21, 38, 0.97);
+    --bg-glass: rgba(22, 22, 25, 0.96);
     --text-head: var(--text-primary);
     --text-body: var(--text-secondary);
     --glass-border: var(--border);
     --accent-gradient: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
-    --accent-gradient-v2: linear-gradient(135deg, #38BDF8 0%, #818CF8 100%);
-    --glow-soft: rgba(56, 189, 248, 0.01);
+    --accent-gradient-v2: linear-gradient(135deg, #C5A880 0%, #B2A29D 100%);
+    --glow-soft: rgba(197, 168, 128, 0.01);
     
     /* Focus Ring */
     --focus-ring: 2px solid var(--accent-primary);
@@ -134,7 +134,7 @@ a {
     width: 100%;
     height: 100%;
     z-index: -2;
-    background: radial-gradient(circle at 50% 20%, rgba(56, 189, 248, 0.05) 0%, transparent 70%),
+    background: radial-gradient(circle at 50% 20%, rgba(var(--accent-rgb), 0.05) 0%, transparent 70%),
                 var(--bg-base);
     pointer-events: none;
 }
@@ -145,7 +145,7 @@ a {
     width: 400px;
     height: 400px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(56, 189, 248, 0.045) 0%, transparent 65%);
+    background: radial-gradient(circle, rgba(var(--accent-rgb), 0.045) 0%, transparent 65%);
     pointer-events: none;
     z-index: 9998;
     transform: translate(-50%, -50%);
@@ -2671,9 +2671,9 @@ footer p {
 /* ---- Enhanced Ambient Background ---------------------------------- */
 .ambient-canvas {
     background:
-        radial-gradient(ellipse at 15% 8%,  rgba(129, 140, 248, 0.06) 0%, transparent 45%),
-        radial-gradient(ellipse at 85% 20%, rgba(56,  189, 248, 0.07) 0%, transparent 50%),
-        radial-gradient(ellipse at 50% 75%, rgba(6,   182, 212, 0.04) 0%, transparent 40%),
+        radial-gradient(ellipse at 15% 8%,  rgba(178, 162, 157, 0.04) 0%, transparent 45%),
+        radial-gradient(ellipse at 85% 20%, rgba(197, 168, 128, 0.05) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 75%, rgba(158, 176, 165, 0.03) 0%, transparent 40%),
         var(--bg-base);
 }
 
@@ -2691,7 +2691,7 @@ body::before {
 
 /* ---- Section Heading Gradient Text -------------------------------- */
 .section-head h2 {
-    background: linear-gradient(125deg, #F8FAFC 0%, #38BDF8 55%, #818CF8 100%);
+    background: linear-gradient(125deg, #F3F3F5 0%, #C5A880 55%, #B2A29D 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -2712,7 +2712,7 @@ body::before {
 /* Section eyebrow label glow */
 .section-head p {
     letter-spacing: 0.14em;
-    text-shadow: 0 0 24px rgba(56, 189, 248, 0.35);
+    text-shadow: 0 0 24px rgba(var(--accent-rgb), 0.2);
 }
 
 /* ---- Hero Name Gradient Em ---------------------------------------- */
@@ -2733,22 +2733,22 @@ body::before {
     background:
         linear-gradient(var(--bg-secondary), var(--bg-secondary)) padding-box,
         linear-gradient(135deg,
-            rgba(56, 189, 248, 0.35) 0%,
-            rgba(129, 140, 248, 0.25) 50%,
-            rgba(56, 189, 248, 0.15) 100%) border-box;
+            rgba(197, 168, 128, 0.22) 0%,
+            rgba(178, 162, 157, 0.15) 50%,
+            rgba(197, 168, 128, 0.08) 100%) border-box;
     box-shadow:
-        0 0 0 1px rgba(56, 189, 248, 0.06),
-        0 30px 80px rgba(0, 0, 0, 0.5),
-        0 0 120px rgba(56, 189, 248, 0.04);
+        0 0 0 1px rgba(var(--accent-rgb), 0.05),
+        0 30px 80px rgba(0, 0, 0, 0.55),
+        0 0 120px rgba(var(--accent-rgb), 0.02);
 }
 
-/* Cyan orb — top-right */
+/* Muted champagne orb — top-right */
 .hero-card-frame::before {
     content: '';
     position: absolute;
     width: 560px;
     height: 560px;
-    background: radial-gradient(circle, rgba(56, 189, 248, 0.1) 0%, transparent 65%);
+    background: radial-gradient(circle, rgba(197, 168, 128, 0.06) 0%, transparent 65%);
     top: -220px;
     right: -180px;
     border-radius: 50%;
@@ -2757,13 +2757,13 @@ body::before {
     z-index: 0;
 }
 
-/* Purple orb — bottom-left */
+/* Muted rose orb — bottom-left */
 .hero-card-frame::after {
     content: '';
     position: absolute;
     width: 440px;
     height: 440px;
-    background: radial-gradient(circle, rgba(129, 140, 248, 0.09) 0%, transparent 65%);
+    background: radial-gradient(circle, rgba(178, 162, 157, 0.05) 0%, transparent 65%);
     bottom: -160px;
     left: -120px;
     border-radius: 50%;
@@ -2795,31 +2795,31 @@ body::before {
 
 /* ---- Navbar: floating glass glow ---------------------------------- */
 .navbar {
-    background: rgba(7, 12, 24, 0.85) !important;
+    background: rgba(22, 22, 25, 0.88) !important;
     box-shadow:
         0 8px 32px rgba(0, 0, 0, 0.45),
-        0 0 0 1px rgba(56, 189, 248, 0.07),
+        0 0 0 1px rgba(var(--accent-rgb), 0.05),
         inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
 header.scrolled .navbar {
     box-shadow:
         0 10px 40px rgba(0, 0, 0, 0.6),
-        0 0 0 1px rgba(56, 189, 248, 0.12),
-        0 0 50px rgba(56, 189, 248, 0.03),
+        0 0 0 1px rgba(var(--accent-rgb), 0.08),
+        0 0 50px rgba(var(--accent-rgb), 0.01),
         inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
 /* ---- Active Nav Link Indicator ------------------------------------ */
 .nav-links a.nav-active {
     color: var(--accent-primary) !important;
-    background: rgba(56, 189, 248, 0.08) !important;
-    box-shadow: inset 0 0 0 1px rgba(56, 189, 248, 0.18);
+    background: rgba(var(--accent-rgb), 0.08) !important;
+    box-shadow: inset 0 0 0 1px rgba(var(--accent-rgb), 0.18);
 }
 
 /* ---- Primary Button: shimmer + glow ------------------------------- */
 .btn-primary {
-    box-shadow: 0 0 22px rgba(56, 189, 248, 0.28), 0 4px 12px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 22px rgba(var(--accent-rgb), 0.22), 0 4px 12px rgba(0, 0, 0, 0.3);
     position: relative;
     overflow: hidden;
 }
@@ -2842,7 +2842,7 @@ header.scrolled .navbar {
 }
 
 .btn-primary:hover {
-    box-shadow: 0 0 35px rgba(56, 189, 248, 0.45), 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+    box-shadow: 0 0 35px rgba(var(--accent-rgb), 0.35), 0 4px 20px rgba(0, 0, 0, 0.4) !important;
     transform: translateY(-1px);
 }
 
@@ -2852,9 +2852,9 @@ header.scrolled .navbar {
     transition: all 0.2s ease !important;
 }
 .btn-secondary:hover {
-    border-color: rgba(56, 189, 248, 0.25) !important;
+    border-color: rgba(var(--accent-rgb), 0.25) !important;
     color: var(--accent-primary) !important;
-    background: rgba(56, 189, 248, 0.04) !important;
+    background: rgba(var(--accent-rgb), 0.04) !important;
     transform: translateY(-1px);
 }
 
@@ -2865,11 +2865,11 @@ header.scrolled .navbar {
 }
 
 .bento-item:hover {
-    border-color: rgba(56, 189, 248, 0.18) !important;
+    border-color: rgba(var(--accent-rgb), 0.18) !important;
     box-shadow:
-        0 0 0 1px rgba(56, 189, 248, 0.08),
+        0 0 0 1px rgba(var(--accent-rgb), 0.08),
         0 16px 50px rgba(0, 0, 0, 0.5),
-        0 0 60px rgba(56, 189, 248, 0.04) !important;
+        0 0 60px rgba(var(--accent-rgb), 0.04) !important;
     transform: translateY(-3px) !important;
 }
 
@@ -2893,7 +2893,7 @@ header.scrolled .navbar {
 }
 
 .project-card:hover {
-    border-color: rgba(56, 189, 248, 0.22) !important;
+    border-color: rgba(var(--accent-rgb), 0.22) !important;
     box-shadow: var(--glow-card) !important;
     transform: translateY(-5px) !important;
 }
@@ -2905,9 +2905,9 @@ header.scrolled .navbar {
 }
 
 .repo-card-lite:hover {
-    border-color: rgba(56, 189, 248, 0.2) !important;
+    border-color: rgba(var(--accent-rgb), 0.2) !important;
     box-shadow:
-        0 0 0 1px rgba(56, 189, 248, 0.08),
+        0 0 0 1px rgba(var(--accent-rgb), 0.08),
         0 12px 40px rgba(0, 0, 0, 0.45) !important;
     transform: translateY(-3px) !important;
 }
@@ -2915,23 +2915,23 @@ header.scrolled .navbar {
 /* ---- Snapshot & Focus Cards: glow --------------------------------- */
 .snapshot-card:hover {
     box-shadow:
-        0 0 0 1px rgba(56, 189, 248, 0.15),
+        0 0 0 1px rgba(var(--accent-rgb), 0.15),
         0 10px 35px rgba(0, 0, 0, 0.4) !important;
 }
 
 .focus-card:hover {
     box-shadow:
-        0 0 0 1px rgba(56, 189, 248, 0.15),
+        0 0 0 1px rgba(var(--accent-rgb), 0.15),
         0 10px 35px rgba(0, 0, 0, 0.4) !important;
 }
 
 .snapshot-icon {
-    box-shadow: 0 0 20px rgba(56, 189, 248, 0.12);
+    box-shadow: 0 0 20px rgba(var(--accent-rgb), 0.12);
     transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .snapshot-card:hover .snapshot-icon {
-    box-shadow: 0 0 30px rgba(56, 189, 248, 0.25);
+    box-shadow: 0 0 30px rgba(var(--accent-rgb), 0.25);
     transform: scale(1.08);
 }
 
@@ -2942,9 +2942,9 @@ header.scrolled .navbar {
 }
 
 .skill-pill:hover {
-    border-color: rgba(56, 189, 248, 0.3) !important;
+    border-color: rgba(var(--accent-rgb), 0.3) !important;
     color: var(--accent-primary) !important;
-    background: rgba(56, 189, 248, 0.05) !important;
+    background: rgba(var(--accent-rgb), 0.05) !important;
 }
 
 /* ---- Timeline Dot: pulse glow ------------------------------------- */
@@ -2953,9 +2953,9 @@ header.scrolled .navbar {
 }
 
 @keyframes dotPulse {
-    0%   { box-shadow: 0 0 0 0   rgba(56, 189, 248, 0.5); }
-    70%  { box-shadow: 0 0 0 9px rgba(56, 189, 248, 0);   }
-    100% { box-shadow: 0 0 0 0   rgba(56, 189, 248, 0);   }
+    0%   { box-shadow: 0 0 0 0   rgba(var(--accent-rgb), 0.5); }
+    70%  { box-shadow: 0 0 0 9px rgba(var(--accent-rgb), 0);   }
+    100% { box-shadow: 0 0 0 0   rgba(var(--accent-rgb), 0);   }
 }
 
 .timeline-card {
@@ -2963,8 +2963,8 @@ header.scrolled .navbar {
 }
 
 .timeline-card:hover {
-    border-color: rgba(56, 189, 248, 0.2) !important;
-    box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.08), 0 8px 30px rgba(0,0,0,0.4) !important;
+    border-color: rgba(var(--accent-rgb), 0.2) !important;
+    box-shadow: 0 0 0 1px rgba(var(--accent-rgb), 0.08), 0 8px 30px rgba(0,0,0,0.4) !important;
 }
 
 /* ---- Progress Bar: shimmer animation ------------------------------ */
