@@ -72,6 +72,8 @@ html {
     scroll-behavior: smooth;
     background: var(--bg-base);
     font-size: 15px; /* Compact base sizing for mobile screens */
+    overflow-x: hidden;
+    width: 100%;
 }
 
 body {
@@ -3055,6 +3057,8 @@ footer {
 
 /* ---- GitHub Stats Widgets: glow border ---------------------------- */
 .stats-svg {
+    max-width: 100%;
+    height: auto;
     border: 1px solid rgba(56, 189, 248, 0.12) !important;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), 0 0 30px rgba(56, 189, 248, 0.04);
     transition: box-shadow 0.3s ease, transform 0.3s ease;
