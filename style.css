@@ -20,38 +20,38 @@
     --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     --transition-fast: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
 
-    /* Modern GTA V Heist Color Palette */
-    --bg-primary: #08080A; /* Matte HUD Black */
-    --bg-secondary: #0F0F13; /* Deep Menu Gray */
-    --bg-card: #16161E; /* Elevated Panel Gray */
-    --accent-primary: #52C45E; /* GTA V Signature Money Green */
-    --accent-secondary: #3CA0E6; /* Armor Blue */
-    --accent-purple: #FFB300; /* Heist Amber Yellow */
-    --accent-rose: #E53935; /* Wanted Level Red */
-    --text-primary: #F5F5FA;
-    --text-secondary: #CBD0D8;
-    --text-muted: #8E929A;
-    --success: #52C45E;
-    --border: rgba(82, 196, 94, 0.12);
+    /* Cyberpunk GTA V Hybrid Color Palette */
+    --bg-primary: #05060B; /* Deep Obsidian Black */
+    --bg-secondary: #0A0D18; /* Dark Cyber Blue-Gray */
+    --bg-card: #111526; /* Elevated Neon HUD Panel */
+    --accent-primary: #00FF66; /* Neon Money Green */
+    --accent-secondary: #00F0FF; /* Neon Armor Blue / Cyber Cyan */
+    --accent-purple: #FCEE0A; /* Cyberpunk Heist Yellow */
+    --accent-rose: #FF0055; /* Neon Wanted Red / Pink */
+    --text-primary: #F8F9FD;
+    --text-secondary: #C1C6D7;
+    --text-muted: #737993;
+    --success: #00FF66;
+    --border: rgba(0, 240, 255, 0.15);
 
     /* Glow Variables */
-    --glow-cyan: rgba(82, 196, 94, 0.15);
-    --glow-purple: rgba(60, 160, 230, 0.1);
-    --glow-card: 0 0 0 1px rgba(82, 196, 94, 0.15), 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 80px rgba(82, 196, 94, 0.03);
+    --glow-cyan: rgba(0, 240, 255, 0.2);
+    --glow-purple: rgba(0, 255, 102, 0.15);
+    --glow-card: 0 0 0 1px rgba(0, 255, 102, 0.15), 0 20px 60px rgba(0, 0, 0, 0.65), 0 0 80px rgba(0, 255, 102, 0.04);
 
     /* Legacy Mappings to maintain stylesheet-wide consistency */
     --accent: var(--accent-primary);
-    --accent-rgb: 82, 196, 94;
+    --accent-rgb: 0, 255, 102;
     --bg-base: var(--bg-primary);
     --bg-darker: var(--bg-secondary);
     --bg-surface: var(--bg-card);
-    --bg-glass: rgba(15, 15, 19, 0.96);
+    --bg-glass: rgba(10, 13, 24, 0.96);
     --text-head: var(--text-primary);
     --text-body: var(--text-secondary);
     --glass-border: var(--border);
     --accent-gradient: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
-    --accent-gradient-v2: linear-gradient(135deg, #52C45E 0%, #FFB300 100%);
-    --glow-soft: rgba(82, 196, 94, 0.01);
+    --accent-gradient-v2: linear-gradient(135deg, #00FF66 0%, #FCEE0A 100%);
+    --glow-soft: rgba(0, 255, 102, 0.015);
     
     /* Focus Ring */
     --focus-ring: 2px solid var(--accent-primary);
