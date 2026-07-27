@@ -249,6 +249,7 @@ header.scrolled {
     display: flex;
     align-items: center;
     gap: 0.4rem;
+    white-space: nowrap;
 }
 
 .logo i {
@@ -347,7 +348,8 @@ header.scrolled {
 }
 
 /* Hide standard desktop controls on base mobile */
-.controls .connect-btn {
+.controls .connect-btn,
+.controls .control-btn {
     display: none;
 }
 
@@ -1796,6 +1798,10 @@ footer p {
 
     .controls .connect-btn {
         display: inline-flex; /* Show CTA button in navbar */
+    }
+
+    .controls .control-btn {
+        display: flex; /* Restore social buttons in navbar */
     }
 
     /* Hero adjustments */
