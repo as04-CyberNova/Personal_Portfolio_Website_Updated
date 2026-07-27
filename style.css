@@ -1767,6 +1767,11 @@ footer p {
 
     .controls .connect-btn {
         display: inline-flex; /* Show CTA button in navbar */
+        border-radius: 100px !important;
+        padding: 0.5rem 1.25rem !important;
+        font-size: 0.75rem !important;
+        min-height: 38px !important;
+        width: auto !important;
     }
 
     .controls .control-btn {
