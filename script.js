@@ -267,21 +267,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 8. [NEW] Back to Top Button
-    const backToTopBtn = document.getElementById('backToTop');
-    if (backToTopBtn) {
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 400) {
-                backToTopBtn.classList.add('visible');
-            } else {
-                backToTopBtn.classList.remove('visible');
-            }
-        }, { passive: true });
 
-        backToTopBtn.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-    }
 
     // 9. [NEW] Scroll-Spy Active Navigation Highlighting
     const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');

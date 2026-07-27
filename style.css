@@ -1690,40 +1690,7 @@ footer p {
     color: #ef4444;
 }
 
-/* Back to Top Button */
-.back-to-top-btn {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: var(--accent-primary);
-    color: #000000;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1rem;
-    z-index: 999;
-    opacity: 0;
-    transform: translateY(10px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    pointer-events: none;
-    box-shadow: 0 4px 20px rgba(56, 189, 248, 0.3);
-}
 
-.back-to-top-btn.visible {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: all;
-}
-
-.back-to-top-btn:hover {
-    background: #ffffff;
-    transform: translateY(-3px);
-}
 
 
 /* -------------------------------------------------------------------------- */
