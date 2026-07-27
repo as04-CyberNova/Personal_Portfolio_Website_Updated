@@ -3087,6 +3087,56 @@ footer {
     box-shadow: 0 0 12px rgba(56, 189, 248, 0.2);
 }
 
+/* ---- ATS Keyword Matcher & Recruiter Asset Styles ----------------- */
+.ats-matcher-panel textarea:focus {
+    box-shadow: 0 0 0 3px rgba(0, 255, 102, 0.15), 0 0 20px rgba(0, 255, 102, 0.08) !important;
+    border-color: rgba(0, 255, 102, 0.5) !important;
+    outline: none;
+}
+
+.ats-results-box {
+    background: rgba(22, 22, 25, 0.5);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem;
+}
+
+.asset-btn-group .hud-copy-btn {
+    border-radius: 8px !important;
+    font-size: 0.72rem;
+    min-height: 44px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+}
+
+.asset-btn-group .hud-copy-btn:hover {
+    border-color: var(--accent-primary) !important;
+    background: rgba(0, 255, 102, 0.04) !important;
+    color: var(--accent-primary) !important;
+}
+
+.asset-btn-group .hud-download-btn {
+    border-radius: 8px !important;
+    font-size: 0.72rem;
+    min-height: 44px;
+    background: var(--accent-gradient);
+    color: #000000;
+}
+
+/* Custom matched/missing skill pills */
+.skill-pill.matched {
+    border-color: rgba(0, 255, 102, 0.3) !important;
+    background: rgba(0, 255, 102, 0.06) !important;
+    color: #00FF66 !important;
+}
+
+.skill-pill.missing {
+    border-color: rgba(142, 142, 147, 0.15) !important;
+    background: rgba(142, 142, 147, 0.03) !important;
+    color: #8E929A !important;
+}
+
 /* ---- Reduce motion: disable all animations for accessibility ------ */
 @media (prefers-reduced-motion: reduce) {
     .hero-card-frame::before,

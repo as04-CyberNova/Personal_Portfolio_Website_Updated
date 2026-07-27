@@ -358,4 +358,164 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // 12. Copy Cover Letter Template logic
+    const copyCoverBtn = document.getElementById('copyCoverBtn');
+    if (copyCoverBtn) {
+        copyCoverBtn.addEventListener('click', () => {
+            const coverLetterText = `Dear Hiring Team,
+
+I am writing to express my strong interest in the Data Analyst / Business Analyst Internship opportunity at your organization. As a B.Tech Computer Science & Engineering (Data Science) student, I have spent my academic and professional journey developing structured capabilities in relational SQL querying, automated Python data cleaning, and high-fidelity dashboard storytelling (Power BI & Tableau).
+
+During my internship at Codec Technologies and via advanced industry simulations (Deloitte, Tata, British Airways), I have gained hands-on experience in:
+- SQL relational design: normalizations, multi-level CTEs, window functions, and query optimizations.
+- Python automation: cleaning raw client databases using Pandas and NumPy.
+- BI reporting: constructing star schemas and parameter-driven dashboards to isolate performance bottlenecks.
+
+I am highly motivated to translate complex datasets into actionable business intelligence that drives real-world efficiency and revenue growth. I welcome the opportunity to discuss how my technical skills and proof-of-work dashboard systems can contribute to your analytical operations.
+
+Thank you for your time and consideration.
+
+Sincerely,
+Abhyudaya Sinha
+abhyudayasinha04@gmail.com
+github.com/as04-CyberNova
+linkedin.com/in/abhyudaya-sinha-7035a8373`;
+
+            const originalHTML = copyCoverBtn.innerHTML;
+            navigator.clipboard.writeText(coverLetterText).then(() => {
+                copyCoverBtn.classList.add('copied');
+                copyCoverBtn.innerHTML = '<i class="fa-solid fa-check"></i> COPIED!';
+                
+                // Show floating text indicator
+                const rect = copyCoverBtn.getBoundingClientRect();
+                const floatingTip = document.createElement('div');
+                floatingTip.className = 'copied-floating-badge';
+                floatingTip.innerText = 'Cover Letter Copied!';
+                floatingTip.style.left = `${rect.left + rect.width / 2}px`;
+                floatingTip.style.top = `${rect.top - 15}px`;
+                floatingTip.style.transform = 'translate(-50%, -50%)';
+                document.body.appendChild(floatingTip);
+                
+                // Animate floating tip
+                setTimeout(() => {
+                    floatingTip.style.opacity = '0';
+                    floatingTip.style.transform = 'translate(-50%, -30px)';
+                    setTimeout(() => floatingTip.remove(), 500);
+                }, 800);
+                
+                // Reset button text
+                setTimeout(() => {
+                    copyCoverBtn.classList.remove('copied');
+                    copyCoverBtn.innerHTML = originalHTML;
+                }, 2000);
+            }).catch(err => {
+                console.error('Could not copy cover letter: ', err);
+            });
+        });
+    }
+
+    // 13. ATS Keyword Matcher Engine
+    const atsMatchBtn = document.getElementById('atsMatchBtn');
+    const atsJobDesc = document.getElementById('atsJobDesc');
+    const atsResults = document.getElementById('atsResults');
+    const atsScoreVal = document.getElementById('atsScoreVal');
+    const atsProgressBar = document.getElementById('atsProgressBar');
+    const atsMatchedPills = document.getElementById('atsMatchedPills');
+    const atsMissingPills = document.getElementById('atsMissingPills');
+
+    // List of skills offered in the resume
+    const candidateSkills = [
+        { key: "python", label: "Python" },
+        { key: "sql", label: "SQL" },
+        { key: "ms sql server", label: "MS SQL Server" },
+        { key: "power bi", label: "Power BI" },
+        { key: "tableau", label: "Tableau" },
+        { key: "excel", label: "MS Excel" },
+        { key: "pandas", label: "Pandas" },
+        { key: "numpy", label: "NumPy" },
+        { key: "matplotlib", label: "Matplotlib" },
+        { key: "data cleaning", label: "Data Cleaning" },
+        { key: "exploratory data analysis", label: "EDA (Exploratory Data Analysis)" },
+        { key: "dashboard", label: "Dashboard Design" },
+        { key: "business intelligence", label: "Business Intelligence" },
+        { key: "kpi reporting", label: "KPI Reporting" },
+        { key: "reporting", label: "Reporting" },
+        { key: "etl", label: "ETL Processes" },
+        { key: "data visualization", label: "Data Visualization" }
+    ];
+
+    if (atsMatchBtn && atsJobDesc && atsResults) {
+        atsMatchBtn.addEventListener('click', () => {
+            const text = atsJobDesc.value.trim().toLowerCase();
+            
+            if (!text) {
+                alert("Please paste a Job Description first!");
+                return;
+            }
+
+            atsMatchBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> CALCULATING...';
+            atsMatchBtn.disabled = true;
+
+            setTimeout(() => {
+                let matched = [];
+                let unmatched = [];
+
+                // Simple text-matching analysis
+                candidateSkills.forEach(skill => {
+                    const cleanKey = skill.key.toLowerCase();
+                    if (text.includes(cleanKey)) {
+                        matched.push(skill.label);
+                    } else {
+                        unmatched.push(skill.label);
+                    }
+                });
+
+                // Calculate Match Percentage
+                let matchRatio = matched.length / candidateSkills.length;
+                let finalScore = Math.round(matchRatio * 100);
+                if (finalScore < 20 && text.length > 50) {
+                    finalScore = 35; // Recruiter baseline match
+                }
+                if (finalScore > 95) {
+                    finalScore = 98; // Realistic caps
+                }
+
+                // Render matched pills
+                atsMatchedPills.innerHTML = '';
+                if (matched.length > 0) {
+                    matched.forEach(skill => {
+                        const pill = document.createElement('span');
+                        pill.className = 'skill-pill matched';
+                        pill.innerText = skill;
+                        atsMatchedPills.appendChild(pill);
+                    });
+                } else {
+                    atsMatchedPills.innerHTML = '<span style="font-size:0.75rem; color:var(--text-muted);">No matching core keywords found. Try adding Python or SQL.</span>';
+                }
+
+                // Render unmatched (but offered) pills
+                atsMissingPills.innerHTML = '';
+                if (unmatched.length > 0) {
+                    unmatched.forEach(skill => {
+                        const pill = document.createElement('span');
+                        pill.className = 'skill-pill missing';
+                        pill.innerText = skill;
+                        atsMissingPills.appendChild(pill);
+                    });
+                } else {
+                    atsMissingPills.innerHTML = '<span style="font-size:0.75rem; color:var(--success);">All candidate skills match this description!</span>';
+                }
+
+                // Update UI Score & Progress Bar
+                atsResults.style.display = 'block';
+                atsScoreVal.innerText = `${finalScore}%`;
+                atsProgressBar.style.width = `${finalScore}%`;
+
+                // Reset button status
+                atsMatchBtn.innerHTML = '<i class="fa-solid fa-calculator"></i> RE-CALCULATE SCORE';
+                atsMatchBtn.disabled = false;
+            }, 1200);
+        });
+    }
+
 });

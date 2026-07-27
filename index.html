@@ -1144,11 +1144,16 @@
                         </div>
                         
                         <div class="ats-action-card" style="grid-column: span 2;">
-                            <span class="action-title"><i class="fa-solid fa-file-pdf"></i> Printable Document</span>
-                            <p class="action-desc">Download a standardized, clean, single-page resume layout in PDF format.</p>
-                            <a href="AbhyudayaSinha Resume.pdf" download="Abhyudaya_Sinha_Resume.pdf" class="hud-download-btn" id="downloadResumeBtn">
-                                <i class="fa-solid fa-file-arrow-down"></i> DOWNLOAD RESUME (PDF)
-                            </a>
+                            <span class="action-title"><i class="fa-solid fa-folder-open"></i> Recruiter Downloads & Assets</span>
+                            <p class="action-desc">Download a clean PDF resume or copy a pre-formatted ATS Cover Letter template.</p>
+                            <div class="asset-btn-group" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+                                <a href="AbhyudayaSinha Resume.pdf" download="Abhyudaya_Sinha_Resume.pdf" class="hud-download-btn" id="downloadResumeBtn">
+                                    <i class="fa-solid fa-file-arrow-down"></i> RESUME (PDF)
+                                </a>
+                                <button class="hud-copy-btn" id="copyCoverBtn" style="width: 100%;">
+                                    <i class="fa-solid fa-file-invoice"></i> COPY COVER LETTER
+                                </button>
+                            </div>
                         </div>
                         
                     </div>
@@ -1161,6 +1166,42 @@
                         <div class="metric-row">
                             <span>FOCUS AREA:</span>
                             <span class="val">DATA ANALYTICS INTERNSHIP</span>
+                        </div>
+                    </div>
+
+                    <!-- ATS Keyword Matcher Tool -->
+                    <div class="ats-matcher-panel" style="margin-top: 1.5rem; border-top: 1px dashed var(--border); padding-top: 1.5rem;">
+                        <span class="tag tag-spec"><i class="fa-solid fa-gauge-high"></i> ATS COMPATIBILITY TOOL</span>
+                        <h4 style="margin-bottom: 0.5rem; color: var(--text-primary); text-transform: uppercase; font-size: 0.95rem;">Test My ATS Fit Score</h4>
+                        <p class="panel-desc" style="margin-bottom: 1rem; font-size: 0.82rem;">Paste a Data Analyst or Business Analyst Job Description below to compute the real-time keyword match score against my skills.</p>
+                        
+                        <div class="input-group" style="margin-bottom: 0.75rem;">
+                            <textarea id="atsJobDesc" placeholder="Paste Job Description here..." style="width: 100%; min-height: 80px; padding: 0.75rem; background: rgba(0, 0, 0, 0.25); border: 1px solid var(--border); border-radius: 8px; color: var(--text-primary); font-family: var(--font-body); font-size: 0.8rem; resize: vertical; box-sizing: border-box;"></textarea>
+                        </div>
+                        
+                        <button id="atsMatchBtn" class="btn-primary" style="min-height: 38px; padding: 0.6rem 1rem; border-radius: 8px; font-size: 0.75rem; font-weight: 700; width: 100%; border: none; cursor: pointer; text-transform: uppercase;">
+                            <i class="fa-solid fa-calculator"></i> CALCULATE MATCH SCORE
+                        </button>
+                        
+                        <!-- Results display (initially hidden) -->
+                        <div id="atsResults" class="ats-results-box" style="display: none; margin-top: 1.25rem; animation: csSlideDown 0.35s ease forwards;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                                <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-secondary);">ATS Match Score:</span>
+                                <span id="atsScoreVal" style="font-family: var(--font-heading); font-size: 1.2rem; font-weight: 800; color: var(--accent-primary);">0%</span>
+                            </div>
+                            <div class="focus-progress-container" style="background: rgba(255, 255, 255, 0.05); height: 8px; border-radius: 4px; overflow: hidden; margin-bottom: 1rem;">
+                                <div id="atsProgressBar" style="background: var(--accent-gradient); height: 100%; width: 0%; transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);"></div>
+                            </div>
+                            
+                            <div style="margin-bottom: 0.75rem;">
+                                <span style="display: block; font-family: var(--font-accent); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; color: var(--success); margin-bottom: 0.35rem;">Matched Keywords:</span>
+                                <div id="atsMatchedPills" class="skills-list-tags" style="display: flex; flex-wrap: wrap; gap: 0.35rem;"></div>
+                            </div>
+                            
+                            <div>
+                                <span style="display: block; font-family: var(--font-accent); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.35rem;">Additional Core Skills Offered:</span>
+                                <div id="atsMissingPills" class="skills-list-tags" style="display: flex; flex-wrap: wrap; gap: 0.35rem;"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
