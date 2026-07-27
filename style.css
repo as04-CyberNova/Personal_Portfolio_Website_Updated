@@ -20,38 +20,38 @@
     --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     --transition-fast: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
 
-    /* Minimalist & Soft Classic Color Palette */
-    --bg-primary: #0F0F11;
-    --bg-secondary: #161619;
-    --bg-card: #1C1C20;
-    --accent-primary: #C5A880; /* Warm champagne gold */
-    --accent-secondary: #9EB0A5; /* Muted sage green */
-    --accent-purple: #B2A29D; /* Soft dusty rose / clay */
-    --accent-rose: #C8BAB0; /* Warm linen */
-    --text-primary: #F3F3F5;
-    --text-secondary: #C8C8CC;
-    --text-muted: #8E8E93;
-    --success: #8EAF9D; /* Soft muted success green */
-    --border: rgba(197, 168, 128, 0.09);
+    /* Modern GTA V Heist Color Palette */
+    --bg-primary: #08080A; /* Matte HUD Black */
+    --bg-secondary: #0F0F13; /* Deep Menu Gray */
+    --bg-card: #16161E; /* Elevated Panel Gray */
+    --accent-primary: #52C45E; /* GTA V Signature Money Green */
+    --accent-secondary: #3CA0E6; /* Armor Blue */
+    --accent-purple: #FFB300; /* Heist Amber Yellow */
+    --accent-rose: #E53935; /* Wanted Level Red */
+    --text-primary: #F5F5FA;
+    --text-secondary: #CBD0D8;
+    --text-muted: #8E929A;
+    --success: #52C45E;
+    --border: rgba(82, 196, 94, 0.12);
 
     /* Glow Variables */
-    --glow-cyan: rgba(197, 168, 128, 0.1);
-    --glow-purple: rgba(158, 176, 165, 0.08);
-    --glow-card: 0 0 0 1px rgba(197, 168, 128, 0.1), 0 20px 60px rgba(0, 0, 0, 0.55), 0 0 80px rgba(197, 168, 128, 0.02);
+    --glow-cyan: rgba(82, 196, 94, 0.15);
+    --glow-purple: rgba(60, 160, 230, 0.1);
+    --glow-card: 0 0 0 1px rgba(82, 196, 94, 0.15), 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 80px rgba(82, 196, 94, 0.03);
 
     /* Legacy Mappings to maintain stylesheet-wide consistency */
     --accent: var(--accent-primary);
-    --accent-rgb: 197, 168, 128;
+    --accent-rgb: 82, 196, 94;
     --bg-base: var(--bg-primary);
     --bg-darker: var(--bg-secondary);
     --bg-surface: var(--bg-card);
-    --bg-glass: rgba(22, 22, 25, 0.96);
+    --bg-glass: rgba(15, 15, 19, 0.96);
     --text-head: var(--text-primary);
     --text-body: var(--text-secondary);
     --glass-border: var(--border);
     --accent-gradient: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
-    --accent-gradient-v2: linear-gradient(135deg, #C5A880 0%, #B2A29D 100%);
-    --glow-soft: rgba(197, 168, 128, 0.01);
+    --accent-gradient-v2: linear-gradient(135deg, #52C45E 0%, #FFB300 100%);
+    --glow-soft: rgba(82, 196, 94, 0.01);
     
     /* Focus Ring */
     --focus-ring: 2px solid var(--accent-primary);
@@ -2671,9 +2671,9 @@ footer p {
 /* ---- Enhanced Ambient Background ---------------------------------- */
 .ambient-canvas {
     background:
-        radial-gradient(ellipse at 15% 8%,  rgba(178, 162, 157, 0.04) 0%, transparent 45%),
-        radial-gradient(ellipse at 85% 20%, rgba(197, 168, 128, 0.05) 0%, transparent 50%),
-        radial-gradient(ellipse at 50% 75%, rgba(158, 176, 165, 0.03) 0%, transparent 40%),
+        radial-gradient(ellipse at 15% 8%,  rgba(60, 160, 230, 0.03) 0%, transparent 45%),
+        radial-gradient(ellipse at 85% 20%, rgba(82, 196, 94, 0.04) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 75%, rgba(255, 179, 0, 0.02) 0%, transparent 40%),
         var(--bg-base);
 }
 
@@ -2691,7 +2691,7 @@ body::before {
 
 /* ---- Section Heading Gradient Text -------------------------------- */
 .section-head h2 {
-    background: linear-gradient(125deg, #F3F3F5 0%, #C5A880 55%, #B2A29D 100%);
+    background: linear-gradient(125deg, #F5F5FA 0%, #52C45E 55%, #FFB300 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -2733,22 +2733,22 @@ body::before {
     background:
         linear-gradient(var(--bg-secondary), var(--bg-secondary)) padding-box,
         linear-gradient(135deg,
-            rgba(197, 168, 128, 0.22) 0%,
-            rgba(178, 162, 157, 0.15) 50%,
-            rgba(197, 168, 128, 0.08) 100%) border-box;
+            rgba(82, 196, 94, 0.22) 0%,
+            rgba(60, 160, 230, 0.15) 50%,
+            rgba(82, 196, 94, 0.08) 100%) border-box;
     box-shadow:
         0 0 0 1px rgba(var(--accent-rgb), 0.05),
         0 30px 80px rgba(0, 0, 0, 0.55),
         0 0 120px rgba(var(--accent-rgb), 0.02);
 }
 
-/* Muted champagne orb — top-right */
+/* Muted money green orb — top-right */
 .hero-card-frame::before {
     content: '';
     position: absolute;
     width: 560px;
     height: 560px;
-    background: radial-gradient(circle, rgba(197, 168, 128, 0.06) 0%, transparent 65%);
+    background: radial-gradient(circle, rgba(82, 196, 94, 0.06) 0%, transparent 65%);
     top: -220px;
     right: -180px;
     border-radius: 50%;
@@ -2757,13 +2757,13 @@ body::before {
     z-index: 0;
 }
 
-/* Muted rose orb — bottom-left */
+/* Muted armor blue orb — bottom-left */
 .hero-card-frame::after {
     content: '';
     position: absolute;
     width: 440px;
     height: 440px;
-    background: radial-gradient(circle, rgba(178, 162, 157, 0.05) 0%, transparent 65%);
+    background: radial-gradient(circle, rgba(60, 160, 230, 0.05) 0%, transparent 65%);
     bottom: -160px;
     left: -120px;
     border-radius: 50%;
@@ -2795,7 +2795,7 @@ body::before {
 
 /* ---- Navbar: floating glass glow ---------------------------------- */
 .navbar {
-    background: rgba(22, 22, 25, 0.88) !important;
+    background: rgba(15, 15, 19, 0.88) !important;
     box-shadow:
         0 8px 32px rgba(0, 0, 0, 0.45),
         0 0 0 1px rgba(var(--accent-rgb), 0.05),
