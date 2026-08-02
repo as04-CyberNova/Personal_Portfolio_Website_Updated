@@ -269,47 +269,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    // 9. [NEW] Scroll-Spy Active Navigation Highlighting
-    const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
-    const sections = document.querySelectorAll('section[id]');
-
-    // Map secondary sections without direct nav links to their logical parent navigation section
-    const sectionToNavMap = {
-        'recruiter-snapshot': 'home',
-        'current-focus': 'about',
-        'learning-timeline': 'experience',
-        'current-roadmap': 'experience',
-        'github-repos': 'projects'
-    };
-
-    if (navLinks.length && sections.length && 'IntersectionObserver' in window) {
-        const navObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const id = entry.target.getAttribute('id');
-                    const targetId = sectionToNavMap[id] || id;
-                    
-                    // Exclude highlighting for home, resume, and contact sections
-                    if (targetId === 'home' || targetId === 'resume' || targetId === 'contact') {
-                        navLinks.forEach(link => link.classList.remove('nav-active'));
-                        return;
-                    }
-                    
-                    const targetLink = document.querySelector(`.nav-links a[href="#${targetId}"]`);
-                    if (targetLink) {
-                        navLinks.forEach(link => link.classList.remove('nav-active'));
-                        targetLink.classList.add('nav-active');
-                    }
-                }
-            });
-        }, {
-            root: null,
-            threshold: 0, // Using 0 so very tall sections (like Projects) trigger highlights immediately upon entry
-            rootMargin: '-25% 0px -45% 0px'
-        });
-
-        sections.forEach(section => navObserver.observe(section));
-    }
+    // 9. [NEW] Scroll-Spy Active Navigation Highlighting (Disabled for a clean, static navbar design)
 
     // 10. [NEW] Animated Counter Numbers in Hero Stats
     const counterSpans = document.querySelectorAll('.hst-n[data-target]');
