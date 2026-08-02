@@ -298,8 +298,8 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }, {
             root: null,
-            threshold: 0.25, // Slightly lower threshold for faster transitions
-            rootMargin: '-15% 0px -45% 0px'
+            threshold: 0, // Using 0 so very tall sections (like Projects) trigger highlights immediately upon entry
+            rootMargin: '-25% 0px -45% 0px'
         });
 
         sections.forEach(section => navObserver.observe(section));
