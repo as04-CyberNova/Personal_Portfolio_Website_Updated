@@ -2991,10 +2991,10 @@ header.scrolled .navbar {
 }
 
 .recruiter-pill.nav-active {
-    background: var(--accent-gradient) !important;
-    color: #060814 !important;
-    border-color: transparent !important;
-    box-shadow: 0 0 20px rgba(99, 102, 241, 0.4) !important;
+    color: var(--accent-secondary) !important;
+    background: rgba(var(--accent-rgb), 0.08) !important;
+    border-color: rgba(var(--accent-rgb), 0.25) !important;
+    box-shadow: inset 0 0 0 1px rgba(var(--accent-rgb), 0.18), 0 0 15px rgba(var(--accent-rgb), 0.1) !important;
 }
 
 /* ---- Roadmap Column hover ----------------------------------------- */
@@ -3154,7 +3154,6 @@ header.scrolled .navbar {
     z-index: 9999;
     display: flex;
     align-items: center;
-    gap: 12px;
     background: rgba(15, 22, 42, 0.9);
     border: 1px solid var(--border);
     padding: 6px;
@@ -3163,6 +3162,12 @@ header.scrolled .navbar {
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 15px rgba(99, 102, 241, 0.1);
     transform: translateY(0);
     transition: var(--transition-smooth);
+    overflow: hidden;
+    max-width: 54px; /* Collapsed width: toggle button + padding */
+}
+
+.theme-customizer.open {
+    max-width: 260px; /* Expanded width to slide out panel */
 }
 
 .theme-customizer-toggle {
@@ -3179,6 +3184,7 @@ header.scrolled .navbar {
     font-size: 1.1rem;
     transition: var(--transition-fast);
     box-shadow: 0 0 10px rgba(99, 102, 241, 0.2);
+    flex-shrink: 0;
 }
 
 .theme-customizer-toggle:hover {
@@ -3186,21 +3192,21 @@ header.scrolled .navbar {
 }
 
 .theme-customizer-panel {
-    display: none;
+    display: flex;
     align-items: center;
     gap: 10px;
     padding-right: 12px;
     padding-left: 4px;
-    animation: csSlideLeft 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+    transform: translateX(12px);
+    transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
 }
 
 .theme-customizer.open .theme-customizer-panel {
-    display: flex;
-}
-
-@keyframes csSlideLeft {
-    from { opacity: 0; transform: translateX(10px); }
-    to { opacity: 1; transform: translateX(0); }
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: all;
 }
 
 .customizer-title {
