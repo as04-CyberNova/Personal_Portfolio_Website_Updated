@@ -528,4 +528,147 @@ linkedin.com/in/abhyudaya-sinha-7035a8373`;
         });
     }
 
+    // 14. Theme Switcher Engine (Dynamic CSS variable override)
+    const customizerToggle = document.getElementById('theme-customizer-toggle');
+    const customizer = document.getElementById('theme-customizer');
+    const themeOptions = document.querySelectorAll('.theme-option');
+
+    if (customizerToggle && customizer) {
+        customizerToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            customizer.classList.toggle('open');
+        });
+
+        // Close on clicking outside
+        document.addEventListener('click', (e) => {
+            if (!customizer.contains(e.target)) {
+                customizer.classList.remove('open');
+            }
+        });
+
+        // Theme Definitions
+        const themes = {
+            indigo: {
+                '--accent-primary': '#6366f1',
+                '--accent-secondary': '#06b6d4',
+                '--accent-purple': '#a855f7',
+                '--accent-rgb': '99, 102, 241',
+                '--border': 'rgba(99, 102, 241, 0.12)',
+                '--glow-purple': 'rgba(99, 102, 241, 0.12)',
+                '--glow-cyan': 'rgba(6, 182, 212, 0.12)'
+            },
+            cyan: {
+                '--accent-primary': '#06b6d4',
+                '--accent-secondary': '#3b82f6',
+                '--accent-purple': '#6366f1',
+                '--accent-rgb': '6, 182, 212',
+                '--border': 'rgba(6, 182, 212, 0.15)',
+                '--glow-purple': 'rgba(6, 182, 212, 0.12)',
+                '--glow-cyan': 'rgba(59, 130, 246, 0.12)'
+            },
+            emerald: {
+                '--accent-primary': '#10b981',
+                '--accent-secondary': '#06b6d4',
+                '--accent-purple': '#34d399',
+                '--accent-rgb': '16, 185, 129',
+                '--border': 'rgba(16, 185, 129, 0.15)',
+                '--glow-purple': 'rgba(16, 185, 129, 0.12)',
+                '--glow-cyan': 'rgba(6, 182, 212, 0.12)'
+            },
+            amber: {
+                '--accent-primary': '#f59e0b',
+                '--accent-secondary': '#ef4444',
+                '--accent-purple': '#f43f5e',
+                '--accent-rgb': '245, 158, 11',
+                '--border': 'rgba(245, 158, 11, 0.15)',
+                '--glow-purple': 'rgba(245, 158, 11, 0.12)',
+                '--glow-cyan': 'rgba(239, 68, 68, 0.12)'
+            }
+        };
+
+        themeOptions.forEach(opt => {
+            opt.addEventListener('click', () => {
+                themeOptions.forEach(o => o.classList.remove('active'));
+                opt.classList.add('active');
+                
+                const chosenTheme = opt.getAttribute('data-theme');
+                const variables = themes[chosenTheme];
+                
+                if (variables) {
+                    Object.keys(variables).forEach(key => {
+                        document.documentElement.style.setProperty(key, variables[key]);
+                    });
+                }
+            });
+        });
+    }
+
+    // 15. Dynamic Project Filter Counters
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const allProjectCards = document.querySelectorAll('.project-card');
+
+    if (filterButtons.length && allProjectCards.length) {
+        // Calculate counts
+        let counts = {
+            all: allProjectCards.length,
+            pbi: 0,
+            tab: 0,
+            py: 0
+        };
+
+        allProjectCards.forEach(card => {
+            if (card.classList.contains('filter-pbi')) counts.pbi++;
+            if (card.classList.contains('filter-tab')) counts.tab++;
+            if (card.classList.contains('filter-py')) counts.py++;
+        });
+
+        // Map label counts
+        filterButtons.forEach(btn => {
+            const filterVal = btn.getAttribute('data-filter');
+            const countVal = counts[filterVal];
+            if (countVal !== undefined) {
+                const originalText = btn.innerText.split('(')[0].trim();
+                btn.innerText = `${originalText} (${countVal})`;
+            }
+        });
+    }
+
+    // 16. Dynamic Telemetry Challenge Simulator
+    const focusCards = document.querySelectorAll('.focus-card');
+    if (focusCards.length) {
+        // Add a telemetry status badge in SQL (1st card) and Python (2nd card) focus elements
+        const sqlInfo = focusCards[0]?.querySelector('.focus-info');
+        if (sqlInfo) {
+            const telemetryNode = document.createElement('div');
+            telemetryNode.className = 'telemetry-pulse-container';
+            telemetryNode.innerHTML = `
+                <div class="telemetry-pulse-dot"></div>
+                <span class="telemetry-text">Today's Queries: <span class="telemetry-val" id="sqlTelemetryVal">18</span> Solved</span>
+            `;
+            sqlInfo.appendChild(telemetryNode);
+
+            // Periodically increment
+            setInterval(() => {
+                const telemetryVal = document.getElementById('sqlTelemetryVal');
+                if (telemetryVal) {
+                    let currentVal = parseInt(telemetryVal.innerText, 10);
+                    if (Math.random() > 0.6) {
+                        telemetryVal.innerText = currentVal + 1;
+                    }
+                }
+            }, 8000);
+        }
+
+        const pyInfo = focusCards[1]?.querySelector('.focus-info');
+        if (pyInfo) {
+            const telemetryNode = document.createElement('div');
+            telemetryNode.className = 'telemetry-pulse-container';
+            telemetryNode.innerHTML = `
+                <div class="telemetry-pulse-dot" style="background: var(--accent-secondary);"></div>
+                <span class="telemetry-text">Automated Tasks: <span class="telemetry-val" id="pyTelemetryVal">6</span> Live</span>
+            `;
+            pyInfo.appendChild(telemetryNode);
+        }
+    }
+
 });
