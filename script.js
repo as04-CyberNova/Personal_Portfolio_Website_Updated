@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .copied-floating-badge {
             position: fixed;
             background: var(--accent);
-            color: #000000;
+            color: #ffffff;
             padding: 0.3rem 0.7rem;
             border-radius: 6px;
             font-family: var(--font-mono);

@@ -17,41 +17,41 @@
     --header-max-width: 1280px;
     
     /* Transitions */
-    --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    --transition-fast: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-fast: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 
-    /* Cyberpunk GTA V Hybrid Color Palette */
-    --bg-primary: #05060B; /* Deep Obsidian Black */
-    --bg-secondary: #0A0D18; /* Dark Cyber Blue-Gray */
-    --bg-card: #111526; /* Elevated Neon HUD Panel */
-    --accent-primary: #00FF66; /* Neon Money Green */
-    --accent-secondary: #00F0FF; /* Neon Armor Blue / Cyber Cyan */
-    --accent-purple: #FCEE0A; /* Cyberpunk Heist Yellow */
-    --accent-rose: #FF0055; /* Neon Wanted Red / Pink */
-    --text-primary: #F8F9FD;
-    --text-secondary: #C1C6D7;
-    --text-muted: #737993;
-    --success: #00FF66;
-    --border: rgba(0, 240, 255, 0.15);
+    /* Premium Modern Tech Palette */
+    --bg-primary: #060814; /* Extremely Deep Slate Black */
+    --bg-secondary: #0b0f1e; /* Sophisticated Dark Indigo-Slate */
+    --bg-card: rgba(15, 22, 42, 0.45); /* Sleek Glassmorphism Base Card */
+    --accent-primary: #6366f1; /* Royal Indigo */
+    --accent-secondary: #06b6d4; /* Vibrant Cyan */
+    --accent-purple: #a855f7; /* High-Tech Purple */
+    --accent-rose: #f43f5e; /* Rose highlight */
+    --text-primary: #f8fafc; /* Ice White */
+    --text-secondary: #cbd5e1; /* Silver Gray */
+    --text-muted: #64748b; /* Soft Slate Muted */
+    --success: #10b981; /* Emerald Mint */
+    --border: rgba(99, 102, 241, 0.12); /* Delicate Indigo Border */
 
-    /* Glow Variables */
-    --glow-cyan: rgba(0, 240, 255, 0.2);
-    --glow-purple: rgba(0, 255, 102, 0.15);
-    --glow-card: 0 0 0 1px rgba(0, 255, 102, 0.15), 0 20px 60px rgba(0, 0, 0, 0.65), 0 0 80px rgba(0, 255, 102, 0.04);
+    /* Glow & Card Shadow System */
+    --glow-cyan: rgba(6, 182, 212, 0.12);
+    --glow-purple: rgba(99, 102, 241, 0.12);
+    --glow-card: 0 8px 32px 0 rgba(0, 0, 0, 0.37), 0 0 0 1px rgba(99, 102, 241, 0.08);
 
     /* Legacy Mappings to maintain stylesheet-wide consistency */
     --accent: var(--accent-primary);
-    --accent-rgb: 0, 255, 102;
+    --accent-rgb: 99, 102, 241;
     --bg-base: var(--bg-primary);
     --bg-darker: var(--bg-secondary);
     --bg-surface: var(--bg-card);
-    --bg-glass: rgba(10, 13, 24, 0.96);
+    --bg-glass: rgba(9, 13, 26, 0.7);
     --text-head: var(--text-primary);
     --text-body: var(--text-secondary);
-    --glass-border: var(--border);
+    --glass-border: rgba(255, 255, 255, 0.07);
     --accent-gradient: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
-    --accent-gradient-v2: linear-gradient(135deg, #00FF66 0%, #FCEE0A 100%);
-    --glow-soft: rgba(0, 255, 102, 0.015);
+    --accent-gradient-v2: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-purple) 100%);
+    --glow-soft: rgba(99, 102, 241, 0.015);
     
     /* Focus Ring */
     --focus-ring: 2px solid var(--accent-primary);
@@ -2643,9 +2643,9 @@ footer p {
 /* ---- Enhanced Ambient Background ---------------------------------- */
 .ambient-canvas {
     background:
-        radial-gradient(ellipse at 15% 8%,  rgba(60, 160, 230, 0.03) 0%, transparent 45%),
-        radial-gradient(ellipse at 85% 20%, rgba(82, 196, 94, 0.04) 0%, transparent 50%),
-        radial-gradient(ellipse at 50% 75%, rgba(255, 179, 0, 0.02) 0%, transparent 40%),
+        radial-gradient(ellipse at 15% 8%,  rgba(99, 102, 241, 0.04) 0%, transparent 45%),
+        radial-gradient(ellipse at 85% 20%, rgba(6, 182, 212, 0.05) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 75%, rgba(168, 85, 247, 0.02) 0%, transparent 40%),
         var(--bg-base);
 }
 
@@ -2656,14 +2656,14 @@ body::before {
     inset: 0;
     z-index: -1;
     pointer-events: none;
-    opacity: 0.018;
+    opacity: 0.015;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     background-size: 180px 180px;
 }
 
 /* ---- Section Heading Gradient Text -------------------------------- */
 .section-head h2 {
-    background: linear-gradient(125deg, #F5F5FA 0%, #52C45E 55%, #FFB300 100%);
+    background: linear-gradient(125deg, #f8fafc 0%, var(--accent-primary) 50%, var(--accent-secondary) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -2675,7 +2675,7 @@ body::before {
     display: block;
     width: 48px;
     height: 2px;
-    background: var(--accent-gradient-v2);
+    background: var(--accent-gradient);
     border-radius: 10px;
     margin: 1rem auto 0;
     opacity: 0.7;
@@ -2705,22 +2705,22 @@ body::before {
     background:
         linear-gradient(var(--bg-secondary), var(--bg-secondary)) padding-box,
         linear-gradient(135deg,
-            rgba(82, 196, 94, 0.22) 0%,
-            rgba(60, 160, 230, 0.15) 50%,
-            rgba(82, 196, 94, 0.08) 100%) border-box;
+            rgba(99, 102, 241, 0.2) 0%,
+            rgba(6, 182, 212, 0.15) 50%,
+            rgba(99, 102, 241, 0.08) 100%) border-box;
     box-shadow:
         0 0 0 1px rgba(var(--accent-rgb), 0.05),
         0 30px 80px rgba(0, 0, 0, 0.55),
         0 0 120px rgba(var(--accent-rgb), 0.02);
 }
 
-/* Muted money green orb — top-right */
+/* Muted primary orb — top-right */
 .hero-card-frame::before {
     content: '';
     position: absolute;
     width: 560px;
     height: 560px;
-    background: radial-gradient(circle, rgba(82, 196, 94, 0.06) 0%, transparent 65%);
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.06) 0%, transparent 65%);
     top: -220px;
     right: -180px;
     border-radius: 50%;
@@ -2729,13 +2729,13 @@ body::before {
     z-index: 0;
 }
 
-/* Muted armor blue orb — bottom-left */
+/* Muted secondary orb — bottom-left */
 .hero-card-frame::after {
     content: '';
     position: absolute;
     width: 440px;
     height: 440px;
-    background: radial-gradient(circle, rgba(60, 160, 230, 0.05) 0%, transparent 65%);
+    background: radial-gradient(circle, rgba(6, 182, 212, 0.05) 0%, transparent 65%);
     bottom: -160px;
     left: -120px;
     border-radius: 50%;
@@ -2767,7 +2767,7 @@ body::before {
 
 /* ---- Navbar: floating glass glow ---------------------------------- */
 .navbar {
-    background: rgba(15, 15, 19, 0.88) !important;
+    background: rgba(10, 14, 26, 0.8) !important;
     box-shadow:
         0 8px 32px rgba(0, 0, 0, 0.45),
         0 0 0 1px rgba(var(--accent-rgb), 0.05),
@@ -2784,7 +2784,7 @@ header.scrolled .navbar {
 
 /* ---- Active Nav Link Indicator ------------------------------------ */
 .nav-links a.nav-active {
-    color: var(--accent-primary) !important;
+    color: var(--accent-secondary) !important;
     background: rgba(var(--accent-rgb), 0.08) !important;
     box-shadow: inset 0 0 0 1px rgba(var(--accent-rgb), 0.18);
 }
@@ -2825,7 +2825,7 @@ header.scrolled .navbar {
 }
 .btn-secondary:hover {
     border-color: rgba(var(--accent-rgb), 0.25) !important;
-    color: var(--accent-primary) !important;
+    color: var(--accent-secondary) !important;
     background: rgba(var(--accent-rgb), 0.04) !important;
     transform: translateY(-1px);
 }
@@ -2915,7 +2915,7 @@ header.scrolled .navbar {
 
 .skill-pill:hover {
     border-color: rgba(var(--accent-rgb), 0.3) !important;
-    color: var(--accent-primary) !important;
+    color: var(--accent-secondary) !important;
     background: rgba(var(--accent-rgb), 0.05) !important;
 }
 
@@ -2964,30 +2964,30 @@ header.scrolled .navbar {
 
 /* ---- Hero Stats: number glow + gradient ens ----------------------- */
 .h-stats {
-    background: linear-gradient(135deg, rgba(13, 21, 38, 0.7) 0%, rgba(7, 12, 24, 0.8) 100%) !important;
+    background: linear-gradient(135deg, rgba(15, 22, 42, 0.7) 0%, rgba(7, 12, 24, 0.8) 100%) !important;
     box-shadow:
         0 4px 30px rgba(0, 0, 0, 0.4),
-        0 0 0 1px rgba(56, 189, 248, 0.1) !important;
+        0 0 0 1px rgba(99, 102, 241, 0.1) !important;
     backdrop-filter: blur(10px);
 }
 
 .hst-n {
-    text-shadow: 0 0 25px rgba(56, 189, 248, 0.35);
+    text-shadow: 0 0 25px rgba(99, 102, 241, 0.35);
 }
 
 /* ---- Direct Contact Link Cards: glow ------------------------------ */
 .direct-link-card:hover {
     box-shadow:
-        0 0 0 1px rgba(56, 189, 248, 0.15),
+        0 0 0 1px rgba(99, 102, 241, 0.15),
         0 8px 30px rgba(0, 0, 0, 0.4) !important;
 }
 
 /* ---- Recruiter Resume Nav Pill ------------------------------------ */
 .recruiter-pill {
-    background: linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(129, 140, 248, 0.1)) !important;
-    border: 1px solid rgba(56, 189, 248, 0.25) !important;
-    color: var(--accent-primary) !important;
-    box-shadow: 0 0 14px rgba(56, 189, 248, 0.12);
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.12), rgba(6, 182, 212, 0.1)) !important;
+    border: 1px solid rgba(99, 102, 241, 0.25) !important;
+    color: var(--accent-secondary) !important;
+    box-shadow: 0 0 14px rgba(99, 102, 241, 0.12);
 }
 
 /* ---- Roadmap Column hover ----------------------------------------- */
@@ -2996,8 +2996,8 @@ header.scrolled .navbar {
 }
 
 .roadmap-column:hover {
-    border-color: rgba(56, 189, 248, 0.18) !important;
-    box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.06), 0 10px 35px rgba(0,0,0,0.4) !important;
+    border-color: rgba(99, 102, 241, 0.18) !important;
+    box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.06), 0 10px 35px rgba(0,0,0,0.4) !important;
 }
 
 /* ---- Experience & Simulation Cards -------------------------------- */
@@ -3008,47 +3008,49 @@ header.scrolled .navbar {
 
 .experience-card:hover,
 .simulations-card:hover {
-    border-color: rgba(56, 189, 248, 0.18) !important;
-    box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.07), 0 12px 40px rgba(0,0,0,0.45) !important;
+    border-color: rgba(99, 102, 241, 0.18) !important;
+    box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.07), 0 12px 40px rgba(0,0,0,0.45) !important;
 }
 
 /* ---- Contact Form Inputs: focus glow ------------------------------ */
 .input-group input:focus,
 .input-group textarea:focus {
-    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.08), 0 0 20px rgba(56, 189, 248, 0.06) !important;
-    border-color: rgba(56, 189, 248, 0.5) !important;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.08), 0 0 20px rgba(99, 102, 241, 0.06) !important;
+    border-color: rgba(99, 102, 241, 0.5) !important;
 }
 
 /* ---- Footer: gradient border top ---------------------------------- */
-footer {
-    border-top: 1px solid transparent !important;
-    background:
-        linear-gradient(var(--bg-secondary), var(--bg-secondary)) padding-box,
-        linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.3), rgba(129, 140, 248, 0.2), rgba(56, 189, 248, 0.3), transparent) border-box !important;
+@media (min-width: 769px) {
+    footer {
+        border-top: 1px solid transparent !important;
+        background:
+            linear-gradient(var(--bg-secondary), var(--bg-secondary)) padding-box,
+            linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.3), rgba(6, 182, 212, 0.2), rgba(99, 102, 241, 0.3), transparent) border-box !important;
+    }
 }
 
 /* ---- GitHub Stats Widgets: glow border ---------------------------- */
 .stats-svg {
     max-width: 100%;
     height: auto;
-    border: 1px solid rgba(56, 189, 248, 0.12) !important;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), 0 0 30px rgba(56, 189, 248, 0.04);
+    border: 1px solid rgba(99, 102, 241, 0.12) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), 0 0 30px rgba(99, 102, 241, 0.04);
     transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .stats-svg:hover {
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4), 0 0 40px rgba(56, 189, 248, 0.08) !important;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4), 0 0 40px rgba(99, 102, 241, 0.08) !important;
     transform: translateY(-2px);
 }
 
 /* ---- hud-copy-btn glow -------------------------------------------- */
 .hud-download-btn {
-    box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.2);
     transition: box-shadow 0.3s ease, transform 0.2s ease !important;
 }
 
 .hud-download-btn:hover {
-    box-shadow: 0 0 35px rgba(56, 189, 248, 0.4) !important;
+    box-shadow: 0 0 35px rgba(99, 102, 241, 0.4) !important;
     transform: translateY(-1px) !important;
 }
 
@@ -3058,14 +3060,14 @@ footer {
 }
 
 .diff-item:hover {
-    background: rgba(56, 189, 248, 0.02);
+    background: rgba(99, 102, 241, 0.02);
     padding-left: 0.5rem;
     border-radius: 8px;
 }
 
 /* ---- si-item (What drives my analysis) accent hover --------------- */
 .si-item:hover {
-    background: rgba(56, 189, 248, 0.02);
+    background: rgba(99, 102, 241, 0.02);
     border-radius: 8px;
     padding-left: 0.5rem;
     margin-left: -0.5rem;
@@ -3073,9 +3075,9 @@ footer {
 
 /* ---- About comp cards gradient on hover --------------------------- */
 .about-comp-card:hover {
-    border-color: rgba(56, 189, 248, 0.25) !important;
-    background: rgba(56, 189, 248, 0.025) !important;
-    box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.08), 0 8px 30px rgba(0,0,0,0.35) !important;
+    border-color: rgba(99, 102, 241, 0.25) !important;
+    background: rgba(99, 102, 241, 0.025) !important;
+    box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.08), 0 8px 30px rgba(0,0,0,0.35) !important;
 }
 
 /* ---- Tag badges: subtle glow on hover ----------------------------- */
@@ -3084,18 +3086,18 @@ footer {
 }
 
 .tag:hover {
-    box-shadow: 0 0 12px rgba(56, 189, 248, 0.2);
+    box-shadow: 0 0 12px rgba(99, 102, 241, 0.2);
 }
 
 /* ---- ATS Keyword Matcher & Recruiter Asset Styles ----------------- */
 .ats-matcher-panel textarea:focus {
-    box-shadow: 0 0 0 3px rgba(0, 255, 102, 0.15), 0 0 20px rgba(0, 255, 102, 0.08) !important;
-    border-color: rgba(0, 255, 102, 0.5) !important;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15), 0 0 20px rgba(99, 102, 241, 0.08) !important;
+    border-color: rgba(99, 102, 241, 0.5) !important;
     outline: none;
 }
 
 .ats-results-box {
-    background: rgba(22, 22, 25, 0.5);
+    background: rgba(11, 15, 30, 0.5);
     border: 1px solid var(--border);
     border-radius: 12px;
     padding: 1.25rem;
@@ -3112,8 +3114,8 @@ footer {
 
 .asset-btn-group .hud-copy-btn:hover {
     border-color: var(--accent-primary) !important;
-    background: rgba(0, 255, 102, 0.04) !important;
-    color: var(--accent-primary) !important;
+    background: rgba(99, 102, 241, 0.04) !important;
+    color: var(--accent-secondary) !important;
 }
 
 .asset-btn-group .hud-download-btn {
@@ -3126,9 +3128,9 @@ footer {
 
 /* Custom matched/missing skill pills */
 .skill-pill.matched {
-    border-color: rgba(0, 255, 102, 0.3) !important;
-    background: rgba(0, 255, 102, 0.06) !important;
-    color: #00FF66 !important;
+    border-color: rgba(16, 185, 129, 0.3) !important;
+    background: rgba(16, 185, 129, 0.06) !important;
+    color: #10b981 !important;
 }
 
 .skill-pill.missing {
