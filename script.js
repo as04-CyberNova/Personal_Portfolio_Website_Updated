@@ -273,23 +273,33 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
     const sections = document.querySelectorAll('section[id]');
 
+    // Map secondary sections without direct nav links to their logical parent navigation section
+    const sectionToNavMap = {
+        'recruiter-snapshot': 'home',
+        'current-focus': 'about',
+        'learning-timeline': 'experience',
+        'current-roadmap': 'experience',
+        'github-repos': 'projects'
+    };
+
     if (navLinks.length && sections.length && 'IntersectionObserver' in window) {
         const navObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const id = entry.target.getAttribute('id');
-                    navLinks.forEach(link => {
-                        link.classList.remove('nav-active');
-                        if (link.getAttribute('href') === `#${id}`) {
-                            link.classList.add('nav-active');
-                        }
-                    });
+                    const targetId = sectionToNavMap[id] || id;
+                    
+                    const targetLink = document.querySelector(`.nav-links a[href="#${targetId}"]`);
+                    if (targetLink) {
+                        navLinks.forEach(link => link.classList.remove('nav-active'));
+                        targetLink.classList.add('nav-active');
+                    }
                 }
             });
         }, {
             root: null,
-            threshold: 0.3,
-            rootMargin: '-10% 0px -50% 0px'
+            threshold: 0.25, // Slightly lower threshold for faster transitions
+            rootMargin: '-15% 0px -45% 0px'
         });
 
         sections.forEach(section => navObserver.observe(section));
