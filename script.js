@@ -289,6 +289,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     const id = entry.target.getAttribute('id');
                     const targetId = sectionToNavMap[id] || id;
                     
+                    // Exclude highlighting for home, resume, and contact sections
+                    if (targetId === 'home' || targetId === 'resume' || targetId === 'contact') {
+                        navLinks.forEach(link => link.classList.remove('nav-active'));
+                        return;
+                    }
+                    
                     const targetLink = document.querySelector(`.nav-links a[href="#${targetId}"]`);
                     if (targetLink) {
                         navLinks.forEach(link => link.classList.remove('nav-active'));

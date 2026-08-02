@@ -3167,7 +3167,7 @@ header.scrolled .navbar {
 }
 
 .theme-customizer.open {
-    max-width: 260px; /* Expanded width to slide out panel */
+    max-width: 310px; /* Expanded width to slide out panel fully without cutting off Sunset Amber option */
 }
 
 .theme-customizer-toggle {
