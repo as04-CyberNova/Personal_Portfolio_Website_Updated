@@ -124,7 +124,7 @@ export default function AtsMatcher() {
             <div style={{ width: `${score}%`, height: '100%', background: score > 70 ? '#10b981' : '#f59e0b', transition: 'width 0.5s ease-in-out' }}></div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+          <div className="ats-action-grid">
             <div>
               <h5 style={{ fontSize: '0.8rem', color: '#10b981', display: 'flex', alignItems: 'center', gap: '0.3rem', marginBottom: '0.5rem' }}>
                 <CheckCircle2 size={12} /> Matched ({matchedSkills.length})

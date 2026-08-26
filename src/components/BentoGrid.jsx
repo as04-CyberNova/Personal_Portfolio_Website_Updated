@@ -138,7 +138,7 @@ export default function BentoGrid({ recruiterMode }) {
           <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', marginBottom: '1.2rem' }}>
             Welcome! This panel aggregates Abhyudaya's resume builder, custom SQL capabilities, and chatbot features to speed up your vetting process.
           </p>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
+          <div className="recruiter-cockpit-grid">
             <ResumeGenerator />
             <AtsMatcher />
           </div>
@@ -251,7 +251,7 @@ export default function BentoGrid({ recruiterMode }) {
           <p><i className="fa-solid fa-code"></i> PLAYABLE INTELLIGENCE</p>
           <h2>Interactive SQL Sandbox & Portfolio Analytics</h2>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', maxWidth: '1200px', margin: '0 auto' }}>
+        <div className="interactive-panels-grid" style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <SqlSandbox />
           <AnalyticsDashboard />
         </div>
@@ -342,7 +342,7 @@ export default function BentoGrid({ recruiterMode }) {
           <p><i className="fa-solid fa-file-invoice"></i> TALENT ACQUISITION</p>
           <h2>Vetting & Credentials</h2>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', maxWidth: '1200px', margin: '0 auto' }}>
+        <div className="recruiter-cockpit-grid" style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <ResumeGenerator />
           <AtsMatcher />
         </div>
