@@ -90,7 +90,7 @@ export default function Navbar({ recruiterMode, setRecruiterMode }) {
           {/* Recruiter Fast Track Mode Switch */}
           <button 
             onClick={() => setRecruiterMode(!recruiterMode)}
-            className="control-btn"
+            className="recruiter-toggle-btn"
             title="Toggle Recruiter Mode"
             style={{
               padding: '0.4rem 0.8rem',
@@ -104,7 +104,9 @@ export default function Navbar({ recruiterMode, setRecruiterMode }) {
               border: '1px solid var(--border)',
               cursor: 'pointer',
               fontWeight: 700,
-              fontFamily: 'var(--font-mono)'
+              fontFamily: 'var(--font-mono)',
+              width: 'auto',
+              height: '38px'
             }}
           >
             <i className={`fa-solid ${recruiterMode ? 'fa-bolt' : 'fa-user-tie'}`}></i>
