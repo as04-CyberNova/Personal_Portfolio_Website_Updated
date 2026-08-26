@@ -30,7 +30,7 @@ export default function BentoGrid({ recruiterMode }) {
       ],
       lessons: 'Handled high record counts directly in Tableau; learned that caching strategies and pre-aggregating data in Excel significantly improves dashboard load times and visual transition responsiveness.',
       repoLink: 'https://github.com/as04-CyberNova/Tableau-BI-Dashboards',
-      imgSrc: 'images/Screenshot 2026-06-03 001716.png'
+      imgSrc: '/images/Screenshot 2026-06-03 001716.png'
     },
     {
       id: 'hospital',
@@ -51,7 +51,7 @@ export default function BentoGrid({ recruiterMode }) {
       ],
       lessons: 'Understood standard normalizations. Realized that computing heavy column metrics upstream in relational SQL tables is far faster than relying purely on client-side visual aggregations.',
       repoLink: 'https://github.com/as04-CyberNova/Power-BI-Analytics-Dashboards',
-      imgSrc: 'images/Hospital_Patient_Record_Analysis_Dashboard.png'
+      imgSrc: '/images/Hospital_Patient_Record_Analysis_Dashboard.png'
     },
     {
       id: 'covid',
@@ -72,7 +72,7 @@ export default function BentoGrid({ recruiterMode }) {
       ],
       lessons: 'Learned the importance of automation. Scripting Python routines to automatically filter data saves hours compared to manual spreadsheet cleans.',
       repoLink: 'https://github.com/as04-CyberNova/COVID-19-Data-Visualization',
-      imgSrc: 'images/Covid19_Analysis_Dashboard.png'
+      imgSrc: '/images/Covid19_Analysis_Dashboard.png'
     }
   ];
 
