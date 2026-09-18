@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-export default function Navbar({ recruiterMode, setRecruiterMode }) {
+export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [customizerOpen, setCustomizerOpen] = useState(false);
@@ -45,15 +45,6 @@ export default function Navbar({ recruiterMode, setRecruiterMode }) {
       '--border': 'rgba(16, 185, 129, 0.15)',
       '--glow-purple': 'rgba(16, 185, 129, 0.12)',
       '--glow-cyan': 'rgba(6, 182, 212, 0.12)'
-    },
-    amber: {
-      '--accent-primary': '#f59e0b',
-      '--accent-secondary': '#ef4444',
-      '--accent-purple': '#f43f5e',
-      '--accent-rgb': '245, 158, 11',
-      '--border': 'rgba(245, 158, 11, 0.15)',
-      '--glow-purple': 'rgba(245, 158, 11, 0.12)',
-      '--glow-cyan': 'rgba(239, 68, 68, 0.12)'
     }
   };
 
@@ -71,48 +62,20 @@ export default function Navbar({ recruiterMode, setRecruiterMode }) {
     <header id="header" className={scrolled ? 'scrolled' : ''}>
       <nav className="navbar">
         <a href="#" className="logo" id="logoLink" aria-label="Abhyudaya Sinha Home">
-          <i className="fa-solid fa-chart-pie"></i> ABHYUDAYA SINHA <span className="logo-divider">|</span> <span className="logo-subtitle">PORTFOLIO</span>
+          <i className="fa-solid fa-chart-line"></i> ABHYUDAYA SINHA <span className="logo-divider">|</span> <span className="logo-subtitle">DATA ANALYTICS</span>
         </a>
 
         <div className={`nav-container ${mobileMenuOpen ? 'active' : ''}`} id="navContainer">
           <ul className="nav-links">
-            <li><a href="#home" onClick={() => setMobileMenuOpen(false)}>Home</a></li>
-            <li><a href="#about" onClick={() => setMobileMenuOpen(false)}>About</a></li>
-            <li><a href="#skills" onClick={() => setMobileMenuOpen(false)}>Skills</a></li>
-            <li><a href="#experience" onClick={() => setMobileMenuOpen(false)}>Experience</a></li>
+            <li><a href="#home" onClick={() => setMobileMenuOpen(false)}>Overview</a></li>
+            <li><a href="#analytics" onClick={() => setMobileMenuOpen(false)}>Analytics Dashboard</a></li>
             <li><a href="#projects" onClick={() => setMobileMenuOpen(false)}>Projects</a></li>
-            <li><a href="#resume" className="recruiter-pill" onClick={() => setMobileMenuOpen(false)}><i className="fa-solid fa-file-invoice"></i> Resume</a></li>
+            <li><a href="#skills" onClick={() => setMobileMenuOpen(false)}>Skills</a></li>
             <li><a href="#contact" onClick={() => setMobileMenuOpen(false)}>Contact</a></li>
           </ul>
         </div>
 
         <div className="controls">
-          {/* Recruiter Fast Track Mode Switch */}
-          <button 
-            onClick={() => setRecruiterMode(!recruiterMode)}
-            className="recruiter-toggle-btn"
-            title="Toggle Recruiter Mode"
-            style={{
-              padding: '0.4rem 0.8rem',
-              borderRadius: '20px',
-              fontSize: '0.75rem',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.4rem',
-              background: recruiterMode ? 'var(--accent-primary)' : 'rgba(255,255,255,0.05)',
-              color: recruiterMode ? '#fff' : 'var(--text-primary)',
-              border: '1px solid var(--border)',
-              cursor: 'pointer',
-              fontWeight: 700,
-              fontFamily: 'var(--font-mono)',
-              width: 'auto',
-              height: '38px'
-            }}
-          >
-            <i className={`fa-solid ${recruiterMode ? 'fa-bolt' : 'fa-user-tie'}`}></i>
-            {recruiterMode ? 'RECRUITER ON' : 'RECRUITER MODE'}
-          </button>
-
           {/* Theme customizer toggle */}
           <div style={{ position: 'relative' }}>
             <button 
@@ -130,13 +93,13 @@ export default function Navbar({ recruiterMode, setRecruiterMode }) {
                   position: 'absolute',
                   top: '120%',
                   right: 0,
-                  background: '#0b1220',
+                  background: '#0f172a',
                   border: '1px solid var(--border)',
                   borderRadius: '12px',
-                  padding: '1rem',
+                  padding: '0.8rem',
                   display: 'flex',
                   flexDirection: 'column',
-                  gap: '0.5rem',
+                  gap: '0.4rem',
                   zIndex: 9999,
                   minWidth: '120px'
                 }}
@@ -173,7 +136,7 @@ export default function Navbar({ recruiterMode, setRecruiterMode }) {
             <i className="fab fa-linkedin-in"></i>
           </a>
 
-          <a href="#contact" className="btn-primary connect-btn" id="atsNavBtn">CONTACT ME</a>
+          <a href="#contact" className="btn-primary connect-btn" id="atsNavBtn">GET IN TOUCH</a>
 
           <button 
             className="mobile-menu-btn" 
@@ -188,3 +151,4 @@ export default function Navbar({ recruiterMode, setRecruiterMode }) {
     </header>
   );
 }
+

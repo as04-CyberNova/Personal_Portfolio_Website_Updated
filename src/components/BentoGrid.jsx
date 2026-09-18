@@ -1,13 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import SqlSandbox from './SqlSandbox';
+import React, { useState } from 'react';
 import AnalyticsDashboard from './AnalyticsDashboard';
-import ResumeGenerator from './ResumeGenerator';
-import AtsMatcher from './AtsMatcher';
 import ContactForm from './ContactForm';
 
-export default function BentoGrid({ recruiterMode }) {
+export default function BentoGrid() {
   const [projectFilter, setProjectFilter] = useState('all');
-  const [copiedText, setCopiedText] = useState(null);
 
   // Projects data matching original files
   const projects = [
@@ -76,13 +72,6 @@ export default function BentoGrid({ recruiterMode }) {
     }
   ];
 
-  const handleCopy = (text, label) => {
-    navigator.clipboard.writeText(text).then(() => {
-      setCopiedText(label);
-      setTimeout(() => setCopiedText(null), 2000);
-    });
-  };
-
   const filteredProjects = projects.filter(p => {
     if (projectFilter === 'all') return true;
     return p.techClass.includes(`filter-${projectFilter}`);
@@ -99,7 +88,7 @@ export default function BentoGrid({ recruiterMode }) {
             <h1 className="hero-main-title">
               Abhyudaya <em>Sinha</em>
             </h1>
-            <p className="hero-subtitle-p">Python • SQL • Power BI • Tableau • Data Science</p>
+            <p className="hero-subtitle-p">Python &bull; SQL &bull; Power BI &bull; Tableau &bull; Data Science</p>
             
             <div className="hero-meta-info">
               <span className="meta-pill"><i className="fa-solid fa-graduation-cap"></i> B.Tech CSE (Data Science) Student</span>
@@ -112,71 +101,54 @@ export default function BentoGrid({ recruiterMode }) {
             </p>
             
             <div className="hero-btns-grid">
-              <a href="#projects" className="btn-primary"><i class="fa-solid fa-chart-line"></i> View Projects</a>
-              <a href="AbhyudayaSinha Resume.pdf" download="Abhyudaya_Sinha_Resume.pdf" className="btn-secondary"><i class="fa-solid fa-file-pdf"></i> Download Resume</a>
-              <a href="#contact" className="btn-secondary"><i class="fa-solid fa-envelope"></i> Contact Me</a>
-              <a href="https://github.com/as04-CyberNova" target="_blank" rel="noopener noreferrer" className="btn-secondary"><i class="fab fa-github"></i> GitHub</a>
+              <a href="#projects" className="btn-primary"><i className="fa-solid fa-chart-line"></i> View Projects</a>
+              <a href="AbhyudayaSinha Resume.pdf" download="Abhyudaya_Sinha_Resume.pdf" className="btn-secondary"><i className="fa-solid fa-file-pdf"></i> Download Resume</a>
+              <a href="#contact" className="btn-secondary"><i className="fa-solid fa-envelope"></i> Contact Me</a>
+              <a href="https://github.com/as04-CyberNova" target="_blank" rel="noopener noreferrer" className="btn-secondary"><i className="fab fa-github"></i> GitHub</a>
             </div>
 
             <div className="h-stats">
-              <div className="hst"><span className="hst-n">1K<span>+</span></span><span className="hst-l">LinkedIn Followers</span></div>
+              <div className="hst"><span className="hst-n">300K<span>+</span></span><span className="hst-l">Records Processed</span></div>
+              <div className="hst"><span className="hst-n">3<span>+</span></span><span className="hst-l">BI Dashboards Built</span></div>
+              <div className="hst"><span className="hst-n">99.8<span>%</span></span><span className="hst-l">Data Cleaning Accuracy</span></div>
               <div className="hst"><span className="hst-n">14<span>+</span></span><span className="hst-l">GitHub Repositories</span></div>
-              <div className="hst"><span className="hst-n">5<span>+</span></span><span className="hst-l">Projects Built</span></div>
-              <div className="hst"><span className="hst-n">6<span>+</span></span><span className="hst-l">SQL Optimizations</span></div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Recruiter Highlight Header */}
-      {recruiterMode && (
-        <section id="recruiter-fast-track" style={{ background: 'rgba(99, 102, 241, 0.1)', border: '2px solid var(--accent-primary)', borderRadius: '16px', padding: '1.5rem', margin: '2rem auto', maxWidth: '1200px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--accent-primary)', marginBottom: '0.8rem' }}>
-            <i className="fa-solid fa-bolt" style={{ fontSize: '1.5rem' }}></i>
-            <h2 style={{ margin: 0, fontSize: '1.4rem', fontFamily: 'var(--font-heading)' }}>Recruiter Fast-Track Dashboard</h2>
-          </div>
-          <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', marginBottom: '1.2rem' }}>
-            Welcome! This panel aggregates Abhyudaya's resume builder, custom SQL capabilities, and chatbot features to speed up your vetting process.
-          </p>
-          <div className="recruiter-cockpit-grid">
-            <ResumeGenerator />
-            <AtsMatcher />
-          </div>
-        </section>
-      )}
-
       {/* Recruiter Snapshot */}
       <section id="recruiter-snapshot">
         <div className="section-head">
           <p><i className="fa-solid fa-bolt"></i> FAST SUMMARY</p>
-          <h2>Recruiter Snapshot</h2>
+          <h2>Professional Snapshot</h2>
         </div>
         <div className="snapshot-grid">
           <div className="snapshot-card bento-item">
             <div className="snapshot-icon"><i className="fa-solid fa-bullseye"></i></div>
             <div className="snapshot-info">
               <h3>Role Target</h3>
-              <p>Data Analytics Intern</p>
+              <p>Data / Business Analytics Intern</p>
             </div>
           </div>
           <div className="snapshot-card bento-item">
             <div className="snapshot-icon"><i className="fa-solid fa-screwdriver-wrench"></i></div>
             <div className="snapshot-info">
-              <h3>Core Tools</h3>
-              <p>Python, SQL, Power BI, Tableau</p>
+              <h3>Core Tech Stack</h3>
+              <p>Python, SQL, Power BI, Tableau, Excel</p>
             </div>
           </div>
           <div className="snapshot-card bento-item">
             <div className="snapshot-icon"><i className="fa-solid fa-chart-pie"></i></div>
             <div className="snapshot-info">
               <h3>Focus Areas</h3>
-              <p>Dashboards, BI, Data Viz, Reporting</p>
+              <p>Dashboards, BI Reporting, Data Wrangling</p>
             </div>
           </div>
           <div className="snapshot-card bento-item">
             <div className="snapshot-icon"><i className="fa-solid fa-briefcase"></i></div>
             <div className="snapshot-info">
-              <h3>Current Experience</h3>
+              <h3>Experience</h3>
               <p>Data Intern at Codec Tech + Industry Simulations</p>
             </div>
           </div>
@@ -194,10 +166,10 @@ export default function BentoGrid({ recruiterMode }) {
           <div className="about-card bento-item">
             <div className="about-content" style={{ maxWidth: '950px', margin: '0 auto' }}>
               <p className="about-body-text" style={{ fontSize: '1.05rem', lineHeight: '1.7', textAlign: 'center', maxWidth: '800px', margin: '0 auto 2.5rem' }}>
-                I am a B.Tech CSE (Data Science) student focused on translating raw data streams into actionable business intelligence. Through academic studies, industry simulations, and hands-on internship projects at Codec Technologies, I build scalable data pipelines, clean messy files, and design executive dashboards that isolate bottlenecks and highlight growth.
+                I am a B.Tech CSE (Data Science) student focused on translating raw data streams into actionable business intelligence. Through academic studies, industry simulations, and hands-on internship projects at Codec Technologies, I build scalable data pipelines, clean messy datasets, and design executive dashboards that isolate bottlenecks and highlight growth.
               </p>
               
-              <div className="about-competencies-grid" style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '1.5rem', marginTop: '1.5rem' }}>
+              <div className="about-competencies-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', marginTop: '1.5rem' }}>
                 <div className="about-comp-card">
                   <h3 style={{ fontSize: '1.1rem', color: 'var(--accent-primary)', marginBottom: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}><i className="fa-brands fa-python"></i> Data Pipeline Automation</h3>
                   <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: '1.5' }}>Structuring clean, reusable Python code to automate ETL tasks. Proficient in NumPy and Pandas for data wrangling, handling missing values, profiling distributions, and preprocessing data for analytical modeling.</p>
@@ -217,27 +189,27 @@ export default function BentoGrid({ recruiterMode }) {
           </div>
 
           <div className="different-card bento-item">
-            <h3 className="different-head">What Makes Me Different</h3>
+            <h3 className="different-head">What Sets My Analytics Work Apart</h3>
             <div className="different-list">
               <div className="diff-item">
                 <span className="diff-icon">📈</span>
                 <div>
-                  <div className="diff-h">Analyst, not just a coder</div>
+                  <div className="diff-h">Analyst Mindset, Business Impact</div>
                   <div className="diff-p">I bridge raw data and business logic—querying and cleaning to drive actual revenue and operational metrics.</div>
                 </div>
               </div>
               <div className="diff-item">
                 <span className="diff-icon">🛡️</span>
                 <div>
-                  <div className="diff-h">Relational database focus</div>
+                  <div className="diff-h">Relational Database Optimization</div>
                   <div className="diff-p">Writing clean, normalized SQL query architectures (CTEs, window functions) to prevent downstream reporting lag.</div>
                 </div>
               </div>
               <div className="diff-item">
                 <span className="diff-icon">🎨</span>
                 <div>
-                  <div className="diff-h">Eye-friendly visual design</div>
-                  <div className="diff-p">Building high-contrast, premium, and accessible Tableau & Power BI dashboards that communicate stats without visual fatigue.</div>
+                  <div className="diff-h">Executive Dashboard Design</div>
+                  <div className="diff-p">Building high-contrast, premium, and accessible Tableau & Power BI dashboards that communicate stats clearly.</div>
                 </div>
               </div>
             </div>
@@ -245,54 +217,59 @@ export default function BentoGrid({ recruiterMode }) {
         </div>
       </section>
 
-      {/* SQL Sandbox & Analytics Section */}
-      <section id="interactive-data-panels" style={{ padding: '2rem 0' }}>
+      {/* Interactive Telemetry & BI Analytics Section */}
+      <section id="analytics" style={{ padding: '3rem 0' }}>
         <div className="section-head">
-          <p><i className="fa-solid fa-code"></i> PLAYABLE INTELLIGENCE</p>
-          <h2>Interactive SQL Sandbox & Portfolio Analytics</h2>
+          <p><i className="fa-solid fa-chart-pie"></i> INTERACTIVE TELEMETRY</p>
+          <h2>Live BI & Analytics Showcase</h2>
         </div>
-        <div className="interactive-panels-grid" style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <SqlSandbox />
+        <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
           <AnalyticsDashboard />
         </div>
       </section>
 
       {/* Skills Section */}
-      <section id="skills">
+      <section id="skills" style={{ padding: '3rem 0' }}>
         <div className="section-head">
-          <p><i className="fa-solid fa-layer-group"></i> COMPETENCY INDEX</p>
+          <p><i className="fa-solid fa-layer-group"></i> TECHNICAL MATRIX</p>
           <h2>Skills & Technologies</h2>
         </div>
         <div className="skills-grid-new">
-          <div className="skills-card">
-            <h3><i className="fa-solid fa-code"></i> Programming</h3>
+          <div className="skills-card bento-item">
+            <h3><i className="fa-solid fa-code"></i> Data Programming</h3>
             <div className="skills-list-tags">
               <span className="skill-pill">Python</span>
+              <span className="skill-pill">Pandas</span>
+              <span className="skill-pill">NumPy</span>
             </div>
           </div>
-          <div className="skills-card">
-            <h3><i className="fa-solid fa-database"></i> Databases</h3>
+          <div className="skills-card bento-item">
+            <h3><i className="fa-solid fa-database"></i> Databases & Querying</h3>
             <div className="skills-list-tags">
               <span className="skill-pill">SQL</span>
               <span className="skill-pill">MS SQL Server</span>
+              <span className="skill-pill">Star Schema</span>
+              <span className="skill-pill">ETL Pipelines</span>
             </div>
           </div>
-          <div className="skills-card">
+          <div className="skills-card bento-item">
             <h3><i className="fa-solid fa-chart-column"></i> BI & Visualization</h3>
             <div className="skills-list-tags">
               <span className="skill-pill">Power BI</span>
               <span className="skill-pill">Tableau</span>
-              <span className="skill-pill">Excel</span>
+              <span className="skill-pill">MS Excel</span>
+              <span className="skill-pill">Power Query</span>
+              <span className="skill-pill">DAX</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Projects Section */}
-      <section id="projects">
+      {/* Case Studies / Projects Section */}
+      <section id="projects" style={{ padding: '3rem 0' }}>
         <div className="section-head">
           <p><i className="fa-solid fa-chart-line"></i> CASE STUDY SHOWCASE</p>
-          <h2>Featured Analytics Case Studies</h2>
+          <h2>Featured Data Analytics Projects</h2>
           <div className="hud-filter-controls">
             <button className={`filter-btn ${projectFilter === 'all' ? 'active' : ''}`} onClick={() => setProjectFilter('all')}>ALL</button>
             <button className={`filter-btn ${projectFilter === 'pbi' ? 'active' : ''}`} onClick={() => setProjectFilter('pbi')}>POWER BI</button>
@@ -336,22 +313,10 @@ export default function BentoGrid({ recruiterMode }) {
         </div>
       </section>
 
-      {/* Resume Section */}
-      <section id="resume" style={{ padding: '4rem 0' }}>
-        <div className="section-head">
-          <p><i className="fa-solid fa-file-invoice"></i> TALENT ACQUISITION</p>
-          <h2>Vetting & Credentials</h2>
-        </div>
-        <div className="recruiter-cockpit-grid" style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <ResumeGenerator />
-          <AtsMatcher />
-        </div>
-      </section>
-
       {/* Contact Section */}
       <section id="contact" style={{ padding: '4rem 0' }}>
         <div className="section-head">
-          <p><i className="fa-solid fa-envelope"></i> LET'S CONNECT</p>
+          <p><i className="fa-solid fa-envelope"></i> GET IN TOUCH</p>
           <h2>Initiate Collaboration</h2>
         </div>
         <div style={{ maxWidth: '600px', margin: '0 auto' }}>
@@ -361,3 +326,4 @@ export default function BentoGrid({ recruiterMode }) {
     </main>
   );
 }
+
