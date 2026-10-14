@@ -1,6 +1,103 @@
-/* Reset and basic defaults */
-body {
+/* Modern Personal Brand Design Tokens & Base Resets */
+:root {
+  /* Color Palette */
+  --bg-main: #0A0F1C;
+  --bg-card: #111827;
+  --bg-card-hover: #162032;
+  --bg-surface: rgba(17, 24, 39, 0.75);
+  --bg-glass: rgba(10, 15, 28, 0.85);
+
+  --primary: #14B8A6;
+  --primary-hover: #0D9488;
+  --primary-glow: rgba(20, 184, 166, 0.25);
+  --primary-subtle: rgba(20, 184, 166, 0.08);
+
+  --accent: #F59E0B;
+  --accent-hover: #D97706;
+  --accent-glow: rgba(245, 158, 11, 0.25);
+  --accent-subtle: rgba(245, 158, 11, 0.08);
+
+  --text-primary: #F8FAFC;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
+
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-card: rgba(20, 184, 166, 0.14);
+  --border-focus: rgba(20, 184, 166, 0.5);
+
+  /* Gradients */
+  --gradient-brand: linear-gradient(135deg, #14B8A6 0%, #06B6D4 50%, #3B82F6 100%);
+  --gradient-accent: linear-gradient(135deg, #F59E0B 0%, #EA580C 100%);
+  --gradient-card: linear-gradient(180deg, rgba(20, 184, 166, 0.06) 0%, rgba(17, 24, 39, 0.95) 100%);
+
+  /* Typography */
+  --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Layout Constants */
+  --container-max: 1240px;
+  --header-height: 80px;
+
+  /* Transitions */
+  --transition-smooth: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Base Resets */
+*, *::before, *::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 16px;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+  width: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* Selection Color */
+::selection {
+  background: var(--primary);
+  color: #0A0F1C;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
 }

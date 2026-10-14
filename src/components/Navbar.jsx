@@ -3,12 +3,10 @@ import React, { useState, useEffect } from 'react';
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [customizerOpen, setCustomizerOpen] = useState(false);
-  const [activeTheme, setActiveTheme] = useState('indigo');
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 40) {
+      if (window.scrollY > 30) {
         setScrolled(true);
       } else {
         setScrolled(false);
@@ -18,137 +16,110 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const themes = {
-    indigo: {
-      '--accent-primary': '#6366f1',
-      '--accent-secondary': '#06b6d4',
-      '--accent-purple': '#a855f7',
-      '--accent-rgb': '99, 102, 241',
-      '--border': 'rgba(99, 102, 241, 0.12)',
-      '--glow-purple': 'rgba(99, 102, 241, 0.12)',
-      '--glow-cyan': 'rgba(6, 182, 212, 0.12)'
-    },
-    cyan: {
-      '--accent-primary': '#06b6d4',
-      '--accent-secondary': '#3b82f6',
-      '--accent-purple': '#6366f1',
-      '--accent-rgb': '6, 182, 212',
-      '--border': 'rgba(6, 182, 212, 0.15)',
-      '--glow-purple': 'rgba(6, 182, 212, 0.12)',
-      '--glow-cyan': 'rgba(59, 130, 246, 0.12)'
-    },
-    emerald: {
-      '--accent-primary': '#10b981',
-      '--accent-secondary': '#06b6d4',
-      '--accent-purple': '#34d399',
-      '--accent-rgb': '16, 185, 129',
-      '--border': 'rgba(16, 185, 129, 0.15)',
-      '--glow-purple': 'rgba(16, 185, 129, 0.12)',
-      '--glow-cyan': 'rgba(6, 182, 212, 0.12)'
-    }
-  };
-
-  const changeTheme = (themeName) => {
-    setActiveTheme(themeName);
-    const variables = themes[themeName];
-    if (variables) {
-      Object.keys(variables).forEach(key => {
-        document.documentElement.style.setProperty(key, variables[key]);
-      });
-    }
-  };
+  const closeMenu = () => setMobileMenuOpen(false);
 
   return (
-    <header id="header" className={scrolled ? 'scrolled' : ''}>
-      <nav className="navbar">
-        <a href="#" className="logo" id="logoLink" aria-label="Abhyudaya Sinha Home">
-          <i className="fa-solid fa-chart-line"></i> ABHYUDAYA SINHA <span className="logo-divider">|</span> <span className="logo-subtitle">DATA ANALYTICS</span>
+    <header className={`navbar-header ${scrolled ? 'scrolled' : ''}`}>
+      <nav className="navbar-container">
+        {/* Brand Logo */}
+        <a href="#home" className="brand-logo" onClick={closeMenu}>
+          <div className="logo-symbol">
+            <span className="logo-dot"></span>
+          </div>
+          <div className="logo-text-group">
+            <span className="logo-name">ABHYUDAYA SINHA</span>
+            <span className="logo-tag">ENGINEER & BUILDER</span>
+          </div>
         </a>
 
-        <div className={`nav-container ${mobileMenuOpen ? 'active' : ''}`} id="navContainer">
-          <ul className="nav-links">
-            <li><a href="#home" onClick={() => setMobileMenuOpen(false)}>Overview</a></li>
-            <li><a href="#analytics" onClick={() => setMobileMenuOpen(false)}>Analytics Dashboard</a></li>
-            <li><a href="#projects" onClick={() => setMobileMenuOpen(false)}>Projects</a></li>
-            <li><a href="#skills" onClick={() => setMobileMenuOpen(false)}>Skills</a></li>
-            <li><a href="#contact" onClick={() => setMobileMenuOpen(false)}>Contact</a></li>
+        {/* Desktop Navigation Links */}
+        <div className={`nav-links-wrapper ${mobileMenuOpen ? 'open' : ''}`}>
+          <ul className="nav-links-list">
+            <li><a href="#home" onClick={closeMenu}>Overview</a></li>
+            <li><a href="#about" onClick={closeMenu}>About</a></li>
+            <li><a href="#solutions" onClick={closeMenu}>Solutions</a></li>
+            <li><a href="#telemetry" onClick={closeMenu}>Telemetry</a></li>
+            <li><a href="#expertise" onClick={closeMenu}>Expertise</a></li>
+            <li><a href="#impact" onClick={closeMenu}>Track Record</a></li>
+            <li><a href="#endorsements" onClick={closeMenu}>Testimonials</a></li>
+            <li><a href="#contact" onClick={closeMenu}>Contact</a></li>
           </ul>
+
+          {/* Mobile extra CTAs */}
+          <div className="mobile-drawer-cta">
+            <a 
+              href="/Abhyudaya_Sinha_Resume.pdf" 
+              download="Abhyudaya_Sinha_Resume.pdf" 
+              className="btn-resume-nav"
+              onClick={closeMenu}
+            >
+              <i className="fa-solid fa-arrow-down-to-line"></i> Download Resume
+            </a>
+            <a 
+              href="#contact" 
+              className="btn-connect-nav"
+              onClick={closeMenu}
+            >
+              Let's Connect
+            </a>
+          </div>
         </div>
 
-        <div className="controls">
-          {/* Theme customizer toggle */}
-          <div style={{ position: 'relative' }}>
-            <button 
-              onClick={() => setCustomizerOpen(!customizerOpen)}
-              className="control-btn"
-              title="Theme Colors"
-            >
-              <i className="fa-solid fa-palette"></i>
-            </button>
-            {customizerOpen && (
-              <div 
-                id="theme-customizer" 
-                className="open"
-                style={{
-                  position: 'absolute',
-                  top: '120%',
-                  right: 0,
-                  background: '#0f172a',
-                  border: '1px solid var(--border)',
-                  borderRadius: '12px',
-                  padding: '0.8rem',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '0.4rem',
-                  zIndex: 9999,
-                  minWidth: '120px'
-                }}
-              >
-                {Object.keys(themes).map(themeName => (
-                  <button
-                    key={themeName}
-                    onClick={() => { changeTheme(themeName); setCustomizerOpen(false); }}
-                    className={`theme-option ${activeTheme === themeName ? 'active' : ''}`}
-                    style={{
-                      background: 'none',
-                      border: 'none',
-                      color: activeTheme === themeName ? 'var(--accent-primary)' : 'var(--text-secondary)',
-                      fontSize: '0.85rem',
-                      textAlign: 'left',
-                      padding: '0.3rem 0.5rem',
-                      cursor: 'pointer',
-                      textTransform: 'capitalize',
-                      fontWeight: activeTheme === themeName ? 'bold' : 'normal'
-                    }}
-                  >
-                    {themeName}
-                  </button>
-                ))}
-              </div>
-            )}
+        {/* Header Right Actions */}
+        <div className="nav-actions">
+          {/* Status Badge */}
+          <div className="nav-status-indicator" title="Currently open for high-impact roles & collaborations">
+            <span className="status-ping"></span>
+            <span className="status-text">Available</span>
           </div>
 
-          <a href="https://github.com/as04-CyberNova" target="_blank" rel="noopener noreferrer" className="control-btn" title="GitHub Profile" id="navGithub" aria-label="Visit my GitHub">
-            <i className="fab fa-github"></i>
-          </a>
-          
-          <a href="https://www.linkedin.com/in/abhyudaya-sinha-7035a8373" target="_blank" rel="noopener noreferrer" className="control-btn" title="LinkedIn Profile" id="navLinkedin" aria-label="Visit my LinkedIn">
-            <i className="fab fa-linkedin-in"></i>
-          </a>
-
-          <a href="#contact" className="btn-primary connect-btn" id="atsNavBtn">GET IN TOUCH</a>
-
-          <button 
-            className="mobile-menu-btn" 
-            id="mobileMenuBtn" 
-            aria-label="Toggle Menu"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          {/* Social Profiles */}
+          <a 
+            href="https://github.com/as04-CyberNova" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="nav-icon-link" 
+            aria-label="GitHub Profile"
+            title="GitHub Profile"
           >
-            <i className={`fa-solid ${mobileMenuOpen ? 'fa-xmark' : 'fa-bars'}`}></i>
+            <i className="fa-brands fa-github"></i>
+          </a>
+          <a 
+            href="https://www.linkedin.com/in/abhyudaya-sinha-7035a8373" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="nav-icon-link" 
+            aria-label="LinkedIn Profile"
+            title="LinkedIn Profile"
+          >
+            <i className="fa-brands fa-linkedin-in"></i>
+          </a>
+
+          {/* Resume Download CTA */}
+          <a 
+            href="/Abhyudaya_Sinha_Resume.pdf" 
+            download="Abhyudaya_Sinha_Resume.pdf" 
+            className="btn-resume-nav desktop-only"
+            title="Download ATS-Friendly PDF Resume"
+          >
+            <i className="fa-solid fa-file-arrow-down"></i> Resume
+          </a>
+
+          {/* Primary CTA */}
+          <a href="#contact" className="btn-connect-nav desktop-only">
+            Let's Connect
+          </a>
+
+          {/* Mobile Hamburger Toggle */}
+          <button 
+            className="mobile-hamburger-btn" 
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle Navigation Menu"
+          >
+            <i className={`fa-solid ${mobileMenuOpen ? 'fa-xmark' : 'fa-bars-staggered'}`}></i>
           </button>
         </div>
       </nav>
     </header>
   );
 }
-
