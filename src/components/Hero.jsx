@@ -73,7 +73,7 @@ export default function Hero() {
             {/* Visual Frame */}
             <div className="hero-image-wrapper">
               <img 
-                src="/images/hero_brand_visual.jpg" 
+                src={`${import.meta.env.BASE_URL}images/hero_brand_visual.jpg`} 
                 alt="Intelligent Digital Products & AI Architecture Visual" 
                 className="hero-image-display"
                 loading="eager"

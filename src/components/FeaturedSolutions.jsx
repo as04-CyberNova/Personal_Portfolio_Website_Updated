@@ -21,7 +21,7 @@ const CASE_STUDIES = [
       { val: '1.8x', lbl: 'Attach Rate' },
       { val: '+12%', lbl: 'Revenue Lift' }
     ],
-    image: '/images/Screenshot 2026-06-03 001716.png',
+    image: `${import.meta.env.BASE_URL}images/Screenshot 2026-06-03 001716.png`,
     github: 'https://github.com/as04-CyberNova/Tableau-BI-Dashboards',
     demo: 'https://github.com/as04-CyberNova/Tableau-BI-Dashboards',
     lessons: 'Handling 300K+ transaction lines taught me that upstream data transformation and caching in relational models dramatically outperform heavy client-side computations.'
@@ -46,7 +46,7 @@ const CASE_STUDIES = [
       { val: '+22%', lbl: 'Staff Utilization' },
       { val: '14ms', lbl: 'Query Latency' }
     ],
-    image: '/images/Hospital_Patient_Record_Analysis_Dashboard.png',
+    image: `${import.meta.env.BASE_URL}images/Hospital_Patient_Record_Analysis_Dashboard.png`,
     github: 'https://github.com/as04-CyberNova/Power-BI-Analytics-Dashboards',
     demo: 'https://github.com/as04-CyberNova/Power-BI-Analytics-Dashboards',
     lessons: 'Demonstrated the power of moving business logic upstream into clean SQL schemas rather than relying on brittle visualization-layer filters.'
@@ -71,7 +71,7 @@ const CASE_STUDIES = [
       { val: '80%', lbl: 'ETL Speedup' },
       { val: '1.2M', lbl: 'Records Cleaned' }
     ],
-    image: '/images/Covid19_Analysis_Dashboard.png',
+    image: `${import.meta.env.BASE_URL}images/Covid19_Analysis_Dashboard.png`,
     github: 'https://github.com/as04-CyberNova/COVID-19-Data-Visualization',
     demo: 'https://github.com/as04-CyberNova/COVID-19-Data-Visualization',
     lessons: 'Validated that automated Python data cleansing scripts prevent countless hours of manual spreadsheet repairs and guarantee verifiable dataset integrity.'
@@ -96,7 +96,7 @@ const CASE_STUDIES = [
       { val: '<50ms', lbl: 'Inference' },
       { val: '4.5x', lbl: 'Faster Action' }
     ],
-    image: '/images/hero_brand_visual.jpg',
+    image: `${import.meta.env.BASE_URL}images/hero_brand_visual.jpg`,
     github: 'https://github.com/as04-CyberNova',
     demo: '#telemetry',
     lessons: 'Proved that machine learning only creates business value when paired with a clean, low-friction user interface that non-technical leaders can understand and trust.'
